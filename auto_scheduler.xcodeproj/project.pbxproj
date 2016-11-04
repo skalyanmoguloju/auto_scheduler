@@ -7,39 +7,37 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		329104881DCA9ADC005C7F5B /* ContactEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329104831DCA9ADB005C7F5B /* ContactEntry.swift */; };
-		329104891DCA9ADC005C7F5B /* Contacts_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329104841DCA9ADB005C7F5B /* Contacts_ViewController.swift */; };
-		3291048A1DCA9ADC005C7F5B /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329104851DCA9ADB005C7F5B /* ContactTableViewCell.swift */; };
-		3291048B1DCA9ADC005C7F5B /* ContactTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 329104861DCA9ADB005C7F5B /* ContactTableViewCell.xib */; };
-		3291048C1DCA9ADC005C7F5B /* Images in Resources */ = {isa = PBXBuildFile; fileRef = 329104871DCA9ADB005C7F5B /* Images */; };
+		329104781DC9883C005C7F5B /* ContactEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329104771DC9883C005C7F5B /* ContactEntry.swift */; };
+		3291047A1DC9892F005C7F5B /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 329104791DC9892F005C7F5B /* ContactTableViewCell.swift */; };
+		3291047C1DC9AC47005C7F5B /* ContactTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3291047B1DC9AC47005C7F5B /* ContactTableViewCell.xib */; };
+		3291047F1DCA8E8F005C7F5B /* Back.png in Resources */ = {isa = PBXBuildFile; fileRef = 3291047D1DCA8E8F005C7F5B /* Back.png */; };
+		329104801DCA8E8F005C7F5B /* next.png in Resources */ = {isa = PBXBuildFile; fileRef = 3291047E1DCA8E8F005C7F5B /* next.png */; };
+		329104821DCA91E8005C7F5B /* Bkgrnd.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 329104811DCA91E8005C7F5B /* Bkgrnd.jpg */; };
+		32B0BEA51DCAAF30006A2FD1 /* HomeScreen_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B0BEA41DCAAF30006A2FD1 /* HomeScreen_ViewController.swift */; };
+		32B0BEA71DCAAFCE006A2FD1 /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 32B0BEA61DCAAFCE006A2FD1 /* menu.png */; };
 		CC241D4B1DBF04B7007B9F6C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC241D4A1DBF04B7007B9F6C /* AppDelegate.swift */; };
-		CC241D4D1DBF04B7007B9F6C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC241D4C1DBF04B7007B9F6C /* ViewController.swift */; };
+		CC241D4D1DBF04B7007B9F6C /* Contacts_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC241D4C1DBF04B7007B9F6C /* Contacts_ViewController.swift */; };
 		CC241D501DBF04B7007B9F6C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC241D4E1DBF04B7007B9F6C /* Main.storyboard */; };
 		CC241D521DBF04B7007B9F6C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC241D511DBF04B7007B9F6C /* Assets.xcassets */; };
 		CC241D551DBF04B7007B9F6C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC241D531DBF04B7007B9F6C /* LaunchScreen.storyboard */; };
-		CC7E9ACF1DC8598900204B86 /* RadioButtonsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7E9ACD1DC8598900204B86 /* RadioButtonsController.swift */; };
-		CC7E9AD01DC8598900204B86 /* SSRadioButton.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7E9ACE1DC8598900204B86 /* SSRadioButton.swift.swift */; };
-		CC7E9AD21DC85A6D00204B86 /* SuggestionListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7E9AD11DC85A6D00204B86 /* SuggestionListController.swift */; };
-		CC7E9AD41DC86B6F00204B86 /* MeetingRequestController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC7E9AD31DC86B6F00204B86 /* MeetingRequestController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		329104831DCA9ADB005C7F5B /* ContactEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactEntry.swift; sourceTree = "<group>"; };
-		329104841DCA9ADB005C7F5B /* Contacts_ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Contacts_ViewController.swift; sourceTree = "<group>"; };
-		329104851DCA9ADB005C7F5B /* ContactTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
-		329104861DCA9ADB005C7F5B /* ContactTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactTableViewCell.xib; sourceTree = "<group>"; };
-		329104871DCA9ADB005C7F5B /* Images */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Images; sourceTree = "<group>"; };
+		329104771DC9883C005C7F5B /* ContactEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactEntry.swift; sourceTree = "<group>"; };
+		329104791DC9892F005C7F5B /* ContactTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactTableViewCell.swift; sourceTree = "<group>"; };
+		3291047B1DC9AC47005C7F5B /* ContactTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContactTableViewCell.xib; sourceTree = "<group>"; };
+		3291047D1DCA8E8F005C7F5B /* Back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Back.png; path = Images/Back.png; sourceTree = "<group>"; };
+		3291047E1DCA8E8F005C7F5B /* next.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = next.png; path = Images/next.png; sourceTree = "<group>"; };
+		329104811DCA91E8005C7F5B /* Bkgrnd.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Bkgrnd.jpg; path = Images/Bkgrnd.jpg; sourceTree = "<group>"; };
+		32B0BEA41DCAAF30006A2FD1 /* HomeScreen_ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeScreen_ViewController.swift; sourceTree = "<group>"; };
+		32B0BEA61DCAAFCE006A2FD1 /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = menu.png; path = Images/menu.png; sourceTree = "<group>"; };
 		CC241D471DBF04B7007B9F6C /* auto_scheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = auto_scheduler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC241D4A1DBF04B7007B9F6C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CC241D4C1DBF04B7007B9F6C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CC241D4C1DBF04B7007B9F6C /* Contacts_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contacts_ViewController.swift; sourceTree = "<group>"; };
 		CC241D4F1DBF04B7007B9F6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CC241D511DBF04B7007B9F6C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CC241D541DBF04B7007B9F6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CC241D561DBF04B7007B9F6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CC7E9ACD1DC8598900204B86 /* RadioButtonsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RadioButtonsController.swift; path = Utilities/RadioButtons/RadioButtonsController.swift; sourceTree = "<group>"; };
-		CC7E9ACE1DC8598900204B86 /* SSRadioButton.swift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SSRadioButton.swift.swift; path = Utilities/RadioButtons/SSRadioButton.swift.swift; sourceTree = "<group>"; };
-		CC7E9AD11DC85A6D00204B86 /* SuggestionListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestionListController.swift; sourceTree = "<group>"; };
-		CC7E9AD31DC86B6F00204B86 /* MeetingRequestController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetingRequestController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,10 +51,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		324CCA6C1DC879690083D283 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				32B0BEA61DCAAFCE006A2FD1 /* menu.png */,
+				329104811DCA91E8005C7F5B /* Bkgrnd.jpg */,
+				3291047D1DCA8E8F005C7F5B /* Back.png */,
+				3291047E1DCA8E8F005C7F5B /* next.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		32B0BEA31DCAAF11006A2FD1 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				32B0BEA41DCAAF30006A2FD1 /* HomeScreen_ViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
 		CC241D3E1DBF04B7007B9F6C = {
 			isa = PBXGroup;
 			children = (
-				CC7E9AC51DC8582200204B86 /* Utilities */,
 				CC241D491DBF04B7007B9F6C /* auto_scheduler */,
 				CC241D481DBF04B7007B9F6C /* Products */,
 			);
@@ -73,38 +89,19 @@
 		CC241D491DBF04B7007B9F6C /* auto_scheduler */ = {
 			isa = PBXGroup;
 			children = (
-				329104831DCA9ADB005C7F5B /* ContactEntry.swift */,
-				329104841DCA9ADB005C7F5B /* Contacts_ViewController.swift */,
-				329104851DCA9ADB005C7F5B /* ContactTableViewCell.swift */,
-				329104861DCA9ADB005C7F5B /* ContactTableViewCell.xib */,
-				329104871DCA9ADB005C7F5B /* Images */,
+				32B0BEA31DCAAF11006A2FD1 /* ViewControllers */,
+				3291047B1DC9AC47005C7F5B /* ContactTableViewCell.xib */,
+				329104791DC9892F005C7F5B /* ContactTableViewCell.swift */,
+				329104771DC9883C005C7F5B /* ContactEntry.swift */,
+				324CCA6C1DC879690083D283 /* Supporting Files */,
 				CC241D4A1DBF04B7007B9F6C /* AppDelegate.swift */,
-				CC241D4C1DBF04B7007B9F6C /* ViewController.swift */,
+				CC241D4C1DBF04B7007B9F6C /* Contacts_ViewController.swift */,
 				CC241D4E1DBF04B7007B9F6C /* Main.storyboard */,
 				CC241D511DBF04B7007B9F6C /* Assets.xcassets */,
 				CC241D531DBF04B7007B9F6C /* LaunchScreen.storyboard */,
 				CC241D561DBF04B7007B9F6C /* Info.plist */,
-				CC7E9AD11DC85A6D00204B86 /* SuggestionListController.swift */,
-				CC7E9AD31DC86B6F00204B86 /* MeetingRequestController.swift */,
 			);
 			path = auto_scheduler;
-			sourceTree = "<group>";
-		};
-		CC7E9AC51DC8582200204B86 /* Utilities */ = {
-			isa = PBXGroup;
-			children = (
-				CC7E9AC61DC8582F00204B86 /* RadioButtons */,
-			);
-			name = Utilities;
-			sourceTree = "<group>";
-		};
-		CC7E9AC61DC8582F00204B86 /* RadioButtons */ = {
-			isa = PBXGroup;
-			children = (
-				CC7E9ACD1DC8598900204B86 /* RadioButtonsController.swift */,
-				CC7E9ACE1DC8598900204B86 /* SSRadioButton.swift.swift */,
-			);
-			name = RadioButtons;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -166,10 +163,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3291048C1DCA9ADC005C7F5B /* Images in Resources */,
-				3291048B1DCA9ADC005C7F5B /* ContactTableViewCell.xib in Resources */,
+				32B0BEA71DCAAFCE006A2FD1 /* menu.png in Resources */,
+				329104801DCA8E8F005C7F5B /* next.png in Resources */,
+				3291047F1DCA8E8F005C7F5B /* Back.png in Resources */,
 				CC241D551DBF04B7007B9F6C /* LaunchScreen.storyboard in Resources */,
+				329104821DCA91E8005C7F5B /* Bkgrnd.jpg in Resources */,
 				CC241D521DBF04B7007B9F6C /* Assets.xcassets in Resources */,
+				3291047C1DC9AC47005C7F5B /* ContactTableViewCell.xib in Resources */,
 				CC241D501DBF04B7007B9F6C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -181,15 +181,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CC7E9AD01DC8598900204B86 /* SSRadioButton.swift.swift in Sources */,
-				CC7E9AD21DC85A6D00204B86 /* SuggestionListController.swift in Sources */,
-				CC7E9ACF1DC8598900204B86 /* RadioButtonsController.swift in Sources */,
-				CC7E9AD41DC86B6F00204B86 /* MeetingRequestController.swift in Sources */,
-				CC241D4D1DBF04B7007B9F6C /* ViewController.swift in Sources */,
-				329104891DCA9ADC005C7F5B /* Contacts_ViewController.swift in Sources */,
-				3291048A1DCA9ADC005C7F5B /* ContactTableViewCell.swift in Sources */,
-				329104881DCA9ADC005C7F5B /* ContactEntry.swift in Sources */,
+				32B0BEA51DCAAF30006A2FD1 /* HomeScreen_ViewController.swift in Sources */,
+				CC241D4D1DBF04B7007B9F6C /* Contacts_ViewController.swift in Sources */,
+				3291047A1DC9892F005C7F5B /* ContactTableViewCell.swift in Sources */,
 				CC241D4B1DBF04B7007B9F6C /* AppDelegate.swift in Sources */,
+				329104781DC9883C005C7F5B /* ContactEntry.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

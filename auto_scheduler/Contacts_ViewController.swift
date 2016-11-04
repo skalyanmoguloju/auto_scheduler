@@ -63,6 +63,9 @@ class Contacts_ViewController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
 
+    @IBAction func backToHome(_ sender: UIButton) {
+        dismiss(animated: false, completion: nil)
+    }
     
     
     func requestAccessToContacts(_ completion: @escaping (_ success: Bool) -> Void) {
