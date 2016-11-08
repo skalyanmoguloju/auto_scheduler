@@ -142,11 +142,12 @@ class HomeScreen_ViewController: UIViewController, UICollectionViewDataSource, U
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
     {
-        return self.item.count
+        return self.events_complete.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
+        
         let dateformatter = DateFormatter()
         
         dateformatter.dateFormat = "MM/dd/yy h:mm a Z"

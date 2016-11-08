@@ -7,6 +7,19 @@ class MapsViewController: UIViewController {
     var searchController: UISearchController?
     var resultView: UITextView?
     
+    @IBAction func backButton(_ sender: UIButton) {
+         dismiss(animated: false, completion: nil)
+    }
+    
+    
+    
+    
+    @IBAction func nextFromLocation(_ sender: UIButton) {
+        dismiss(animated: false, completion: nil)
+    }
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
