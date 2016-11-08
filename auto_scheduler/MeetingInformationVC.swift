@@ -31,6 +31,7 @@ class MeetingInformationVC: UIViewController, UITableViewDataSource, UITableView
     
     @IBAction func canmetgc(_ sender: AnyObject) {
         if Control.selectedSegmentIndex == 0{
+            navigationController?.popViewController(animated: true)
            
             
         }
