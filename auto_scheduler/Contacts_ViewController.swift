@@ -211,10 +211,6 @@ class Contacts_ViewController: UIViewController, UITableViewDelegate, UITableVie
         }
     }
     
-    @IBAction func GoToSuggestion(_ sender: UIButton) {
-        performSegue(withIdentifier: "CreateMeeting", sender: self)
-    }
-    
     
     func addDummyData() {
         

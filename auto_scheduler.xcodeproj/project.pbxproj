@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		324209811DD19265008F78A3 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324209801DD19265008F78A3 /* CollectionViewCell.swift */; };
 		3269BCE81DCD2B0900E2BF7C /* RestAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3269BCE71DCD2B0900E2BF7C /* RestAPIManager.swift */; };
 		3269BCEA1DCD2B1300E2BF7C /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3269BCE91DCD2B1300E2BF7C /* SwiftyJSON.swift */; };
 		3269BCEC1DCD9EC600E2BF7C /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3269BCEB1DCD9EC600E2BF7C /* UIViewExtensions.swift */; };
@@ -29,6 +30,7 @@
 
 /* Begin PBXFileReference section */
 		149B2F0AA30B8F8CACACBBCE /* Pods-auto_scheduler.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-auto_scheduler.debug.xcconfig"; path = "Pods/Target Support Files/Pods-auto_scheduler/Pods-auto_scheduler.debug.xcconfig"; sourceTree = "<group>"; };
+		324209801DD19265008F78A3 /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
 		3269BCE71DCD2B0900E2BF7C /* RestAPIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestAPIManager.swift; sourceTree = "<group>"; };
 		3269BCE91DCD2B1300E2BF7C /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		3269BCEB1DCD9EC600E2BF7C /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 		3269BCED1DCD9EE500E2BF7C /* SupportingSwift */ = {
 			isa = PBXGroup;
 			children = (
+				324209801DD19265008F78A3 /* CollectionViewCell.swift */,
 				329104791DC9892F005C7F5B /* ContactTableViewCell.swift */,
 				3291047B1DC9AC47005C7F5B /* ContactTableViewCell.xib */,
 				329104771DC9883C005C7F5B /* ContactEntry.swift */,
@@ -284,6 +287,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				324209811DD19265008F78A3 /* CollectionViewCell.swift in Sources */,
 				3269BCF11DCE41D900E2BF7C /* MapsViewController.swift in Sources */,
 				32B0BEA51DCAAF30006A2FD1 /* HomeScreen_ViewController.swift in Sources */,
 				CC241D4D1DBF04B7007B9F6C /* Contacts_ViewController.swift in Sources */,
