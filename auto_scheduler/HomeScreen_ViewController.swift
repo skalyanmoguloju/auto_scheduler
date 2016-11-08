@@ -8,17 +8,16 @@
 
 import UIKit
 import EventKit
-class HomeScreen_ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class HomeScreen_ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
     
     @IBOutlet weak var leadingConstraint: NSLayoutConstraint!
     
     @IBOutlet weak var trainingConstraint: NSLayoutConstraint!
     @IBOutlet weak var needPermissionView: UIView!
-    
+    @IBOutlet weak var collectionView: UICollectionView!
     var calendars: [EKCalendar]?
 
-    @IBOutlet weak var calendarsTableView: UITableView!
     
     let eventStore = EKEventStore()
     override func viewDidLoad() {
@@ -81,7 +80,6 @@ class HomeScreen_ViewController: UIViewController, UITableViewDataSource, UITabl
         case EKAuthorizationStatus.authorized:
             // Things are in line with being able to show the calendars in the table view
             loadCalendars()
-            refreshTableView()
         case EKAuthorizationStatus.restricted, EKAuthorizationStatus.denied:
             // We need to help them give us permission
             needPermissionView.fadeIn()
@@ -95,7 +93,6 @@ class HomeScreen_ViewController: UIViewController, UITableViewDataSource, UITabl
             if accessGranted == true {
                 DispatchQueue.main.async(execute: {
                     self.loadCalendars()
-                    self.refreshTableView()
                 })
             } else {
                 DispatchQueue.main.async(execute: {
@@ -108,13 +105,13 @@ class HomeScreen_ViewController: UIViewController, UITableViewDataSource, UITabl
     var startDates : [NSDate] = []
     var endDates : [NSDate] = []
     
-    
+    var events_complete: [EKEvent] = []
     
     func loadCalendars() {
         self.calendars = eventStore.calendars(for: EKEntityType.event)
-        print(self.calendars ?? <#default value#>)
+        print(self.calendars)
         for calendar in self.calendars! {
-            let oneMonthAgo = NSDate(timeIntervalSinceNow: -30*24*3600)
+            let oneMonthAgo = NSDate(timeIntervalSinceNow: 0*24*3600)
             let oneMonthAfter = NSDate(timeIntervalSinceNow: +30*24*3600)
                 
             let predicate = eventStore.predicateForEvents(withStart: oneMonthAgo as Date, end: oneMonthAfter as Date, calendars: [calendar])
@@ -122,7 +119,8 @@ class HomeScreen_ViewController: UIViewController, UITableViewDataSource, UITabl
             let events = eventStore.events(matching: predicate)
                 
             for event in events {
-                print(event.location ?? <#default value#>)
+                events_complete.append(event)
+                print(event.location)
                 print(event.title)
                 print(event.startDate as NSDate)
                 print(event.endDate as NSDate)
@@ -135,32 +133,65 @@ class HomeScreen_ViewController: UIViewController, UITableViewDataSource, UITabl
 
     }
     
-    func refreshTableView() {
-        calendarsTableView.isHidden = false
-        calendarsTableView.reloadData()
+    
+    var item = ["Meeting 1", "Meeting 2","Meeting3","Meeting 4","Meeting 1", "Meeting 2","Meeting3","Meeting 4","Meeting 1", "Meeting 2","Meeting3","Meeting 4"]
+    var meetingInformation: [String] = []
+    var meetingSelected: [String] = []
+    var meeting1_detail: [String] = []
+    var meeting2_detail: [String] = []
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int
+    {
+        return self.item.count
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let calendars = self.calendars {
-            return calendars.count
-        }
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
+    {
+        let dateformatter = DateFormatter()
         
-        return 0
-    }
-    
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "basicCell")!
+        dateformatter.dateFormat = "MM/dd/yy h:mm a Z"
         
-        if let calendars = self.calendars {
-            let calendarName = calendars[(indexPath as NSIndexPath).row].title
-            cell.textLabel?.text = calendarName
-        } else {
-            cell.textLabel?.text = "Unknown Calendar Name"
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CollectionViewCell
+        cell.titleLabel!.text = self.events_complete[(indexPath as IndexPath).row].title
+        cell.locationLabel!.text = self.events_complete[(indexPath as IndexPath).row].location
+        cell.timeLabel!.text = dateformatter.string(from: self.events_complete[(indexPath as IndexPath).row].startDate)
+        switch indexPath[1]%4 {
+        case 0:
+            cell.backgroundColor = UIColor.darkGray
+            break
+        case 1:
+            cell.backgroundColor = UIColor.cyan
+            break
+        case 2:
+            cell.backgroundColor = UIColor.gray
+            break;
+        case 3:
+            cell.backgroundColor = UIColor.magenta
+            break
+        default:
+            cell.backgroundColor = UIColor.white
+            break
         }
         
         return cell
+        
     }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
+    {
+        print("\(indexPath[1])")
+        if (indexPath[1] == 0){
+            meetingSelected = meeting1_detail
+            
+        }
+        if (indexPath[1] == 1){
+            meetingSelected = meeting2_detail
+        }
+        
+    }
+
+    
+    
+    
     
     
     
