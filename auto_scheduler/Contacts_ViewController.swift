@@ -9,6 +9,9 @@
 import UIKit
 import Contacts
 
+import EventKit
+
+
 class Contacts_ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
     
     let intervalCellIdentifier = "intervalCellIdentifier"
@@ -39,9 +42,11 @@ class Contacts_ViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        //addDummyData()
         tableView.isHidden = true
         //noContactsLabel.isHidden = false
         //noContactsLabel.text = "Retrieving contacts..."
+        addDummyData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -203,6 +208,35 @@ class Contacts_ViewController: UIViewController, UITableViewDelegate, UITableVie
         
         if let sr = tableView.indexPathsForSelectedRows {
             print("didDeselectRowAtIndexPath selected rows:\(sr)")
+        }
+    }
+    
+    
+    func addDummyData() {
+        
+        var titles : [String] = []
+        var startDates : [NSDate] = []
+        var endDates : [NSDate] = []
+        
+        let eventStore = EKEventStore()
+        let calendars = eventStore.calendars(for: .event)
+        
+        for calendar in calendars {
+            if calendar.title == "Work" {
+                
+                let oneMonthAgo = NSDate(timeIntervalSinceNow: -30*24*3600)
+                let oneMonthAfter = NSDate(timeIntervalSinceNow: +30*24*3600)
+                
+                let predicate = eventStore.predicateForEvents(withStart: oneMonthAgo as Date, end: oneMonthAfter as Date, calendars: [calendar])
+                
+                var events = eventStore.events(matching: predicate)
+                
+                for event in events {
+                    titles.append(event.title)
+                    startDates.append(event.startDate as NSDate)
+                    endDates.append(event.endDate as NSDate)
+                }
+            }
         }
     }
     

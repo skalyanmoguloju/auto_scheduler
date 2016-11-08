@@ -22,6 +22,8 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCalendarsUsageDescription</key>
+	<string>We need access to your calendar in order to help you track events.</string>
 	<key>NSContactsUsageDescription</key>
 	<string>All of your contacts are belong to us...</string>
 	<key>UILaunchStoryboardName</key>

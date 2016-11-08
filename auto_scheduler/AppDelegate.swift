@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import GooglePlaces
+
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
