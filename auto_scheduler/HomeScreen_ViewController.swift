@@ -86,6 +86,18 @@ class HomeScreen_ViewController: UIViewController, UICollectionViewDataSource, U
         }
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+        if(segue.identifier == "meetingInfo"){
+            
+            print("Correct Segue is identified")
+            
+           let dest = segue.destination as! MeetingInformationVC
+            dest.events_complete_info = meetingSelected
+            
+        }
+        
+    }
+    
     func requestAccessToCalendar() {
         eventStore.requestAccess(to: EKEntityType.event, completion: {
             (accessGranted: Bool, error: Error?) in
@@ -136,7 +148,7 @@ class HomeScreen_ViewController: UIViewController, UICollectionViewDataSource, U
     
     var item = ["Meeting 1", "Meeting 2","Meeting3","Meeting 4","Meeting 1", "Meeting 2","Meeting3","Meeting 4","Meeting 1", "Meeting 2","Meeting3","Meeting 4"]
     var meetingInformation: [String] = []
-    var meetingSelected: [String] = []
+    var meetingSelected: [EKEvent] = []
     var meeting1_detail: [String] = []
     var meeting2_detail: [String] = []
     
@@ -154,6 +166,7 @@ class HomeScreen_ViewController: UIViewController, UICollectionViewDataSource, U
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CollectionViewCell
         cell.titleLabel!.text = self.events_complete[(indexPath as IndexPath).row].title
+    
         cell.locationLabel!.text = self.events_complete[(indexPath as IndexPath).row].location
         cell.timeLabel!.text = dateformatter.string(from: self.events_complete[(indexPath as IndexPath).row].startDate)
         switch indexPath[1]%4 {
@@ -179,14 +192,17 @@ class HomeScreen_ViewController: UIViewController, UICollectionViewDataSource, U
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
     {
-        print("\(indexPath[1])")
-        if (indexPath[1] == 0){
-            meetingSelected = meeting1_detail
+        
+            print("Inside 1st click")
+        meetingSelected = [self.events_complete[(indexPath as IndexPath).row]]
+        print(meetingSelected[0].title)
+            self.performSegue(withIdentifier: "meetingInfo", sender: self)
             
-        }
-        if (indexPath[1] == 1){
-            meetingSelected = meeting2_detail
-        }
+        
+       
+            print(self.events_complete[(indexPath as IndexPath).row])
+    //        meetingSelected = meeting2_detail
+        
         
     }
 

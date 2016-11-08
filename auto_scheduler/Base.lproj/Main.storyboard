@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11760" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="osB-lt-04J">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11760" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="osB-lt-04J">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -255,11 +255,12 @@
                         <outlet property="mainView" destination="JDd-S2-4VB" id="UTD-Rr-28O"/>
                         <outlet property="needPermissionView" destination="Hwa-u8-pTc" id="554-iD-jQM"/>
                         <outlet property="trainingConstraint" destination="bce-ek-nc0" id="4xM-XZ-9qE"/>
+                        <segue destination="ZKR-tQ-Ma7" kind="show" identifier="meetingInfo" id="ETK-zi-tQ8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gb1-Md-ewk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1975.2" y="-828.03598200899557"/>
+            <point key="canvasLocation" x="-2055" y="-759"/>
         </scene>
         <!--Location-->
         <scene sceneID="HEK-Yk-vV8">
@@ -476,6 +477,90 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iv1-K8-l4i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3404" y="-1240"/>
+        </scene>
+        <!--Meeting InformationVC-->
+        <scene sceneID="8Hz-EN-TvL">
+            <objects>
+                <viewController id="ZKR-tQ-Ma7" customClass="MeetingInformationVC" customModule="auto_scheduler" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2MB-wm-lPG"/>
+                        <viewControllerLayoutGuide type="bottom" id="DyU-4Q-a7t"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="t5w-hp-py4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Location: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RU0-kD-EbU">
+                                <rect key="frame" x="75" y="150" width="110" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WtB-8x-7eb">
+                                <rect key="frame" x="215" y="156" width="108" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u7U-A2-1wj">
+                                <rect key="frame" x="68" y="72" width="255" height="67"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="fQ0-ru-tgw">
+                                <rect key="frame" x="0.0" y="639" width="375" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="Cancel Meeting"/>
+                                    <segment title="Group Chat"/>
+                                </segments>
+                                <connections>
+                                    <action selector="canmetgc:" destination="ZKR-tQ-Ma7" eventType="valueChanged" id="Juq-lj-C6o"/>
+                                </connections>
+                            </segmentedControl>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2ZU-QD-4g6">
+                                <rect key="frame" x="31" y="386" width="292" height="163"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CELL" id="IU5-6j-CB1">
+                                        <rect key="frame" x="0.0" y="28" width="292" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IU5-6j-CB1" id="lcD-cZ-0eh">
+                                            <rect key="frame" x="0.0" y="0.0" width="292" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="ZKR-tQ-Ma7" id="FaM-aj-zPI"/>
+                                    <outlet property="delegate" destination="ZKR-tQ-Ma7" id="KJf-0f-iv5"/>
+                                </connections>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Contacts attending" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b1c-Ql-qXi">
+                                <rect key="frame" x="100" y="313" width="174" height="40"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="Control" destination="fQ0-ru-tgw" id="ViR-Ir-C2h"/>
+                        <outlet property="Location" destination="WtB-8x-7eb" id="tuX-fU-7Hb"/>
+                        <outlet property="meetingTitle" destination="u7U-A2-1wj" id="Cxn-cT-TOg"/>
+                        <outlet property="tableView" destination="2ZU-QD-4g6" id="4Mc-nA-uZt"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wd4-20-E8c" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-770" y="-779"/>
         </scene>
     </scenes>
     <resources>
