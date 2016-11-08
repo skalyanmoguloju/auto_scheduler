@@ -49,7 +49,7 @@ class CreateMeeting_VC: UIViewController {
         let datePicker : UIDatePicker = UIDatePicker(frame: CGRect(origin: CGPoint(x: centerX,y :centerY), size: CGSize(width: screenWidth, height: screenHeight)))
         datePicker.datePickerMode = UIDatePickerMode.dateAndTime
         self.view.addSubview(datePicker)
-        datePicker.addTarget(self, action: #selector(ViewController.date_picker_change_action), for: UIControlEvents.valueChanged)
+        datePicker.addTarget(self, action: #selector(CreateMeeting_VC.date_picker_change_action), for: UIControlEvents.valueChanged)
     }
     
     @IBAction func date_picker_change_action(sender : UIDatePicker)
