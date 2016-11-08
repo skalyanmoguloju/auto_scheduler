@@ -20,11 +20,15 @@ class Contacts_ViewController: UIViewController, UITableViewDelegate, UITableVie
     var contactsSelected = [String]()
     
     
+    @IBAction func nextButton(_ sender: Any) {
+         self.performSegue(withIdentifier: "nextFromContacts", sender: self)
+    }
 
     // outlets
     @IBOutlet weak var tableView: UITableView!
     //@IBOutlet weak var noContactsLabel: UILabel!
     
+   
     
     @IBOutlet weak var searchBar: UISearchBar!
     
@@ -239,6 +243,7 @@ class Contacts_ViewController: UIViewController, UITableViewDelegate, UITableVie
             }
         }
     }
+    
     
     
 }
