@@ -4,20 +4,15 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>auto_scheduler.xcscheme</key>
+		<key>Pods-auto_scheduler.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>0</integer>
-		</dict>
-		<key>auto_scheduler.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>1</integer>
+			<integer>2</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>CC241D461DBF04B7007B9F6C</key>
+		<key>51F587C10FF51DE6A5FC113A9E07951E</key>
 		<dict>
 			<key>primary</key>
 			<true/>

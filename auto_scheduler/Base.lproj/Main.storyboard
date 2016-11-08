@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11760" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="osB-lt-04J">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11760" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="osB-lt-04J">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -95,12 +95,16 @@
                                 <state key="normal" backgroundImage="next.png">
                                     <color key="titleColor" red="0.030475638806819916" green="0.0019294879166409373" blue="0.01760675385594368" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="nextButton:" destination="8WI-dH-FQ6" eventType="touchUpInside" id="m46-fs-Ao5"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="searchBar" destination="0Rh-0V-i6e" id="gWF-iQ-PcP"/>
                         <outlet property="tableView" destination="o3p-wp-VLh" id="VpW-r7-2Pc"/>
+                        <segue destination="SGB-t3-1BY" kind="show" identifier="nextFromContacts" id="NZi-vB-xix"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hCd-Mj-gJd" sceneMemberID="firstResponder"/>
@@ -112,7 +116,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Idc-Q7-lIN" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="2Ho-RL-xHm">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2Ho-RL-xHm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -257,7 +261,7 @@
             </objects>
             <point key="canvasLocation" x="-1975.2" y="-828.03598200899557"/>
         </scene>
-        <!--Maps View Controller-->
+        <!--Location-->
         <scene sceneID="HEK-Yk-vV8">
             <objects>
                 <viewController id="aLU-gn-33u" customClass="MapsViewController" customModule="auto_scheduler" customModuleProvider="target" sceneMemberID="viewController">
@@ -270,26 +274,39 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="6Zc-CV-Vp5">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="sxL-fc-p7b">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="60L-jz-o05">
-                                <rect key="frame" x="276" y="7" width="83" height="30"/>
+                    <navigationItem key="navigationItem" title="Location" id="6Zc-CV-Vp5">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="yac-AH-H50">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="arw-DT-fbv">
+                                <rect key="frame" x="16" y="5" width="34" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
+                                <state key="normal" title="Button" image="Back.png"/>
+                                <connections>
+                                    <action selector="backButton:" destination="aLU-gn-33u" eventType="touchUpInside" id="Biu-Pi-lvS"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="next.png" style="plain" id="sxL-fc-p7b">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="60L-jz-o05">
+                                <rect key="frame" x="272" y="5" width="87" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="next.png"/>
+                                <connections>
+                                    <action selector="nextFromLocation:" destination="aLU-gn-33u" eventType="touchUpInside" id="eCe-PE-vHw"/>
+                                </connections>
                             </button>
                         </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R2w-Aw-tjJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="604" y="-126.38680659670166"/>
+            <point key="canvasLocation" x="1442" y="-1494"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gou-sW-WLp">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="osB-lt-04J" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="JaI-Fx-g2I">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="JaI-Fx-g2I">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -307,7 +324,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="SGB-t3-1BY" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Q8V-Rm-4NJ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Q8V-Rm-4NJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -318,7 +335,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="arf-Ia-sXc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-335.19999999999999" y="-126.38680659670166"/>
+            <point key="canvasLocation" x="305" y="-1493"/>
         </scene>
     </scenes>
     <resources>
