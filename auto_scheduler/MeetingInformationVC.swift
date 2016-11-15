@@ -8,10 +8,14 @@
 
 import UIKit
 import EventKit
+import MapKit
+import CoreLocation
 
-class MeetingInformationVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class MeetingInformationVC: UIViewController, UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate {
     
     @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet weak var mapView: MKMapView!
     
    
 //    @IBOutlet weak var contact1: UILabel!
@@ -23,6 +27,10 @@ class MeetingInformationVC: UIViewController, UITableViewDataSource, UITableView
    var meetingName: [String] = []
     var events_complete_info: [EKEvent] = []
     var contactsAttending: [EKParticipant] = []
+    var geocoder = CLGeocoder()
+    let regionRadius: CLLocationDistance = 1000
+    var initialLocation = CLLocation(latitude: 41.8781, longitude: -87.6298)
+//    var initialLocationCoordinates = CLLocationCoordinate2D(latitude: 21.282778, longitude: -157.829444)
     
 //    @IBOutlet weak var cancel: UIButton!
 //    @IBOutlet weak var group_chat: UIButton!
@@ -32,8 +40,6 @@ class MeetingInformationVC: UIViewController, UITableViewDataSource, UITableView
     @IBAction func canmetgc(_ sender: AnyObject) {
         if Control.selectedSegmentIndex == 0{
             navigationController?.popViewController(animated: true)
-           
-            
         }
         if Control.selectedSegmentIndex == 1{
          
@@ -85,13 +91,47 @@ class MeetingInformationVC: UIViewController, UITableViewDataSource, UITableView
  //   contact1.text! = meetingName[1]
  //       contact2.text! = meetingName[2]
         Location.text! = events_complete_info[0].location!
-        print(type(of:events_complete_info[0].attendees))
-        print(events_complete_info[0].attendees)
+        showLocationOnMap()
+        print("Is it working")
+        print(self.initialLocation)
+//        centerMapOnLocation(location: self.initialLocation)
+        
+        
+       
+  //      print(type(of:events_complete_info[0].attendees))
+  //      print(events_complete_info[0].attendees)
+       
+        
+        
+    }
+    
+    func showLocationOnMap(){
+        var address = String(events_complete_info[0].location!)
+    //    var initialLocationCoordinates = CLLocationCoordinate2D(latitude: 21.282778, longitude: -157.829444)
+        geocoder.geocodeAddressString(address!, completionHandler: {(placemarks, error) -> Void in
+            if((error) != nil){
+                print("Error", error)
+            }
+            if let placemark = placemarks?.first {
+                let dropPin = MKPointAnnotation()
+                let coordinates:CLLocationCoordinate2D = placemark.location!.coordinate
+                self.initialLocation = CLLocation(latitude: coordinates.latitude, longitude: coordinates.longitude)
+                dropPin.coordinate = self.initialLocation.coordinate
+                self.mapView.addAnnotation(dropPin)
+                let coordinateRegion = MKCoordinateRegionMakeWithDistance(self.initialLocation.coordinate,self.regionRadius * 2.0, self.regionRadius * 2.0)
+                self.mapView.setRegion(coordinateRegion, animated: true)
+            }
+        })
+        
         
         
     }
     
     
+/*    func centerMapOnLocation(location: CLLocation) {
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,regionRadius * 2.0, regionRadius * 2.0)
+        mapView.setRegion(coordinateRegion, animated: true)
+    }*/
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -196,7 +196,7 @@
 				TargetAttributes = {
 					CC241D461DBF04B7007B9F6C = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = XUHSCVF7W8;
+						DevelopmentTeam = 625732G463;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -422,7 +422,7 @@
 			baseConfigurationReference = 149B2F0AA30B8F8CACACBBCE /* Pods-auto_scheduler.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = XUHSCVF7W8;
+				DEVELOPMENT_TEAM = 625732G463;
 				INFOPLIST_FILE = auto_scheduler/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "edu.uiowa.auto-scheduler";
@@ -436,7 +436,7 @@
 			baseConfigurationReference = D825E77895D71999A7D34585 /* Pods-auto_scheduler.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = XUHSCVF7W8;
+				DEVELOPMENT_TEAM = 625732G463;
 				INFOPLIST_FILE = auto_scheduler/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "edu.uiowa.auto-scheduler";
