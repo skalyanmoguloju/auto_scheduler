@@ -21,6 +21,7 @@
 		32B0BEA51DCAAF30006A2FD1 /* HomeScreen_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B0BEA41DCAAF30006A2FD1 /* HomeScreen_ViewController.swift */; };
 		32B0BEA71DCAAFCE006A2FD1 /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 32B0BEA61DCAAFCE006A2FD1 /* menu.png */; };
 		B47BF53DB67A6D965B24E0D8 /* libPods-auto_scheduler.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A5AF0AAF58F840143B8A9E48 /* libPods-auto_scheduler.a */; };
+		CC0E00751DD26AB60094336A /* MeetingInformationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0E00741DD26AB60094336A /* MeetingInformationVC.swift */; };
 		CC241D4B1DBF04B7007B9F6C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC241D4A1DBF04B7007B9F6C /* AppDelegate.swift */; };
 		CC241D4D1DBF04B7007B9F6C /* Contacts_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC241D4C1DBF04B7007B9F6C /* Contacts_ViewController.swift */; };
 		CC241D501DBF04B7007B9F6C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC241D4E1DBF04B7007B9F6C /* Main.storyboard */; };
@@ -44,6 +45,7 @@
 		32B0BEA41DCAAF30006A2FD1 /* HomeScreen_ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeScreen_ViewController.swift; sourceTree = "<group>"; };
 		32B0BEA61DCAAFCE006A2FD1 /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = menu.png; path = Images/menu.png; sourceTree = "<group>"; };
 		A5AF0AAF58F840143B8A9E48 /* libPods-auto_scheduler.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-auto_scheduler.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC0E00741DD26AB60094336A /* MeetingInformationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetingInformationVC.swift; sourceTree = "<group>"; };
 		CC241D471DBF04B7007B9F6C /* auto_scheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = auto_scheduler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC241D4A1DBF04B7007B9F6C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CC241D4C1DBF04B7007B9F6C /* Contacts_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contacts_ViewController.swift; sourceTree = "<group>"; };
@@ -118,6 +120,7 @@
 		32B0BEA31DCAAF11006A2FD1 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				CC0E00741DD26AB60094336A /* MeetingInformationVC.swift */,
 				CC241D4C1DBF04B7007B9F6C /* Contacts_ViewController.swift */,
 				32B0BEA41DCAAF30006A2FD1 /* HomeScreen_ViewController.swift */,
 				3269BCF01DCE41D900E2BF7C /* MapsViewController.swift */,
@@ -295,6 +298,7 @@
 				CC241D4B1DBF04B7007B9F6C /* AppDelegate.swift in Sources */,
 				3269BCE81DCD2B0900E2BF7C /* RestAPIManager.swift in Sources */,
 				3269BCEC1DCD9EC600E2BF7C /* UIViewExtensions.swift in Sources */,
+				CC0E00751DD26AB60094336A /* MeetingInformationVC.swift in Sources */,
 				3269BCEA1DCD2B1300E2BF7C /* SwiftyJSON.swift in Sources */,
 				329104781DC9883C005C7F5B /* ContactEntry.swift in Sources */,
 			);
@@ -420,6 +424,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = XUHSCVF7W8;
 				INFOPLIST_FILE = auto_scheduler/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "edu.uiowa.auto-scheduler";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -434,6 +439,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = XUHSCVF7W8;
 				INFOPLIST_FILE = auto_scheduler/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "edu.uiowa.auto-scheduler";
 				PRODUCT_NAME = "$(TARGET_NAME)";
