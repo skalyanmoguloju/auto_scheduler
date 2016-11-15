@@ -41,6 +41,33 @@ class Contacts_ViewController: UIViewController, UITableViewDelegate, UITableVie
         super.viewDidLoad()
         tableView.register(UINib(nibName: "ContactTableViewCell", bundle: nil), forCellReuseIdentifier: "ContactTableViewCell")
         
+        
+//        let urlString = "http://192.168.0.27:3000/users/test";
+//        //let urlString = "https://arcane-bayou-92592.herokuapp.com/users/test";
+//        
+//        
+//        let url = URL(string: urlString)
+//        URLSession.shared.dataTask(with:url!) { (data, response, error) in
+//            if error != nil {
+//                print(error)
+//            } else {
+//                do {
+//                    
+//                    let parsedData = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:Any];
+//                    print(parsedData);
+//                    let currentConditions = parsedData["1"] as! [String:Any]
+//                    
+//                    print(currentConditions)
+//                    
+//                    let currentTemperatureF = currentConditions["temperature"] as! Double
+//                    print(currentTemperatureF)
+//                } catch let error as NSError {
+//                    print(error)
+//                }
+//            }
+//            
+//            }.resume()
+//        
         // Do any additional setup after loading the view, typically from a nib.
     }
     
