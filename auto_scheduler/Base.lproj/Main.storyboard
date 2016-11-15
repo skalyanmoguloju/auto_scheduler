@@ -116,7 +116,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Idc-Q7-lIN" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2Ho-RL-xHm">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="2Ho-RL-xHm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -330,6 +330,9 @@
                                     <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" red="0.45089417700000001" green="0.45090532300000002" blue="0.45089936260000002" alpha="1" colorSpace="deviceRGB"/>
                                 </state>
+                                <connections>
+                                    <segue destination="Thi-h9-Y3h" kind="show" id="Grc-Hk-VdC"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -371,7 +374,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="osB-lt-04J" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="JaI-Fx-g2I">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="JaI-Fx-g2I">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -389,7 +392,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="SGB-t3-1BY" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Q8V-Rm-4NJ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Q8V-Rm-4NJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -402,7 +405,7 @@
             </objects>
             <point key="canvasLocation" x="305" y="-1493"/>
         </scene>
-        <!--Suggestion List Controller-->
+        <!--Select a Meeting preference-->
         <scene sceneID="afb-NC-fg2">
             <objects>
                 <viewController id="4XE-px-fb8" customClass="SuggestionListController" customModule="auto_scheduler" customModuleProvider="target" sceneMemberID="viewController">
@@ -414,8 +417,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bqu-co-mMj">
+                                <rect key="frame" x="49" y="72" width="276" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6LP-Av-o3R">
+                                <rect key="frame" x="20" y="20" width="34" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="Back.png"/>
+                                <connections>
+                                    <action selector="backButton:" destination="aLU-gn-33u" eventType="touchUpInside" id="hFU-ZA-JnT"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gM3-PJ-Xok">
-                                <rect key="frame" x="204" y="606" width="155" height="41"/>
+                                <rect key="frame" x="248" y="675" width="155" height="41"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                 <state key="normal" title="DONE">
@@ -423,28 +441,40 @@
                                 </state>
                                 <connections>
                                     <action selector="GoToSuggestion:" destination="4XE-px-fb8" eventType="touchUpInside" id="I7K-jA-cjP"/>
-                                    <segue destination="ZeE-5W-IaQ" kind="popoverPresentation" identifier="meetingSelected" popoverAnchorView="gM3-PJ-Xok" id="wDF-IL-QPz">
+                                    <segue destination="lqL-vD-jwZ" kind="popoverPresentation" identifier="meetingSelected" popoverAnchorView="gM3-PJ-Xok" id="wDF-IL-QPz">
                                         <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                     </segue>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Select a Meeting preference" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bqu-co-mMj">
-                                <rect key="frame" x="49" y="72" width="276" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Select a Meeting preference" id="jdu-g3-RUZ">
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="u9O-9Q-V8y">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="JvX-Xb-2o3">
+                                <rect key="frame" x="20" y="5" width="34" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="Back.png"/>
+                                <connections>
+                                    <action selector="backButton:" destination="aLU-gn-33u" eventType="touchUpInside" id="VOB-A1-EQw"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="Nl3-cc-ytl">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="v6A-ga-wk5">
+                                <rect key="frame" x="307" y="5" width="87" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button" image="next.png"/>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="bDone" destination="gM3-PJ-Xok" id="qY3-Ai-fIC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ho8-kN-cBx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2487" y="-1610"/>
+            <point key="canvasLocation" x="3394.202898550725" y="-1610.054347826087"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="3vX-HB-UtX">
@@ -455,7 +485,7 @@
                         <viewControllerLayoutGuide type="bottom" id="YMn-mU-6hv"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="2wP-Cc-3XX">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You have selected the Meeting for Nov 4 2016 2:00 pm." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iqx-z9-smv">
@@ -466,17 +496,21 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qh0-2M-yUy">
-                                <rect key="frame" x="164" y="444" width="46" height="30"/>
+                                <rect key="frame" x="217" y="514" width="177" height="154"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="OK"/>
+                                <connections>
+                                    <segue destination="osB-lt-04J" kind="show" id="CDA-6I-At3"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" id="zbG-lF-9wa"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iv1-K8-l4i" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3404" y="-1240"/>
+            <point key="canvasLocation" x="5217.3913043478269" y="-1240.7608695652175"/>
         </scene>
         <!--Meeting InformationVC-->
         <scene sceneID="8Hz-EN-TvL">
@@ -566,6 +600,42 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wd4-20-E8c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-771.01449275362324" y="-780.16304347826087"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="bWU-j3-ekU">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Thi-h9-Y3h" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="S0k-cg-gGs">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="4XE-px-fb8" kind="relationship" relationship="rootViewController" id="iik-4b-jRf"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5xS-fl-2dh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2486.9565217391305" y="-1610.054347826087"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="hoP-2E-1gk">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="lqL-vD-jwZ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="E3X-fx-zfM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ZeE-5W-IaQ" kind="relationship" relationship="rootViewController" id="hfI-vi-bKV"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bMc-7R-SW0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4310.144927536232" y="-1240.7608695652175"/>
         </scene>
     </scenes>
     <resources>
