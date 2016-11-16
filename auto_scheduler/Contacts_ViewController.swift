@@ -18,7 +18,8 @@ class Contacts_ViewController: UIViewController, UITableViewDelegate, UITableVie
     
     let limit = 10
     var contactsSelected = [String]()
-    
+    var validContacts = [String]()
+    var totalContacts = [String]()
     
     @IBAction func nextButton(_ sender: Any) {
          self.performSegue(withIdentifier: "nextFromContacts", sender: self)
@@ -35,7 +36,11 @@ class Contacts_ViewController: UIViewController, UITableViewDelegate, UITableVie
     // data
     var contactStore = CNContactStore()
     var contacts = [ContactEntry]()
+    var contacts_full = [ContactEntry]()
     var filteredData = [ContactEntry]()
+    
+    var contacts_new = [ContactEntry]()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -69,6 +74,42 @@ class Contacts_ViewController: UIViewController, UITableViewDelegate, UITableVie
 //            }.resume()
 //        
         // Do any additional setup after loading the view, typically from a nib.
+        do{
+            var request = URLRequest(url: NSURL(string: "http://192.168.0.27:3000/users/firstpost") as! URL)
+            request.httpMethod = "POST"
+            var params = ["username":"jameson", "password":"password"] as Dictionary<String, String>
+            let array = ["username":1]
+            request.httpBody = try JSONSerialization.data(withJSONObject: array, options: JSONSerialization.WritingOptions.prettyPrinted)
+            
+            
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.addValue("application/json", forHTTPHeaderField: "Accept")
+            
+            URLSession.shared.dataTask(with: request){ (data, response, error) in
+                if error != nil {
+                    print(error)
+                } else {
+                    do {
+                        let parsedData = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as! [String: AnyObject];
+                        self.currentConditions = parsedData["users"] as! NSArray
+                        //                    let currentTemperatureF = currentConditions["users_number"] as! Double
+                        //                    print(currentTemperatureF)
+                        for object in self.currentConditions as! [Dictionary<String, AnyObject>] {
+                            print(object["users_number"])
+                        }
+                        
+                    }
+                    catch let error as NSError {
+                        print(error)
+                    }
+                }
+                }.resume()
+            
+        }
+        catch let error as NSError {
+            print(error)
+        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -89,12 +130,14 @@ class Contacts_ViewController: UIViewController, UITableViewDelegate, UITableVie
                     //self.noContactsLabel.isHidden = success
                     if success && (contacts?.count)! > 0 {
                         self.contacts = contacts!
+                        self.contacts_full = contacts!
                         self.filteredData = self.contacts
-                        self.tableView.reloadData()
                     } else {
                         //self.noContactsLabel.text = "Unable to get contacts..."
                     }
                 })
+                
+
             }
         }
     }
@@ -127,13 +170,89 @@ class Contacts_ViewController: UIViewController, UITableViewDelegate, UITableVie
                 {
                     if contact.phone != nil && contact.name != ""
                     {
+                        self.totalContacts.append(String(contact.phone!.replacingOccurrences(of: " ", with: "").replacingOccurrences(of: ")", with: "").replacingOccurrences(of: "(", with: "+").characters.suffix(10)))
                         contacts.append(contact)
                     }
                 }
             })
+            filterList(contacts)
             completion(true, contacts)
         } catch {
             completion(false, nil)
+        }
+    }
+    
+    func filterList(_ contacts_bckup: [ContactEntry]?)
+    {
+        var counter = 1
+        
+        var valStrng = ""
+        for val in contacts_bckup!
+        {
+            if(counter == contacts_bckup?.count)
+            {
+                valStrng = valStrng+"'"+String(val.phone!.replacingOccurrences(of: " ", with: "").replacingOccurrences(of: ")", with: "").replacingOccurrences(of: "(", with: "+").characters.suffix(10))+"'"
+                counter = 0
+            }
+            else
+            {
+                valStrng = valStrng+"'"+String(val.phone!.replacingOccurrences(of: " ", with: "").replacingOccurrences(of: ")", with: "").replacingOccurrences(of: "(", with: "+").characters.suffix(10))+"',"
+                counter = counter+1
+            }
+        }
+        print(valStrng)
+        retrivecontactsfromNode(contactsList: valStrng)
+        
+    }
+    var currentConditions: NSArray = []
+    func retrivecontactsfromNode(contactsList: String)
+    {
+        do{
+            var f = false
+            var request = URLRequest(url: NSURL(string: "http://192.168.0.27:3000/users/firstpost") as! URL)
+            request.httpMethod = "POST"
+            var params = ["username":"jameson", "password":"password"] as Dictionary<String, String>
+            let array = ["username":contactsList]
+            request.httpBody = try JSONSerialization.data(withJSONObject: array, options: JSONSerialization.WritingOptions.prettyPrinted)
+            
+            
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.addValue("application/json", forHTTPHeaderField: "Accept")
+            
+            URLSession.shared.dataTask(with: request){ (data, response, error) in
+                if error != nil {
+                    print(error)
+                } else {
+                    do {
+                        let parsedData = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as! [String: AnyObject];
+                        self.currentConditions = parsedData["users"] as! NSArray
+                        //                    let currentTemperatureF = currentConditions["users_number"] as! Double
+                        //                    print(currentTemperatureF)
+                        for object in self.currentConditions as! [Dictionary<String, AnyObject>] {
+                            print(object["users_number"]!)
+                            self.validContacts.append(object["users_number"]! as! String)
+                            if(self.totalContacts.contains(object["users_number"]! as! String))
+                            {
+                                self.contacts_new.append(self.contacts_full[self.totalContacts.index(of: object["users_number"]! as! String)!])
+                                    f = true
+                            }
+                        }
+                        if(f){
+                            self.contacts = self.contacts_new
+                            self.filteredData = self.contacts
+                            self.tableView.reloadData()
+                        }
+                        
+                    }
+                    catch let error as NSError {
+                        print(error)
+                    }
+                }
+                }.resume()
+            
+        }
+        catch let error as NSError {
+            print(error)
         }
     }
     
