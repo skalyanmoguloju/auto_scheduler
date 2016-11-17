@@ -123,9 +123,9 @@ class HomeScreen_ViewController: UIViewController, UICollectionViewDataSource, U
         self.calendars = eventStore.calendars(for: EKEntityType.event)
         print(self.calendars)
         for calendar in self.calendars! {
-            let oneMonthAgo = NSDate(timeIntervalSinceNow: 0*24*3600)
-            let oneMonthAfter = NSDate(timeIntervalSinceNow: +30*24*3600)
-                
+            let oneMonthAgo = NSDate(timeIntervalSinceNow: +1*24*3600)
+            let oneMonthAfter = NSDate(timeIntervalSinceNow: +3*24*3600)
+            
             let predicate = eventStore.predicateForEvents(withStart: oneMonthAgo as Date, end: oneMonthAfter as Date, calendars: [calendar])
             
             let events = eventStore.events(matching: predicate)

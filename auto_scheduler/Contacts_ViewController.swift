@@ -19,10 +19,13 @@ class Contacts_ViewController: UIViewController, UITableViewDelegate, UITableVie
     let limit = 10
     var contactsSelected = [String]()
     var validContacts = [String]()
+    let defaults = UserDefaults.standard
     var totalContacts = [String]()
     
     @IBAction func nextButton(_ sender: Any) {
+         defaults.set(contactsSelected, forKey: "participants")
          self.performSegue(withIdentifier: "nextFromContacts", sender: self)
+        
     }
 
     // outlets
