@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		324209811DD19265008F78A3 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324209801DD19265008F78A3 /* CollectionViewCell.swift */; };
+		32456C451DDAEEC6008E2085 /* MeetingRequest_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32456C411DDAEEC6008E2085 /* MeetingRequest_VC.swift */; };
+		32456C461DDAEEC6008E2085 /* RadioButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32456C421DDAEEC6008E2085 /* RadioButton.swift */; };
+		32456C471DDAEEC6008E2085 /* RadioButtons_Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32456C431DDAEEC6008E2085 /* RadioButtons_Manager.swift */; };
+		32456C481DDAEEC6008E2085 /* SuggestionList_VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32456C441DDAEEC6008E2085 /* SuggestionList_VC.swift */; };
 		3269BCE81DCD2B0900E2BF7C /* RestAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3269BCE71DCD2B0900E2BF7C /* RestAPIManager.swift */; };
 		3269BCEA1DCD2B1300E2BF7C /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3269BCE91DCD2B1300E2BF7C /* SwiftyJSON.swift */; };
 		3269BCEC1DCD9EC600E2BF7C /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3269BCEB1DCD9EC600E2BF7C /* UIViewExtensions.swift */; };
@@ -32,6 +36,10 @@
 /* Begin PBXFileReference section */
 		149B2F0AA30B8F8CACACBBCE /* Pods-auto_scheduler.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-auto_scheduler.debug.xcconfig"; path = "Pods/Target Support Files/Pods-auto_scheduler/Pods-auto_scheduler.debug.xcconfig"; sourceTree = "<group>"; };
 		324209801DD19265008F78A3 /* CollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		32456C411DDAEEC6008E2085 /* MeetingRequest_VC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetingRequest_VC.swift; sourceTree = "<group>"; };
+		32456C421DDAEEC6008E2085 /* RadioButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioButton.swift; sourceTree = "<group>"; };
+		32456C431DDAEEC6008E2085 /* RadioButtons_Manager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadioButtons_Manager.swift; sourceTree = "<group>"; };
+		32456C441DDAEEC6008E2085 /* SuggestionList_VC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestionList_VC.swift; sourceTree = "<group>"; };
 		3269BCE71DCD2B0900E2BF7C /* RestAPIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestAPIManager.swift; sourceTree = "<group>"; };
 		3269BCE91DCD2B1300E2BF7C /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyJSON.swift; sourceTree = "<group>"; };
 		3269BCEB1DCD9EC600E2BF7C /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
@@ -120,6 +128,7 @@
 		32B0BEA31DCAAF11006A2FD1 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				32456C441DDAEEC6008E2085 /* SuggestionList_VC.swift */,
 				CC0E00741DD26AB60094336A /* MeetingInformationVC.swift */,
 				CC241D4C1DBF04B7007B9F6C /* Contacts_ViewController.swift */,
 				32B0BEA41DCAAF30006A2FD1 /* HomeScreen_ViewController.swift */,
@@ -149,6 +158,9 @@
 		CC241D491DBF04B7007B9F6C /* auto_scheduler */ = {
 			isa = PBXGroup;
 			children = (
+				32456C411DDAEEC6008E2085 /* MeetingRequest_VC.swift */,
+				32456C421DDAEEC6008E2085 /* RadioButton.swift */,
+				32456C431DDAEEC6008E2085 /* RadioButtons_Manager.swift */,
 				3269BCED1DCD9EE500E2BF7C /* SupportingSwift */,
 				325D3F9C1DCD2398003CCE6B /* APICals */,
 				32B0BEA31DCAAF11006A2FD1 /* ViewControllers */,
@@ -291,13 +303,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				324209811DD19265008F78A3 /* CollectionViewCell.swift in Sources */,
+				32456C471DDAEEC6008E2085 /* RadioButtons_Manager.swift in Sources */,
 				3269BCF11DCE41D900E2BF7C /* MapsViewController.swift in Sources */,
 				32B0BEA51DCAAF30006A2FD1 /* HomeScreen_ViewController.swift in Sources */,
 				CC241D4D1DBF04B7007B9F6C /* Contacts_ViewController.swift in Sources */,
+				32456C451DDAEEC6008E2085 /* MeetingRequest_VC.swift in Sources */,
 				3291047A1DC9892F005C7F5B /* ContactTableViewCell.swift in Sources */,
 				CC241D4B1DBF04B7007B9F6C /* AppDelegate.swift in Sources */,
+				32456C461DDAEEC6008E2085 /* RadioButton.swift in Sources */,
 				3269BCE81DCD2B0900E2BF7C /* RestAPIManager.swift in Sources */,
 				3269BCEC1DCD9EC600E2BF7C /* UIViewExtensions.swift in Sources */,
+				32456C481DDAEEC6008E2085 /* SuggestionList_VC.swift in Sources */,
 				CC0E00751DD26AB60094336A /* MeetingInformationVC.swift in Sources */,
 				3269BCEA1DCD2B1300E2BF7C /* SwiftyJSON.swift in Sources */,
 				329104781DC9883C005C7F5B /* ContactEntry.swift in Sources */,
@@ -424,6 +440,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 625732G463;
 				INFOPLIST_FILE = auto_scheduler/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "edu.uiowa.auto-scheduler";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -438,6 +455,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 625732G463;
 				INFOPLIST_FILE = auto_scheduler/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "edu.uiowa.auto-scheduler";
 				PRODUCT_NAME = "$(TARGET_NAME)";

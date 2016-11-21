@@ -86,8 +86,10 @@ class MeetingInformationVC: UIViewController, UITableViewDataSource, UITableView
     
     override func viewDidAppear(_ animated: Bool) {
     //    InitUI()
-    meetingTitle.text! = events_complete_info[0].title
- //   contactsAttending = events_complete_info[0].attendees!
+
+        meetingTitle.text! = events_complete_info[0].title
+        //contactsAttending = events_complete_info[0].attendees!
+
         
         
  //   contact1.text! = meetingName[1]
