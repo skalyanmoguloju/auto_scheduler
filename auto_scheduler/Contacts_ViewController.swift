@@ -5,7 +5,6 @@
 //  Created by macbook_user on 10/24/16.
 //
 //
-
 import UIKit
 import Contacts
 
@@ -33,6 +32,71 @@ class Contacts_ViewController: UIViewController, UITableViewDelegate, UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UINib(nibName: "ContactTableViewCell", bundle: nil), forCellReuseIdentifier: "ContactTableViewCell")
+        
+        /*
+        let sURL = "http://127.0.0.1:3000/users/test";
+       // string URL = "https://arcane-bayou-92592.herokuapp.com/users/test";
+        
+        
+        var request = URLRequest(url: URL(string: sURL)!)
+        request.httpMethod = "GET"
+        let session = URLSession.shared
+        
+        session.dataTask(with: request) {data, response, err in
+            print("Entered the completionHandler")
+            print(data);
+            print(response);
+            print(err);
+            }.resume()
+        
+        */
+        
+        //let urlString = "https://api.forecast.io/forecast/apiKey/37.5673776,122.048951"
+        let urlString = "http://127.0.0.1:3000/users/test";
+        //let urlString = "https://arcane-bayou-92592.herokuapp.com/users/test";
+        
+        
+        let url = URL(string: urlString)
+        URLSession.shared.dataTask(with:url!) { (data, response, error) in
+            if error != nil {
+                print(error)
+            } else {
+                do {
+                    
+                    let parsedData = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:Any];
+                    print(parsedData);
+                    
+                } catch let error as NSError {
+                    print(error)
+                }
+            }
+            
+            }.resume()
+        
+        
+        // POST
+        
+        var request = URLRequest(url: URL(string: "http://127.0.0.1:3000/users/PostURL")!)
+        request.httpMethod = "POST"
+        let postString = "id=13&name=Jack"
+        request.httpBody = postString.data(using: .utf8)
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            guard let data = data, error == nil else {                                                 // check for fundamental networking error
+                print("error=\(error)")
+                return
+            }
+            
+            if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {           // check for http errors
+                print("statusCode should be 200, but is \(httpStatus.statusCode)")
+                print("response = \(response)")
+            }
+            
+            let responseString = String(data: data, encoding: .utf8)
+            print("responseString = \(responseString)")
+        }
+        task.resume()
+        
+        
         
         // Do any additional setup after loading the view, typically from a nib.
     }
