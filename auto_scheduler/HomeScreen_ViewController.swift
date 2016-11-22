@@ -112,8 +112,43 @@ class HomeScreen_ViewController: UIViewController, UICollectionViewDataSource, U
                 self.present(alert1, animated: true, completion: nil)
             }
             print("Text field: \(countValue)")
+            self.insert_user(number: (textField?.text)!, id: "12345")
         }))
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    func insert_user(number: String, id:String)
+    {
+        do{
+            var f = false
+            var request = URLRequest(url: NSURL(string: "http://192.168.0.12:3000/users/signup") as! URL)
+            request.httpMethod = "POST"
+            var params = ["username":number, "identification":id] as Dictionary<String, String>
+            //let array = ["username":contactsList]
+            request.httpBody = try JSONSerialization.data(withJSONObject: params, options: JSONSerialization.WritingOptions.prettyPrinted)
+            
+            
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.addValue("application/json", forHTTPHeaderField: "Accept")
+            
+            URLSession.shared.dataTask(with: request){ (data, response, error) in
+                if error != nil {
+                    print(error)
+                } else {
+                    do {
+                        let parsedData = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as! [String: AnyObject];
+                        print(parsedData)
+                    }
+                    catch let error as NSError {
+                        print(error)
+                    }
+                }
+                }.resume()
+            
+        }
+        catch let error as NSError {
+            print(error)
+        }
     }
     
     func requestAccessToCalendar() {

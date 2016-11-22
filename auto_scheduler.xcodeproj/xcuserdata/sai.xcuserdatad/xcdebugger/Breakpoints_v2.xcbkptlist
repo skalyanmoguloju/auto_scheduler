@@ -600,7 +600,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "72"
             endingLineNumber = "72"
-            landmarkName = "viewWillAppear(_:)"
+            landmarkName = "checkCalendarAuthorizationStatus()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -616,8 +616,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "152"
             endingLineNumber = "152"
-            landmarkName = "HomeScreen_ViewController"
-            landmarkType = "3">
+            landmarkName = "insert_user(number:id:)"
+            landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -758,8 +758,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "116"
             endingLineNumber = "116"
-            landmarkName = "HomeScreen_ViewController"
-            landmarkType = "3">
+            landmarkName = "enterPhoneNumber()"
+            landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
@@ -836,7 +836,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "135"
             endingLineNumber = "135"
-            landmarkName = "loadCalendars()"
+            landmarkName = "insert_user(number:id:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -852,7 +852,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "133"
             endingLineNumber = "133"
-            landmarkName = "loadCalendars()"
+            landmarkName = "insert_user(number:id:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

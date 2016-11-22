@@ -70,6 +70,7 @@ class MapsViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func nextFromLocation(_ sender: UIButton) {
+        
         dismiss(animated: false, completion: nil)
     }
     
