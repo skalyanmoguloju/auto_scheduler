@@ -110,6 +110,7 @@ class MeetingInformationVC: UIViewController, UITableViewDataSource, UITableView
     }
     
     func showLocationOnMap(){
+        print("SHOW LOCATION FUNCTION CALLED")
         var address = String(events_complete_info[0].location!)
     //    var initialLocationCoordinates = CLLocationCoordinate2D(latitude: 21.282778, longitude: -157.829444)
         geocoder.geocodeAddressString(address!, completionHandler: {(placemarks, error) -> Void in
@@ -120,6 +121,8 @@ class MeetingInformationVC: UIViewController, UITableViewDataSource, UITableView
                 let dropPin = MKPointAnnotation()
                 let coordinates:CLLocationCoordinate2D = placemark.location!.coordinate
                 self.initialLocation = CLLocation(latitude: coordinates.latitude, longitude: coordinates.longitude)
+                print("--------------location---------")
+                print(self.initialLocation.coordinate)
                 dropPin.coordinate = self.initialLocation.coordinate
                 self.mapView.addAnnotation(dropPin)
                 let coordinateRegion = MKCoordinateRegionMakeWithDistance(self.initialLocation.coordinate,self.regionRadius * 2.0, self.regionRadius * 2.0)

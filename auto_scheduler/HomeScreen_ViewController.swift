@@ -102,16 +102,16 @@ class HomeScreen_ViewController: UIViewController, UICollectionViewDataSource, U
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
             let textField = alert?.textFields![0] // Force unwrapping because we know it exists.
             let countValue = textField!.text?.characters.count
-            print(countValue)
+      //      print(countValue)
             if (countValue! != 10){
-                print("Inside this")
+       //         print("Inside this")
                 let alert1 = UIAlertController(title: "Alert", message: "Message", preferredStyle: UIAlertControllerStyle.alert)
                 alert1.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
                         self.enterPhoneNumber()
                     }))
                 self.present(alert1, animated: true, completion: nil)
             }
-            print("Text field: \(countValue)")
+      //      print("Text field: \(countValue)")
         }))
         self.present(alert, animated: true, completion: nil)
     }
@@ -137,7 +137,7 @@ class HomeScreen_ViewController: UIViewController, UICollectionViewDataSource, U
     var endDates : [NSDate] = []
     
     func loadCalendars(){
-        print("function called")
+   //     print("function called")
         self.calendars = eventStore.calendars(for: EKEntityType.event)
         for calendar in self.calendars!{
             let oneMonthAgo = NSDate(timeIntervalSinceNow: 0*24*3600)
@@ -146,8 +146,8 @@ class HomeScreen_ViewController: UIViewController, UICollectionViewDataSource, U
             let events = eventStore.events(matching: predicate)
             for event in events {
                 events_complete.append(event)
-                print(type(of:event.attendees))
-                print("------------------------------------------------------------")
+    //            print(type(of:event.attendees))
+    //            print("------------------------------------------------------------")
             }
         }
         events_complete = events_complete.sorted(by: { $1.startDate > $0.startDate })
@@ -245,13 +245,15 @@ class HomeScreen_ViewController: UIViewController, UICollectionViewDataSource, U
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
     {
         
-            print("Inside 1st click")
-        for eve in events_complete{
-            print (eve.title)
-        }
-        print(indexPath)
+      //      print("Inside 1st click")
+    //    for eve in events_complete{
+      //      print (eve.title)
+    //    }
+   //     print(indexPath)
         meetingSelected = [self.events_complete[(indexPath as IndexPath).row]]
-        print(meetingSelected[0].title)
+    //    print(meetingSelected[0].title)
+    //    print(meetingSelected[0].location)
+        
             self.performSegue(withIdentifier: "meetingInfo", sender: self)
             
         
