@@ -19,10 +19,13 @@ class Contacts_ViewController: UIViewController, UITableViewDelegate, UITableVie
     let limit = 10
     var contactsSelected = [String]()
     var validContacts = [String]()
+    let defaults = UserDefaults.standard
     var totalContacts = [String]()
     
     @IBAction func nextButton(_ sender: Any) {
+         defaults.set(contactsSelected, forKey: "participants")
          self.performSegue(withIdentifier: "nextFromContacts", sender: self)
+        
     }
 
     // outlets
@@ -209,7 +212,7 @@ class Contacts_ViewController: UIViewController, UITableViewDelegate, UITableVie
     {
         do{
             var f = false
-            var request = URLRequest(url: NSURL(string: "http://192.168.0.27:3000/users/firstpost") as! URL)
+            var request = URLRequest(url: NSURL(string: "http://172.17.66.21:3000/users/firstpost") as! URL)
             request.httpMethod = "POST"
             var params = ["username":"jameson", "password":"password"] as Dictionary<String, String>
             let array = ["username":contactsList]

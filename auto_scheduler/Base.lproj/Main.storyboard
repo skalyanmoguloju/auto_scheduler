@@ -34,7 +34,7 @@
                                         <rect key="frame" x="0.0" y="28" width="414" height="52"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2so-2b-O7H" id="unx-aq-8Ap">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="51.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="52"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -275,7 +275,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="End Date &amp; Time" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ODc-0X-b7F">
-                                <rect key="frame" x="16" y="449" width="343" height="30"/>
+                                <rect key="frame" x="16" y="421" width="378" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -285,7 +285,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Start Date &amp; Time" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KAe-XX-Oy0">
-                                <rect key="frame" x="16" y="355" width="343" height="30"/>
+                                <rect key="frame" x="16" y="355" width="378" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
@@ -295,14 +295,21 @@
                                 </connections>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Start Time Range" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="huO-mM-6KL">
-                                <rect key="frame" x="16" y="315" width="204" height="29"/>
+                                <rect key="frame" x="16" y="323" width="204" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="End Time Range" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JeH-Ie-eAi">
-                                <rect key="frame" x="16" y="412" width="204" height="29"/>
+                                <rect key="frame" x="16" y="393" width="204" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Meeting Duration" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MWD-gj-X2b">
+                                <rect key="frame" x="16" y="450" width="204" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -331,9 +338,20 @@
                                     <color key="titleShadowColor" red="0.45089417700000001" green="0.45090532300000002" blue="0.45089936260000002" alpha="1" colorSpace="deviceRGB"/>
                                 </state>
                                 <connections>
+                                    <action selector="schedule:" destination="aLU-gn-33u" eventType="touchUpInside" id="7TZ-Cl-OQX"/>
                                     <segue destination="Thi-h9-Y3h" kind="show" id="Grc-Hk-VdC"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Duration in hh-mm" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Fig-XF-d0Z">
+                                <rect key="frame" x="16" y="477" width="378" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="aLU-gn-33u" id="dWK-VK-PMn"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -362,12 +380,13 @@
                     <connections>
                         <outlet property="dateTextEndField" destination="ODc-0X-b7F" id="mbH-aZ-8OC"/>
                         <outlet property="dateTextField" destination="KAe-XX-Oy0" id="ASN-Oa-s9A"/>
+                        <outlet property="durationTextField" destination="Fig-XF-d0Z" id="FBG-Tx-eBC"/>
                         <outlet property="locationLabel" destination="6g2-uI-FxR" id="WQP-dy-mVh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R2w-Aw-tjJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1440.8" y="-1494.6026986506747"/>
+            <point key="canvasLocation" x="1440.5797101449277" y="-1495.108695652174"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gou-sW-WLp">
@@ -565,7 +584,7 @@
                                         <rect key="frame" x="0.0" y="28" width="339" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="IU5-6j-CB1" id="lcD-cZ-0eh">
-                                            <rect key="frame" x="0.0" y="0.0" width="339" height="43.666666666666664"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="339" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -606,7 +625,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Thi-h9-Y3h" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="S0k-cg-gGs">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="S0k-cg-gGs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

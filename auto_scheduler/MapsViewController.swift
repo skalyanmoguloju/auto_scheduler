@@ -1,11 +1,15 @@
 import UIKit
 import GooglePlaces
+import EventKit
 
 class MapsViewController: UIViewController, UITextFieldDelegate {
     
     var resultsViewController: GMSAutocompleteResultsViewController?
     var searchController: UISearchController?
+    let defaults = UserDefaults.standard
     var resultView: UITextView?
+    var calendars: [EKCalendar]?
+    let eventStore = EKEventStore()
     
     @IBAction func backButton(_ sender: UIButton) {
          dismiss(animated: false, completion: nil)
@@ -14,10 +18,55 @@ class MapsViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var dateTextField: UITextField!
     @IBOutlet weak var dateTextEndField: UITextField!
+    
+    var dateStart: Date?
+    var dateEnd: Date?
+    
 
+    @IBOutlet weak var durationTextField: UITextField!
     
     @IBOutlet weak var locationLabel: UILabel!
 
+    @IBAction func schedule(_ sender: Any) {
+        
+        if var contacts =  defaults.stringArray(forKey: "participants")
+        {
+        
+            getFreeTime()
+//            do{
+//                var f = false
+//                var request = URLRequest(url: NSURL(string: "http://192.168.0.27:3000/users/initiatemeeting") as! URL)
+//                request.httpMethod = "POST"
+//                //var params = ["username":"jameson", "password":"password"] as Dictionary<String, String>
+//                let array = ["owner": "3199309832","participants":contacts, "location": locationLabel.text, "starttime" : dateTextField.text,
+//                             "endtime": dateTextEndField.text, "duration":durationTextField.text] as [String : Any]
+//                request.httpBody = try JSONSerialization.data(withJSONObject: array, options: JSONSerialization.WritingOptions.prettyPrinted)
+//            
+//            
+//                request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+//                request.addValue("application/json", forHTTPHeaderField: "Accept")
+//            
+//                URLSession.shared.dataTask(with: request){ (data, response, error) in
+//                    if error != nil {
+//                        print(error)
+//                    } else {
+//                        do {
+//                            let parsedData = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as! [String: AnyObject];
+//                                print(parsedData)
+//                        }
+//                        catch let error as NSError {
+//                            print(error)
+//                        }
+//                    }
+//                }.resume()
+//            
+//            }
+//            catch let error as NSError {
+//                print(error)
+//            }
+        }
+        
+    }
         
     
     let datePicker = UIDatePicker()
@@ -38,15 +87,45 @@ class MapsViewController: UIViewController, UITextFieldDelegate {
         textField.inputAccessoryView = toolBar
         
         if textField.placeholder == "End Date & Time" {
+            self.datePickerEnd.minimumDate = NSDate() as Date
+            self.datePickerEnd.minuteInterval = 30
             textField.inputView = self.datePickerEnd
             self.datePickerEnd.addTarget(self, action: #selector(MapsViewController.datePickerValueChangedEnd), for: UIControlEvents.valueChanged)
             
         }
         else{
+            self.datePicker.minimumDate = NSDate() as Date
+            self.datePicker.minuteInterval = 30
             textField.inputView = self.datePicker
+            
             self.datePicker.addTarget(self, action: #selector(MapsViewController.datePickerValueChanged), for: UIControlEvents.valueChanged)
         
         }
+    }
+    
+    
+    func getFreeTime()
+    {
+        self.calendars = eventStore.calendars(for: EKEntityType.event)
+        for calendar in self.calendars! {
+            let oneMonthAgo = dateStart
+            let oneMonthAfter = dateEnd
+            
+            let predicate = eventStore.predicateForEvents(withStart: oneMonthAgo!, end: oneMonthAfter!, calendars: [calendar])
+            
+            let events = eventStore.events(matching: predicate)
+            
+            for event in events {
+                
+                print(event.location)
+                print(event.title)
+                print(event.startDate as NSDate)
+                print(event.endDate as NSDate)
+                
+               
+            }
+        }
+
     }
     
     func donePicker()
@@ -58,6 +137,7 @@ class MapsViewController: UIViewController, UITextFieldDelegate {
     func datePickerValueChangedEnd(sender:UIDatePicker) {
         
         dateTextEndField.text = dateFormatter.string(from: sender.date)
+        dateEnd = sender.date
         
     }
     
@@ -65,7 +145,7 @@ class MapsViewController: UIViewController, UITextFieldDelegate {
     func datePickerValueChanged(sender:UIDatePicker) {
         
         dateTextField.text = dateFormatter.string(from: sender.date)
-        
+        dateStart = sender.date
     }
     
     
