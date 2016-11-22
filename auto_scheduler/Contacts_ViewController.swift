@@ -212,7 +212,7 @@ class Contacts_ViewController: UIViewController, UITableViewDelegate, UITableVie
     {
         do{
             var f = false
-            var request = URLRequest(url: NSURL(string: "http://192.168.0.27:3000/users/firstpost") as! URL)
+            var request = URLRequest(url: NSURL(string: "http://172.17.66.21:3000/users/firstpost") as! URL)
             request.httpMethod = "POST"
             var params = ["username":"jameson", "password":"password"] as Dictionary<String, String>
             let array = ["username":contactsList]
