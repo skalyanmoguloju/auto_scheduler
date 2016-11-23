@@ -112,7 +112,7 @@ class HomeScreen_ViewController: UIViewController, UICollectionViewDataSource, U
                 self.present(alert1, animated: true, completion: nil)
             }
             print("Text field: \(countValue)")
-            self.insert_user(number: (textField?.text)!, id: "12345")
+            //self.insert_user(number: (textField?.text)!, id: "12345")
         }))
         self.present(alert, animated: true, completion: nil)
     }

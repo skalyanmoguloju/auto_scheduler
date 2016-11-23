@@ -22,6 +22,9 @@ class MapsViewController: UIViewController, UITextFieldDelegate {
     var dateStart: Date?
     var dateEnd: Date?
     
+    var strts = [NSDate]()
+    var ends = [NSDate]()
+    
 
     @IBOutlet weak var durationTextField: UITextField!
     
@@ -38,8 +41,7 @@ class MapsViewController: UIViewController, UITextFieldDelegate {
 //                var request = URLRequest(url: NSURL(string: "http://192.168.0.27:3000/users/initiatemeeting") as! URL)
 //                request.httpMethod = "POST"
 //                //var params = ["username":"jameson", "password":"password"] as Dictionary<String, String>
-//                let array = ["owner": "3199309832","participants":contacts, "location": locationLabel.text, "starttime" : dateTextField.text,
-//                             "endtime": dateTextEndField.text, "duration":durationTextField.text] as [String : Any]
+//                let array = ["owner": "3199309832","participants":contacts, "location": locationLabel.text, "starttime" : dateTextField.text, "endtime": dateTextEndField.text, "duration":durationTextField.text] as [String : Any]
 //                request.httpBody = try JSONSerialization.data(withJSONObject: array, options: JSONSerialization.WritingOptions.prettyPrinted)
 //            
 //            
@@ -108,24 +110,63 @@ class MapsViewController: UIViewController, UITextFieldDelegate {
     {
         self.calendars = eventStore.calendars(for: EKEntityType.event)
         for calendar in self.calendars! {
-            let oneMonthAgo = dateStart
-            let oneMonthAfter = dateEnd
+            var strtDate = dateStart
+            let endDate = dateEnd
+            //var dates = Double(durationTextField.text!)
+            var dates = 3600
+            while(strtDate!<endDate!)
+            {
+                let predicate = eventStore.predicateForEvents(withStart: strtDate! as Date, end: (strtDate! as Date)+TimeInterval(dates), calendars: [calendar])
             
-            let predicate = eventStore.predicateForEvents(withStart: oneMonthAgo!, end: oneMonthAfter!, calendars: [calendar])
+                let events = eventStore.events(matching: predicate)
             
-            let events = eventStore.events(matching: predicate)
-            
-            for event in events {
-                
-                print(event.location)
-                print(event.title)
-                print(event.startDate as NSDate)
-                print(event.endDate as NSDate)
-                
-               
+               if(events.count == 0)
+               {
+                   strts.append(strtDate! as NSDate)
+                    ends.append((strtDate!+TimeInterval(dates)) as NSDate)
+                }
+                strtDate = strtDate?.addingTimeInterval(TimeInterval(dates))
             }
+            send_availabilities(strts: strts, ends: ends)
+            
         }
 
+    }
+    
+    func send_availabilities(strts : [NSDate], ends: [NSDate])
+    {
+        do{
+            var f = false
+            var request = URLRequest(url: NSURL(string: "http://172.17.66.21:3000/users/firstpost") as! URL)
+            request.httpMethod = "POST"
+            let array = ["username":"1", "meetingid": "1","strtdates": strts, "enddates": ends] as [NSString : Any]
+            request.httpBody = try JSONSerialization.data(withJSONObject: array, options: JSONSerialization.WritingOptions.prettyPrinted)
+            
+
+            request.httpBody = try JSONSerialization.data(withJSONObject: array, options: JSONSerialization.WritingOptions.prettyPrinted)
+            
+            
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.addValue("application/json", forHTTPHeaderField: "Accept")
+            
+            URLSession.shared.dataTask(with: request){ (data, response, error) in
+                if error != nil {
+                    print(error)
+                } else {
+                    do {
+                        let parsedData = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as! [String: AnyObject];
+                        print(parsedData)
+                    }
+                    catch let error as NSError {
+                        print(error)
+                    }
+                }
+                }.resume()
+            
+        }
+        catch let error as NSError {
+            print(error)
+        }
     }
     
     func donePicker()
