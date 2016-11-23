@@ -15,6 +15,7 @@ class MapsViewController: UIViewController, UITextFieldDelegate {
          dismiss(animated: false, completion: nil)
     }
     var dateFormatter : DateFormatter!
+    var dateFormatter1 : DateFormatter!
     
     @IBOutlet weak var dateTextField: UITextField!
     @IBOutlet weak var dateTextEndField: UITextField!
@@ -22,8 +23,8 @@ class MapsViewController: UIViewController, UITextFieldDelegate {
     var dateStart: Date?
     var dateEnd: Date?
     
-    var strts = [NSDate]()
-    var ends = [NSDate]()
+    var strts = [String]()
+    var ends = [String]()
     
 
     @IBOutlet weak var durationTextField: UITextField!
@@ -109,41 +110,56 @@ class MapsViewController: UIViewController, UITextFieldDelegate {
     func getFreeTime()
     {
         self.calendars = eventStore.calendars(for: EKEntityType.event)
-        for calendar in self.calendars! {
-            var strtDate = dateStart
-            let endDate = dateEnd
-            //var dates = Double(durationTextField.text!)
-            var dates = 3600
-            while(strtDate!<endDate!)
+        dateFormatter1 = DateFormatter()
+        dateFormatter1.dateFormat = "HH";
+        var strtDate = dateStart
+        let endDate = dateEnd
+        //var dates = Double(durationTextField.text!)
+        var dates = 3600
+        var f = true
+        while(strtDate!<endDate! )
+        {
+            
+            for calendar in self.calendars!
             {
                 let predicate = eventStore.predicateForEvents(withStart: strtDate! as Date, end: (strtDate! as Date)+TimeInterval(dates), calendars: [calendar])
             
                 let events = eventStore.events(matching: predicate)
             
-               if(events.count == 0)
+               if(events.count == 0 && Int(dateFormatter1.string(from: strtDate!))! >= 7 && Int(dateFormatter1.string(from: strtDate!+TimeInterval(dates)))! <= 21)
                {
-                   strts.append(strtDate! as NSDate)
-                    ends.append((strtDate!+TimeInterval(dates)) as NSDate)
+                
                 }
-                strtDate = strtDate?.addingTimeInterval(TimeInterval(dates))
+               else{
+                    f = false
+                    break
+                }
+                
             }
-            send_availabilities(strts: strts, ends: ends)
+            if(f)
+            {
+                strts.append(dateFormatter.string(from: strtDate!))
+                ends.append(dateFormatter.string(from: strtDate!+TimeInterval(dates)))
+            }
+            f = true
+            strtDate = strtDate?.addingTimeInterval(TimeInterval(dates))
             
         }
+        send_availabilities(strts: strts, ends: ends)
+
 
     }
     
-    func send_availabilities(strts : [NSDate], ends: [NSDate])
+    func send_availabilities(strts : [String], ends: [String])
     {
         do{
             var f = false
-            var request = URLRequest(url: NSURL(string: "http://172.17.66.21:3000/users/firstpost") as! URL)
+            var request = URLRequest(url: NSURL(string: "http://192.168.0.12:3000/users/updatefreetime") as! URL)
             request.httpMethod = "POST"
-            let array = ["username":"1", "meetingid": "1","strtdates": strts, "enddates": ends] as [NSString : Any]
+            let array = ["username":"3199309832", "meetingid": "1","strtdates": strts, "enddates": ends] as [NSString : Any]
             request.httpBody = try JSONSerialization.data(withJSONObject: array, options: JSONSerialization.WritingOptions.prettyPrinted)
             
 
-            request.httpBody = try JSONSerialization.data(withJSONObject: array, options: JSONSerialization.WritingOptions.prettyPrinted)
             
             
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
