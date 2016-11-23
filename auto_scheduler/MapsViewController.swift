@@ -15,12 +15,16 @@ class MapsViewController: UIViewController, UITextFieldDelegate {
          dismiss(animated: false, completion: nil)
     }
     var dateFormatter : DateFormatter!
+    var dateFormatter1 : DateFormatter!
     
     @IBOutlet weak var dateTextField: UITextField!
     @IBOutlet weak var dateTextEndField: UITextField!
     
     var dateStart: Date?
     var dateEnd: Date?
+    
+    var strts = [String]()
+    var ends = [String]()
     
 
     @IBOutlet weak var durationTextField: UITextField!
@@ -38,8 +42,7 @@ class MapsViewController: UIViewController, UITextFieldDelegate {
 //                var request = URLRequest(url: NSURL(string: "http://192.168.0.27:3000/users/initiatemeeting") as! URL)
 //                request.httpMethod = "POST"
 //                //var params = ["username":"jameson", "password":"password"] as Dictionary<String, String>
-//                let array = ["owner": "3199309832","participants":contacts, "location": locationLabel.text, "starttime" : dateTextField.text,
-//                             "endtime": dateTextEndField.text, "duration":durationTextField.text] as [String : Any]
+//                let array = ["owner": "3199309832","participants":contacts, "location": locationLabel.text, "starttime" : dateTextField.text, "endtime": dateTextEndField.text, "duration":durationTextField.text] as [String : Any]
 //                request.httpBody = try JSONSerialization.data(withJSONObject: array, options: JSONSerialization.WritingOptions.prettyPrinted)
 //            
 //            
@@ -107,25 +110,79 @@ class MapsViewController: UIViewController, UITextFieldDelegate {
     func getFreeTime()
     {
         self.calendars = eventStore.calendars(for: EKEntityType.event)
-        for calendar in self.calendars! {
-            let oneMonthAgo = dateStart
-            let oneMonthAfter = dateEnd
+        dateFormatter1 = DateFormatter()
+        dateFormatter1.dateFormat = "HH";
+        var strtDate = dateStart
+        let endDate = dateEnd
+        //var dates = Double(durationTextField.text!)
+        var dates = 3600
+        var f = true
+        while(strtDate!<endDate! )
+        {
             
-            let predicate = eventStore.predicateForEvents(withStart: oneMonthAgo!, end: oneMonthAfter!, calendars: [calendar])
+            for calendar in self.calendars!
+            {
+                let predicate = eventStore.predicateForEvents(withStart: strtDate! as Date, end: (strtDate! as Date)+TimeInterval(dates), calendars: [calendar])
             
-            let events = eventStore.events(matching: predicate)
+                let events = eventStore.events(matching: predicate)
             
-            for event in events {
+               if(events.count == 0 && Int(dateFormatter1.string(from: strtDate!))! >= 7 && Int(dateFormatter1.string(from: strtDate!+TimeInterval(dates)))! <= 21)
+               {
                 
-                print(event.location)
-                print(event.title)
-                print(event.startDate as NSDate)
-                print(event.endDate as NSDate)
+                }
+               else{
+                    f = false
+                    break
+                }
                 
-               
             }
+            if(f)
+            {
+                strts.append(dateFormatter.string(from: strtDate!))
+                ends.append(dateFormatter.string(from: strtDate!+TimeInterval(dates)))
+            }
+            f = true
+            strtDate = strtDate?.addingTimeInterval(TimeInterval(dates))
+            
         }
+        send_availabilities(strts: strts, ends: ends)
 
+
+    }
+    
+    func send_availabilities(strts : [String], ends: [String])
+    {
+        do{
+            var f = false
+            var request = URLRequest(url: NSURL(string: "http://192.168.0.12:3000/users/updatefreetime") as! URL)
+            request.httpMethod = "POST"
+            let array = ["username":"3199309832", "meetingid": "1","strtdates": strts, "enddates": ends] as [NSString : Any]
+            request.httpBody = try JSONSerialization.data(withJSONObject: array, options: JSONSerialization.WritingOptions.prettyPrinted)
+            
+
+            
+            
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.addValue("application/json", forHTTPHeaderField: "Accept")
+            
+            URLSession.shared.dataTask(with: request){ (data, response, error) in
+                if error != nil {
+                    print(error)
+                } else {
+                    do {
+                        let parsedData = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as! [String: AnyObject];
+                        print(parsedData)
+                    }
+                    catch let error as NSError {
+                        print(error)
+                    }
+                }
+                }.resume()
+            
+        }
+        catch let error as NSError {
+            print(error)
+        }
     }
     
     func donePicker()
@@ -150,6 +207,7 @@ class MapsViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBAction func nextFromLocation(_ sender: UIButton) {
+        
         dismiss(animated: false, completion: nil)
     }
     
