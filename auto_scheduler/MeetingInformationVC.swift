@@ -40,6 +40,7 @@ class MeetingInformationVC: UIViewController, UITableViewDataSource, UITableView
     @IBAction func canmetgc(_ sender: AnyObject) {
         if Control.selectedSegmentIndex == 0{
             navigationController?.popViewController(animated: true)
+            
         }
         if Control.selectedSegmentIndex == 1{
          
@@ -85,16 +86,18 @@ class MeetingInformationVC: UIViewController, UITableViewDataSource, UITableView
     
     override func viewDidAppear(_ animated: Bool) {
     //    InitUI()
+
         meetingTitle.text! = events_complete_info[0].title
         //contactsAttending = events_complete_info[0].attendees!
+
         
         
  //   contact1.text! = meetingName[1]
  //       contact2.text! = meetingName[2]
         Location.text! = events_complete_info[0].location!
         showLocationOnMap()
-        print("Is it working")
-        print(self.initialLocation)
+      //  print("Is it working")
+   //     print(self.initialLocation)
 //        centerMapOnLocation(location: self.initialLocation)
         
         
@@ -107,16 +110,19 @@ class MeetingInformationVC: UIViewController, UITableViewDataSource, UITableView
     }
     
     func showLocationOnMap(){
+        print("SHOW LOCATION FUNCTION CALLED")
         var address = String(events_complete_info[0].location!)
     //    var initialLocationCoordinates = CLLocationCoordinate2D(latitude: 21.282778, longitude: -157.829444)
         geocoder.geocodeAddressString(address!, completionHandler: {(placemarks, error) -> Void in
             if((error) != nil){
-                print("Error", error)
+    //            print("Error", error)
             }
             if let placemark = placemarks?.first {
                 let dropPin = MKPointAnnotation()
                 let coordinates:CLLocationCoordinate2D = placemark.location!.coordinate
                 self.initialLocation = CLLocation(latitude: coordinates.latitude, longitude: coordinates.longitude)
+                print("--------------location---------")
+                print(self.initialLocation.coordinate)
                 dropPin.coordinate = self.initialLocation.coordinate
                 self.mapView.addAnnotation(dropPin)
                 let coordinateRegion = MKCoordinateRegionMakeWithDistance(self.initialLocation.coordinate,self.regionRadius * 2.0, self.regionRadius * 2.0)

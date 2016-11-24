@@ -8,6 +8,7 @@
 
 import UIKit
 import GooglePlaces
+import UserNotifications
 
 
 @UIApplicationMain
@@ -18,6 +19,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+      //  registerPushNotifications()
+        registerForPushNotifications(application)
+     /*   UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) {(accepted, error) in
+            if !accepted {
+                print("Notification access denied.")
+            }
+        }*/
         
         UINavigationBar.appearance().barTintColor = UIColor(red: 234.0/255.0, green: 46.0/255.0, blue: 73.0/255.0, alpha: 1.0)
         UINavigationBar.appearance().tintColor = UIColor.white
@@ -45,6 +53,64 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
+ /*   func application(_ application: UIApplication, didRegister notificationSettings: UIUserNotificationSettings) {
+        if notificationSettings.types != UIUserNotificationType() {
+            application.registerForRemoteNotifications()
+        }
+    }
+    
+    func registerPushNotifications() {
+        
+            let settings = UIUserNotificationSettings(types: [.badge, .sound, .alert], categories: nil)
+            UIApplication.registerUserNotificationSettings(settings)
+    }
+    
+     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        print("---------FUNCTION CALLED----------")
+        
+        var token: String = ""
+        for i in 0..<deviceToken.count {
+            token += String(format: "%02.2hhx", deviceToken[i] as CVarArg)
+        }
+        
+        print(token)        
+        print("Registration succeeded!")
+        print("Token: ", token)
+    }
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print("Failed to register:", error)
+    } */
+    
+    func registerForPushNotifications(_ application: UIApplication) {
+        let notificationSettings = UIUserNotificationSettings(
+            types: [.badge, .sound, .alert], categories: nil)
+        application.registerUserNotificationSettings(notificationSettings)
+    }
+    
+    func application(_ application: UIApplication, didRegister notificationSettings: UIUserNotificationSettings) {
+        if notificationSettings.types != .none {
+            application.registerForRemoteNotifications()
+        }
+    }
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        var token: String = ""
+        for i in 0..<deviceToken.count {
+            token += String(format: "%02.2hhx", deviceToken[i] as CVarArg)
+        }
+        
+        print(deviceToken)
+        print("Registration succeeded!")
+        print("Token: ", token)
+    }
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+        print("Failed to register:", error)
+    }
+    
+    
 
 
 }
