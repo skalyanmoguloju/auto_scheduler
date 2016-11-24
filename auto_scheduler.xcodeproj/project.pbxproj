@@ -31,6 +31,7 @@
 		CC241D501DBF04B7007B9F6C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC241D4E1DBF04B7007B9F6C /* Main.storyboard */; };
 		CC241D521DBF04B7007B9F6C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC241D511DBF04B7007B9F6C /* Assets.xcassets */; };
 		CC241D551DBF04B7007B9F6C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC241D531DBF04B7007B9F6C /* LaunchScreen.storyboard */; };
+		CC798DB71DE68C25003490E3 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC798DB61DE68C25003490E3 /* DataService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		CC241D541DBF04B7007B9F6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CC241D561DBF04B7007B9F6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CC4A4E691DE3860500247E42 /* auto_scheduler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = auto_scheduler.entitlements; sourceTree = "<group>"; };
+		CC798DB61DE68C25003490E3 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
 		D825E77895D71999A7D34585 /* Pods-auto_scheduler.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-auto_scheduler.release.xcconfig"; path = "Pods/Target Support Files/Pods-auto_scheduler/Pods-auto_scheduler.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -134,6 +136,7 @@
 				CC241D4C1DBF04B7007B9F6C /* Contacts_ViewController.swift */,
 				32B0BEA41DCAAF30006A2FD1 /* HomeScreen_ViewController.swift */,
 				3269BCF01DCE41D900E2BF7C /* MapsViewController.swift */,
+				CC798DB61DE68C25003490E3 /* DataService.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -319,6 +322,7 @@
 				CC241D4D1DBF04B7007B9F6C /* Contacts_ViewController.swift in Sources */,
 				32456C451DDAEEC6008E2085 /* MeetingRequest_VC.swift in Sources */,
 				3291047A1DC9892F005C7F5B /* ContactTableViewCell.swift in Sources */,
+				CC798DB71DE68C25003490E3 /* DataService.swift in Sources */,
 				CC241D4B1DBF04B7007B9F6C /* AppDelegate.swift in Sources */,
 				32456C461DDAEEC6008E2085 /* RadioButton.swift in Sources */,
 				3269BCE81DCD2B0900E2BF7C /* RestAPIManager.swift in Sources */,

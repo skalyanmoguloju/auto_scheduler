@@ -23,16 +23,16 @@ class Contacts_ViewController: UIViewController, UITableViewDelegate, UITableVie
     var totalContacts = [String]()
     
     @IBAction func nextButton(_ sender: Any) {
-         defaults.set(contactsSelected, forKey: "participants")
-         self.performSegue(withIdentifier: "nextFromContacts", sender: self)
+        defaults.set(contactsSelected, forKey: "participants")
+        self.performSegue(withIdentifier: "nextFromContacts", sender: self)
         
     }
-
+    
     // outlets
     @IBOutlet weak var tableView: UITableView!
     //@IBOutlet weak var noContactsLabel: UILabel!
     
-   
+    
     
     @IBOutlet weak var searchBar: UISearchBar!
     
@@ -47,77 +47,11 @@ class Contacts_ViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(UINib(nibName: "ContactTableViewCell", bundle: nil), forCellReuseIdentifier: "ContactTableViewCell")
-        
-        
-//        let urlString = "http://192.168.0.27:3000/users/test";
-//        //let urlString = "https://arcane-bayou-92592.herokuapp.com/users/test";
-//        
-//        
-//        let url = URL(string: urlString)
-//        URLSession.shared.dataTask(with:url!) { (data, response, error) in
-//            if error != nil {
-//                print(error)
-//            } else {
-//                do {
-//                    
-//                    let parsedData = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:Any];
-//                    print(parsedData);
-//                    let currentConditions = parsedData["1"] as! [String:Any]
-//                    
-//                    print(currentConditions)
-//                    
-//                    let currentTemperatureF = currentConditions["temperature"] as! Double
-//                    print(currentTemperatureF)
-//                } catch let error as NSError {
-//                    print(error)
-//                }
-//            }
-//            
-//            }.resume()
-//        
-        // Do any additional setup after loading the view, typically from a nib.
-        do{
-            var request = URLRequest(url: NSURL(string: "http://192.168.0.27:3000/users/firstpost") as! URL)
-            request.httpMethod = "POST"
-            var params = ["username":"jameson", "password":"password"] as Dictionary<String, String>
-            let array = ["username":1]
-            request.httpBody = try JSONSerialization.data(withJSONObject: array, options: JSONSerialization.WritingOptions.prettyPrinted)
-            
-            
-            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-            request.addValue("application/json", forHTTPHeaderField: "Accept")
-            
-            URLSession.shared.dataTask(with: request){ (data, response, error) in
-                if error != nil {
-                    print(error)
-                } else {
-                    do {
-                        let parsedData = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as! [String: AnyObject];
-                        self.currentConditions = parsedData["users"] as! NSArray
-                        //                    let currentTemperatureF = currentConditions["users_number"] as! Double
-                        //                    print(currentTemperatureF)
-                        for object in self.currentConditions as! [Dictionary<String, AnyObject>] {
-                            print(object["users_number"])
-                        }
-                        
-                    }
-                    catch let error as NSError {
-                        print(error)
-                    }
-                }
-                }.resume()
-            
-        }
-        catch let error as NSError {
-            print(error)
-        }
-        
+        tableView.register(UINib(nibName: "ContactTableViewCell", bundle: nil), forCellReuseIdentifier: "ContactTableViewCell");
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        //addDummyData()
+        super.viewWillAppear(animated);
         tableView.isHidden = true
         //noContactsLabel.isHidden = false
         //noContactsLabel.text = "Retrieving contacts..."
@@ -140,11 +74,11 @@ class Contacts_ViewController: UIViewController, UITableViewDelegate, UITableVie
                     }
                 })
                 
-
+                
             }
         }
     }
-
+    
     @IBAction func backToHome(_ sender: UIButton) {
         dismiss(animated: false, completion: nil)
     }
@@ -210,65 +144,18 @@ class Contacts_ViewController: UIViewController, UITableViewDelegate, UITableVie
     var currentConditions: NSArray = []
     func retrivecontactsfromNode(contactsList: String)
     {
-        do{
-            var f = false
-            var request = URLRequest(url: NSURL(string: "http://172.17.66.21:3000/users/firstpost") as! URL)
-            request.httpMethod = "POST"
-            var params = ["username":"jameson", "password":"password"] as Dictionary<String, String>
-            let array = ["username":contactsList]
-            request.httpBody = try JSONSerialization.data(withJSONObject: array, options: JSONSerialization.WritingOptions.prettyPrinted)
-            
-            
-            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-            request.addValue("application/json", forHTTPHeaderField: "Accept")
-            
-            URLSession.shared.dataTask(with: request){ (data, response, error) in
-                if error != nil {
-                    print(error)
-                } else {
-                    do {
-                        let parsedData = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as! [String: AnyObject];
-                        self.currentConditions = parsedData["users"] as! NSArray
-                        //                    let currentTemperatureF = currentConditions["users_number"] as! Double
-                        //                    print(currentTemperatureF)
-                        for object in self.currentConditions as! [Dictionary<String, AnyObject>] {
-                            print(object["users_number"]!)
-                            self.validContacts.append(object["users_number"]! as! String)
-                            if(self.totalContacts.contains(object["users_number"]! as! String))
-                            {
-                                self.contacts_new.append(self.contacts_full[self.totalContacts.index(of: object["users_number"]! as! String)!])
-                                    f = true
-                            }
-                        }
-                        if(f){
-                            self.contacts = self.contacts_new
-                            self.filteredData = self.contacts
-                            self.tableView.reloadData()
-                        }
-                        
-                    }
-                    catch let error as NSError {
-                        print(error)
-                    }
-                }
-                }.resume()
-            
-        }
-        catch let error as NSError {
-            print(error)
-        }
+       DataService.retrieveContacts(contacts: self, contactsList: contactsList);
     }
     
     override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        super.didReceiveMemoryWarning();
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print(filteredData.count)
         return filteredData.count
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ContactTableViewCell", for: indexPath) as! ContactTableViewCell
         let entry = filteredData[(indexPath as NSIndexPath).row]
@@ -279,19 +166,10 @@ class Contacts_ViewController: UIViewController, UITableViewDelegate, UITableVie
             cell.accessoryType = .checkmark
             cell.isSelected = true
         }
-        
         return cell
     }
     
-    
-    
-    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        // When there is no text, filteredData is the same as the original data
-        // When user has entered text into the search box
-        // Use the filter method to iterate over all items in the data array
-        // For each item, return true if the item should be included and false if the
-        // item should NOT be included
         filteredData = contacts.filter( { return $0.name.hasPrefix(searchText)} )
         tableView.reloadData()
     }
@@ -329,7 +207,7 @@ class Contacts_ViewController: UIViewController, UITableViewDelegate, UITableVie
             contactsSelected.remove(at: v!)
             let cell = tableView.cellForRow(at: indexPath)
             cell?.accessoryType = .none
-
+            
         }
         else
         {
@@ -392,10 +270,4 @@ class Contacts_ViewController: UIViewController, UITableViewDelegate, UITableVie
             }
         }
     }
-    
-    
-    
 }
-
-
-

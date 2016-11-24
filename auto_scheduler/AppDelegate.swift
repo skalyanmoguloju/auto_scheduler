@@ -102,6 +102,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         print(deviceToken)
+        DataService.deviceid = token;
         print("Registration succeeded!")
         print("Token: ", token)
     }
@@ -109,9 +110,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
         print("Failed to register:", error)
     }
-    
-    
-
-
 }
 

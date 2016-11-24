@@ -16,6 +16,9 @@ class HomeScreen_ViewController: UIViewController, UICollectionViewDataSource, U
     @IBOutlet weak var trainingConstraint: NSLayoutConstraint!
     @IBOutlet weak var needPermissionView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    
+    
     var events_complete: [EKEvent] = []
     var calendars: [EKCalendar]?
     var Participant: [EKParticipant] = []
@@ -30,18 +33,8 @@ class HomeScreen_ViewController: UIViewController, UICollectionViewDataSource, U
     }
     @IBOutlet weak var mainView: UIView!
     override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        super.didReceiveMemoryWarning();
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
     var menuOpen = false
 
@@ -67,6 +60,27 @@ class HomeScreen_ViewController: UIViewController, UICollectionViewDataSource, U
     //Callender
     override func viewWillAppear(_ animated: Bool) {
     //    checkCalendarAuthorizationStatus()
+        
+        let urlString = "http://192.168.0.27:3000/users/test";
+        //let urlString = "https://arcane-bayou-92592.herokuapp.com/users/test";
+        
+        
+        let url = URL(string: urlString)
+        URLSession.shared.dataTask(with:url!) { (data, response, error) in
+            if error != nil {
+                print(error)
+            } else {
+                do {
+                    
+                    let parsedData = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:Any];
+                    print(parsedData);
+                    
+                } catch let error as NSError {
+                    print(error)
+                }
+            }
+            
+            }.resume()
         
     }
     func checkCalendarAuthorizationStatus() {
@@ -111,10 +125,12 @@ class HomeScreen_ViewController: UIViewController, UICollectionViewDataSource, U
                     }))
                 self.present(alert1, animated: true, completion: nil)
             }
-      //      print("Text field: \(countValue)")
+            print("Text field: \(countValue)");
+            DataService.insert_user(number: (textField?.text)!);
         }))
         self.present(alert, animated: true, completion: nil)
     }
+    
     
     func requestAccessToCalendar() {
         eventStore.requestAccess(to: EKEntityType.event, completion: {
