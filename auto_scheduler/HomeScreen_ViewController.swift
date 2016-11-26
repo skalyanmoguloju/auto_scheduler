@@ -60,7 +60,7 @@ class HomeScreen_ViewController: UIViewController, UICollectionViewDataSource, U
     //Callender
     override func viewWillAppear(_ animated: Bool) {
     //    checkCalendarAuthorizationStatus()
-        
+        /*
         let urlString = "http://192.168.0.27:3000/users/test";
         //let urlString = "https://arcane-bayou-92592.herokuapp.com/users/test";
         
@@ -81,6 +81,7 @@ class HomeScreen_ViewController: UIViewController, UICollectionViewDataSource, U
             }
             
             }.resume()
+ */
         
     }
     func checkCalendarAuthorizationStatus() {

@@ -110,5 +110,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
         print("Failed to register:", error)
     }
+    
+    func application(_ application: UIApplication,
+                     didReceiveRemoteNotification sd: UIApplicationState)
+    {
+
+        print("This function is called")
+        print(UIApplicationState.self)
+    }
 }
 
