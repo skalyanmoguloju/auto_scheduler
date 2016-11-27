@@ -16,32 +16,28 @@ class HomeScreen_ViewController: UIViewController, UICollectionViewDataSource, U
     @IBOutlet weak var trainingConstraint: NSLayoutConstraint!
     @IBOutlet weak var needPermissionView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
+    
     var events_complete: [EKEvent] = []
     var calendars: [EKCalendar]?
     var Participant: [EKParticipant] = []
-    let eventStore = EKEventStore()
+    let eventStore = EKEventStore();
+    
+    let defaults = UserDefaults.standard;
+    
     override func viewDidLoad() {
         checkCalendarAuthorizationStatus()
         super.viewDidLoad()
         mainView.layer.shadowOpacity = 1
         mainView.layer.shadowRadius = 10
+        
+        
 
         // Do any additional setup after loading the view.
     }
     @IBOutlet weak var mainView: UIView!
     override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        super.didReceiveMemoryWarning();
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
     var menuOpen = false
 
@@ -67,6 +63,28 @@ class HomeScreen_ViewController: UIViewController, UICollectionViewDataSource, U
     //Callender
     override func viewWillAppear(_ animated: Bool) {
     //    checkCalendarAuthorizationStatus()
+        /*
+        let urlString = "http://192.168.0.27:3000/users/test";
+        //let urlString = "https://arcane-bayou-92592.herokuapp.com/users/test";
+        
+        
+        let url = URL(string: urlString)
+        URLSession.shared.dataTask(with:url!) { (data, response, error) in
+            if error != nil {
+                print(error)
+            } else {
+                do {
+                    
+                    let parsedData = try JSONSerialization.jsonObject(with: data!, options: .allowFragments) as! [String:Any];
+                    print(parsedData);
+                    
+                } catch let error as NSError {
+                    print(error)
+                }
+            }
+            
+            }.resume()
+ */
         
     }
     func checkCalendarAuthorizationStatus() {
@@ -102,54 +120,22 @@ class HomeScreen_ViewController: UIViewController, UICollectionViewDataSource, U
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
             let textField = alert?.textFields![0] // Force unwrapping because we know it exists.
             let countValue = textField!.text?.characters.count
-            print(countValue)
+      //      print(countValue)
             if (countValue! != 10){
-                print("Inside this")
+       //         print("Inside this")
                 let alert1 = UIAlertController(title: "Alert", message: "Message", preferredStyle: UIAlertControllerStyle.alert)
                 alert1.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
                         self.enterPhoneNumber()
                     }))
                 self.present(alert1, animated: true, completion: nil)
             }
-            print("Text field: \(countValue)")
-            //self.insert_user(number: (textField?.text)!, id: "12345")
+            print("Text field: \(countValue)");
+            DataService.insert_user(number: (textField?.text)!);
+            self.defaults.set(textField?.text, forKey: "loggedInUser");
         }))
         self.present(alert, animated: true, completion: nil)
     }
     
-    func insert_user(number: String, id:String)
-    {
-        do{
-            var f = false
-            var request = URLRequest(url: NSURL(string: "http://192.168.0.12:3000/users/signup") as! URL)
-            request.httpMethod = "POST"
-            var params = ["username":number, "identification":id] as Dictionary<String, String>
-            //let array = ["username":contactsList]
-            request.httpBody = try JSONSerialization.data(withJSONObject: params, options: JSONSerialization.WritingOptions.prettyPrinted)
-            
-            
-            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-            request.addValue("application/json", forHTTPHeaderField: "Accept")
-            
-            URLSession.shared.dataTask(with: request){ (data, response, error) in
-                if error != nil {
-                    print(error)
-                } else {
-                    do {
-                        let parsedData = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as! [String: AnyObject];
-                        print(parsedData)
-                    }
-                    catch let error as NSError {
-                        print(error)
-                    }
-                }
-                }.resume()
-            
-        }
-        catch let error as NSError {
-            print(error)
-        }
-    }
     
     func requestAccessToCalendar() {
         eventStore.requestAccess(to: EKEntityType.event, completion: {
@@ -172,7 +158,7 @@ class HomeScreen_ViewController: UIViewController, UICollectionViewDataSource, U
     var endDates : [NSDate] = []
     
     func loadCalendars(){
-        print("function called")
+   //     print("function called")
         self.calendars = eventStore.calendars(for: EKEntityType.event)
         for calendar in self.calendars!{
             let oneMonthAgo = NSDate(timeIntervalSinceNow: 0*24*3600)
@@ -181,8 +167,8 @@ class HomeScreen_ViewController: UIViewController, UICollectionViewDataSource, U
             let events = eventStore.events(matching: predicate)
             for event in events {
                 events_complete.append(event)
-                print(type(of:event.attendees))
-                print("------------------------------------------------------------")
+    //            print(type(of:event.attendees))
+    //            print("------------------------------------------------------------")
             }
         }
         events_complete = events_complete.sorted(by: { $1.startDate > $0.startDate })
@@ -280,13 +266,15 @@ class HomeScreen_ViewController: UIViewController, UICollectionViewDataSource, U
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
     {
         
-            print("Inside 1st click")
-        for eve in events_complete{
-            print (eve.title)
-        }
-        print(indexPath)
+      //      print("Inside 1st click")
+    //    for eve in events_complete{
+      //      print (eve.title)
+    //    }
+   //     print(indexPath)
         meetingSelected = [self.events_complete[(indexPath as IndexPath).row]]
-        print(meetingSelected[0].title)
+    //    print(meetingSelected[0].title)
+    //    print(meetingSelected[0].location)
+        
             self.performSegue(withIdentifier: "meetingInfo", sender: self)
             
         
