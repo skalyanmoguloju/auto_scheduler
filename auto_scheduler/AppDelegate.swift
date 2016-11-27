@@ -112,11 +112,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(_ application: UIApplication,
-                     didReceiveRemoteNotification sd: UIApplicationState)
+                     didReceiveRemoteNotification userInfo: [NSObject : AnyObject])
     {
-
-        print("This function is called")
-        print(UIApplicationState.self)
+        /*
+        var aps: NSDictionary = NSDictionary()
+        var alert: NSString = NSString()
+        var message: NSString = NSString()
+        for (key, value) in userInfo {
+            aps = value as! NSDictionary
+        }
+        for (key, value) in aps {
+            alert = value as! NSString
+        }*/
     }
 }
 

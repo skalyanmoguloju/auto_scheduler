@@ -107,7 +107,13 @@ class Contacts_ViewController: UIViewController, UITableViewDelegate, UITableVie
                 {
                     if contact.phone != nil && contact.name != ""
                     {
-                        self.totalContacts.append(String(contact.phone!.replacingOccurrences(of: " ", with: "").replacingOccurrences(of: ")", with: "").replacingOccurrences(of: "(", with: "+").characters.suffix(10)))
+                        
+                        var s = String(contact.phone!);
+                        s = s!.replacingOccurrences(of:
+                            "\\D", with: "", options: .regularExpression,
+                                   range: s!.startIndex..<s!.endIndex);
+                        s = s!.substring(from:s!.index(s!.endIndex, offsetBy: -10));
+                        self.totalContacts.append(s!)
                         contacts.append(contact)
                     }
                 }
@@ -124,20 +130,49 @@ class Contacts_ViewController: UIViewController, UITableViewDelegate, UITableVie
         var counter = 1
         
         var valStrng = ""
+        //print(contacts_bckup);
         for val in contacts_bckup!
         {
             if(counter == contacts_bckup?.count)
             {
-                valStrng = valStrng+"'"+String(val.phone!.replacingOccurrences(of: " ", with: "").replacingOccurrences(of: ")", with: "").replacingOccurrences(of: "(", with: "+").characters.suffix(10))+"'"
+//                valStrng = String(val.phone!);
+//                valStrng = valStrng
+//                    .replacingOccurrences(of: " ", with: "")
+//                    .replacingOccurrences(of: ")", with: "")
+//                    .replacingOccurrences(of: "(", with: "+");
+//                //.characters.suffix(10))+"'"
+                
+                //+ "-";
+                
+                
+
+//                str = "'" + String(str.replacingOccurrences(of: "+",with: "").replacingOccurrences(of: "(", with: "").replacingOccurrences(of: ")", with: "").replacingOccurrences(of: "-", with: "").replacingOccurrences(of: " ", with: "").characters.suffix(10)) + "'";
+//                valStrng = valStrng + str;
+                
+                var s = String(val.phone!);
+                s = s!.replacingOccurrences(of:
+                    "\\D", with: "", options: .regularExpression,
+                           range: s!.startIndex..<s!.endIndex);
+                s = s!.substring(from:s!.index(s!.endIndex, offsetBy: -10))
+                s = "'" + s! + "'";
+                valStrng = valStrng + s!;
                 counter = 0
             }
             else
             {
-                valStrng = valStrng+"'"+String(val.phone!.replacingOccurrences(of: " ", with: "").replacingOccurrences(of: ")", with: "").replacingOccurrences(of: "(", with: "+").characters.suffix(10))+"',"
+//                valStrng = valStrng+"'"+String(val.phone!.replacingOccurrences(of: " ", with: "").replacingOccurrences(of: ")", with: "").replacingOccurrences(of: "(", with: "+").characters.suffix(10))+"',"
+                
+                var s = String(val.phone!);
+                s = s!.replacingOccurrences(of:
+                    "\\D", with: "", options: .regularExpression,
+                           range: s!.startIndex..<s!.endIndex);
+                s = s!.substring(from:s!.index(s!.endIndex, offsetBy: -10))
+                s = "'" + s! + "',";
+                valStrng = valStrng + s!;
                 counter = counter+1
             }
         }
-        print(valStrng)
+        print(valStrng);
         retrivecontactsfromNode(contactsList: valStrng)
         
     }

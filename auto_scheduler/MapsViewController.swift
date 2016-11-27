@@ -36,41 +36,26 @@ class MapsViewController: UIViewController, UITextFieldDelegate {
         if var contacts =  defaults.stringArray(forKey: "participants")
         {
         
-            getFreeTime()
-//            do{
-//                var f = false
-//                var request = URLRequest(url: NSURL(string: "http://192.168.0.27:3000/users/initiatemeeting") as! URL)
-//                request.httpMethod = "POST"
-//                //var params = ["username":"jameson", "password":"password"] as Dictionary<String, String>
-//                let array = ["owner": "3199309832","participants":contacts, "location": locationLabel.text, "starttime" : dateTextField.text, "endtime": dateTextEndField.text, "duration":durationTextField.text] as [String : Any]
-//                request.httpBody = try JSONSerialization.data(withJSONObject: array, options: JSONSerialization.WritingOptions.prettyPrinted)
-//            
-//            
-//                request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-//                request.addValue("application/json", forHTTPHeaderField: "Accept")
-//            
-//                URLSession.shared.dataTask(with: request){ (data, response, error) in
-//                    if error != nil {
-//                        print(error)
-//                    } else {
-//                        do {
-//                            let parsedData = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as! [String: AnyObject];
-//                                print(parsedData)
-//                        }
-//                        catch let error as NSError {
-//                            print(error)
-//                        }
-//                    }
-//                }.resume()
-//            
-//            }
-//            catch let error as NSError {
-//                print(error)
-//            }
+            //
+            
+           let loggedInUser = defaults.value(forKey: "loggedInUser") as! String;
+            
+            for i in 0 ..< contacts.count  {
+                var s = contacts[i];
+                s = s.replacingOccurrences(of:
+                    "\\D", with: "", options: .regularExpression,
+                           range: s.startIndex..<s.endIndex);
+                s = s.substring(from:s.index(s.endIndex, offsetBy: -10))
+                contacts[i] = s;
+            }
+            
+            DataService.InitiateMeeting(mapsInstance: self, contacts: contacts, loggedInUser: loggedInUser, location: locationLabel.text!, startTime: dateTextField.text!, endTime: dateTextEndField.text!, duration: durationTextField.text!);
         }
         
     }
-        
+    
+    
+    
     
     let datePicker = UIDatePicker()
     let datePickerEnd = UIDatePicker()
@@ -96,7 +81,7 @@ class MapsViewController: UIViewController, UITextFieldDelegate {
             self.datePickerEnd.addTarget(self, action: #selector(MapsViewController.datePickerValueChangedEnd), for: UIControlEvents.valueChanged)
             
         }
-        else{
+        else if(textField.placeholder == "Start Date & Time"){
             self.datePicker.minimumDate = NSDate() as Date
             self.datePicker.minuteInterval = 30
             textField.inputView = self.datePicker
@@ -107,7 +92,7 @@ class MapsViewController: UIViewController, UITextFieldDelegate {
     }
     
     
-    func getFreeTime()
+    func getFreeTime(meetingId: Int)
     {
         self.calendars = eventStore.calendars(for: EKEntityType.event)
         dateFormatter1 = DateFormatter()
@@ -145,46 +130,11 @@ class MapsViewController: UIViewController, UITextFieldDelegate {
             strtDate = strtDate?.addingTimeInterval(TimeInterval(dates))
             
         }
-        send_availabilities(strts: strts, ends: ends)
-
-
+        var loggedInUser = defaults.value(forKey: "loggedInUser") as! String;
+        DataService.SendAvailabilities(strts: strts, ends: ends, meetingId: meetingId, loggedInUser: loggedInUser);
     }
     
-    func send_availabilities(strts : [String], ends: [String])
-    {
-        do{
-            var f = false
-            var request = URLRequest(url: NSURL(string: "http://192.168.0.12:3000/users/updatefreetime") as! URL)
-            request.httpMethod = "POST"
-            let array = ["username":"3199309832", "meetingid": "1","strtdates": strts, "enddates": ends] as [NSString : Any]
-            request.httpBody = try JSONSerialization.data(withJSONObject: array, options: JSONSerialization.WritingOptions.prettyPrinted)
-            
-
-            
-            
-            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-            request.addValue("application/json", forHTTPHeaderField: "Accept")
-            
-            URLSession.shared.dataTask(with: request){ (data, response, error) in
-                if error != nil {
-                    print(error)
-                } else {
-                    do {
-                        let parsedData = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as! [String: AnyObject];
-                        print(parsedData)
-                    }
-                    catch let error as NSError {
-                        print(error)
-                    }
-                }
-                }.resume()
-            
-        }
-        catch let error as NSError {
-            print(error)
-        }
-    }
-    
+   
     func donePicker()
     {
         dateTextField.resignFirstResponder()

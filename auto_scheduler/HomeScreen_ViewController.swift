@@ -17,17 +17,20 @@ class HomeScreen_ViewController: UIViewController, UICollectionViewDataSource, U
     @IBOutlet weak var needPermissionView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
     
-    
-    
     var events_complete: [EKEvent] = []
     var calendars: [EKCalendar]?
     var Participant: [EKParticipant] = []
-    let eventStore = EKEventStore()
+    let eventStore = EKEventStore();
+    
+    let defaults = UserDefaults.standard;
+    
     override func viewDidLoad() {
         checkCalendarAuthorizationStatus()
         super.viewDidLoad()
         mainView.layer.shadowOpacity = 1
         mainView.layer.shadowRadius = 10
+        
+        
 
         // Do any additional setup after loading the view.
     }
@@ -128,6 +131,7 @@ class HomeScreen_ViewController: UIViewController, UICollectionViewDataSource, U
             }
             print("Text field: \(countValue)");
             DataService.insert_user(number: (textField?.text)!);
+            self.defaults.set(textField?.text, forKey: "loggedInUser");
         }))
         self.present(alert, animated: true, completion: nil)
     }

@@ -93,4 +93,76 @@ class DataService {
             print(error)
         }
     }
+    
+    static func InitiateMeeting(mapsInstance:  MapsViewController,  contacts: [String], loggedInUser: String, location: String, startTime: String, endTime: String, duration: String){
+        do{
+            var f = false
+            var request = URLRequest(url: NSURL(string:  serviceURL + "initiatemeeting") as! URL)
+            request.httpMethod = "POST"
+            
+            
+            let array = ["owner": loggedInUser, "participants":contacts, "location": location, "starttime" : startTime, "endtime": endTime, "duration":duration] as [String : Any]
+            request.httpBody = try JSONSerialization.data(withJSONObject: array, options: JSONSerialization.WritingOptions.prettyPrinted)
+            
+            
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.addValue("application/json", forHTTPHeaderField: "Accept")
+            
+            URLSession.shared.dataTask(with: request){ (data, response, error) in
+                if error != nil {
+                    print(error)
+                } else {
+                    do {
+                        let parsedData = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as! [String: AnyObject];
+                        
+                        print("1")
+                        print(parsedData);
+                        //let meetingId = parsedData["insertedId"] as! NSArray;
+                        
+                        mapsInstance.getFreeTime(meetingId: parsedData["insertedId"] as! Int);
+                    }
+                    catch let error as NSError {
+                        print(error)
+                    }
+                }
+                }.resume()
+            
+        }
+        catch let error as NSError {
+            print(error)
+        }
+    }
+    
+    static func SendAvailabilities(strts : [String], ends: [String], meetingId: Int, loggedInUser: String){
+        do{
+            var f = false
+            var request = URLRequest(url: NSURL(string: serviceURL + "updatefreetime") as! URL)
+            request.httpMethod = "POST";
+            
+            let array = ["username":loggedInUser, "meetingid": meetingId,"strtdates": strts, "enddates": ends] as [NSString : Any]
+            request.httpBody = try JSONSerialization.data(withJSONObject: array, options: JSONSerialization.WritingOptions.prettyPrinted)
+            
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.addValue("application/json", forHTTPHeaderField: "Accept")
+            
+            URLSession.shared.dataTask(with: request){ (data, response, error) in
+                if error != nil {
+                    print(error)
+                } else {
+                    do {
+                        let parsedData = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as! [String: AnyObject];
+                        print(parsedData)
+                    }
+                    catch let error as NSError {
+                        print(error)
+                    }
+                }
+                }.resume()
+            
+        }
+        catch let error as NSError {
+            print(error)
+        }
+        
+    }
 }
