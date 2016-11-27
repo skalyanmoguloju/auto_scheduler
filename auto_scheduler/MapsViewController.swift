@@ -8,14 +8,13 @@ class MapsViewController: UIViewController, UITextFieldDelegate {
     var searchController: UISearchController?
     let defaults = UserDefaults.standard
     var resultView: UITextView?
-    var calendars: [EKCalendar]?
-    let eventStore = EKEventStore()
-    
-    @IBAction func backButton(_ sender: UIButton) {
-         dismiss(animated: false, completion: nil)
-    }
     var dateFormatter : DateFormatter!
     var dateFormatter1 : DateFormatter!
+    
+    
+    @IBAction func backButton(_ sender: UIButton) {
+        dismiss(animated: false, completion: nil)
+    }
     
     @IBOutlet weak var dateTextField: UITextField!
     @IBOutlet weak var dateTextEndField: UITextField!
@@ -23,22 +22,18 @@ class MapsViewController: UIViewController, UITextFieldDelegate {
     var dateStart: Date?
     var dateEnd: Date?
     
-    var strts = [String]()
-    var ends = [String]()
-    
-
     @IBOutlet weak var durationTextField: UITextField!
     
     @IBOutlet weak var locationLabel: UILabel!
-
+    
     @IBAction func schedule(_ sender: Any) {
         
         if var contacts =  defaults.stringArray(forKey: "participants")
         {
-        
+            
             //
             
-           let loggedInUser = defaults.value(forKey: "loggedInUser") as! String;
+            let loggedInUser = defaults.value(forKey: "loggedInUser") as! String;
             
             for i in 0 ..< contacts.count  {
                 var s = contacts[i];
@@ -87,35 +82,43 @@ class MapsViewController: UIViewController, UITextFieldDelegate {
             textField.inputView = self.datePicker
             
             self.datePicker.addTarget(self, action: #selector(MapsViewController.datePickerValueChanged), for: UIControlEvents.valueChanged)
-        
+            
         }
     }
     
     
-    func getFreeTime(meetingId: Int)
+    
+    static func getFreeTime(meetingId: Int, strtDate: Date?, endDate: Date?)
     {
-        self.calendars = eventStore.calendars(for: EKEntityType.event)
-        dateFormatter1 = DateFormatter()
-        dateFormatter1.dateFormat = "HH";
-        var strtDate = dateStart
-        let endDate = dateEnd
-        //var dates = Double(durationTextField.text!)
-        var dates = 3600
+        let eventStore = EKEventStore();
+        var oCalendars: [EKCalendar]?
+        var dDateFormatter : DateFormatter!
+        var dDateFormatter1 : DateFormatter!
+        var strts = [String]()
+        var ends = [String]()
+        
+        var sDate = strtDate;
+        oCalendars = eventStore.calendars(for: EKEntityType.event)
+        dDateFormatter = DateFormatter()
+        dDateFormatter.dateFormat = "HH";
+        dDateFormatter1 = DateFormatter()
+        dDateFormatter1.dateFormat = "MMMM dd YYYY hh:mm a";
+        let dates = 3600
         var f = true
-        while(strtDate!<endDate! )
+        while(sDate!<endDate! )
         {
             
-            for calendar in self.calendars!
+            for calendar in oCalendars!
             {
-                let predicate = eventStore.predicateForEvents(withStart: strtDate! as Date, end: (strtDate! as Date)+TimeInterval(dates), calendars: [calendar])
-            
-                let events = eventStore.events(matching: predicate)
-            
-               if(events.count == 0 && Int(dateFormatter1.string(from: strtDate!))! >= 7 && Int(dateFormatter1.string(from: strtDate!+TimeInterval(dates)))! <= 21)
-               {
+                let predicate = eventStore.predicateForEvents(withStart: sDate! as Date, end: (sDate! as Date)+TimeInterval(dates), calendars: [calendar])
                 
+                let events = eventStore.events(matching: predicate)
+                
+                if(events.count == 0 && Int(dDateFormatter.string(from: sDate!))! >= 7 && Int(dDateFormatter.string(from: sDate!+TimeInterval(dates)))! <= 21)
+                {
+                    
                 }
-               else{
+                else{
                     f = false
                     break
                 }
@@ -123,18 +126,18 @@ class MapsViewController: UIViewController, UITextFieldDelegate {
             }
             if(f)
             {
-                strts.append(dateFormatter.string(from: strtDate!))
-                ends.append(dateFormatter.string(from: strtDate!+TimeInterval(dates)))
+                strts.append(dDateFormatter1.string(from: sDate!))
+                ends.append(dDateFormatter1.string(from: sDate!+TimeInterval(dates)))
             }
-            f = true
-            strtDate = strtDate?.addingTimeInterval(TimeInterval(dates))
-            
+            f = true;
+            sDate = sDate?.addingTimeInterval(TimeInterval(dates));
         }
-        var loggedInUser = defaults.value(forKey: "loggedInUser") as! String;
+        let userDefaults = UserDefaults.standard;
+        var loggedInUser = userDefaults.value(forKey: "loggedInUser") as! String;
         DataService.SendAvailabilities(strts: strts, ends: ends, meetingId: meetingId, loggedInUser: loggedInUser);
     }
     
-   
+    
     func donePicker()
     {
         dateTextField.resignFirstResponder()

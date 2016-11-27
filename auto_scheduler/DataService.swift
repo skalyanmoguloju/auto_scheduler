@@ -119,7 +119,7 @@ class DataService {
                         print(parsedData);
                         //let meetingId = parsedData["insertedId"] as! NSArray;
                         
-                        mapsInstance.getFreeTime(meetingId: parsedData["insertedId"] as! Int);
+                        MapsViewController.getFreeTime(meetingId: parsedData["insertedId"] as! Int, strtDate: mapsInstance.dateStart, endDate: mapsInstance.dateEnd);
                     }
                     catch let error as NSError {
                         print(error)
