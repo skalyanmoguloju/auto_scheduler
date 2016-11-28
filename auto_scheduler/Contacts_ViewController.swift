@@ -105,16 +105,24 @@ class Contacts_ViewController: UIViewController, UITableViewDelegate, UITableVie
             try contactStore.enumerateContacts(with: contactsFetchRequest, usingBlock: { (cnContact, error) in
                 if let contact = ContactEntry(cnContact: cnContact)
                 {
-                    if contact.phone != nil && contact.name != ""
+                    if contact.phone != nil && contact.name != "" && (contact.phone) != "" &&  (contact.phone?.characters.count)! >= 10
                     {
+                        do {
+                            print("knfdknkdsn")
+                            print(contact.phone)
+                            var s = try String(contact.phone!);
+                            s = try s!.replacingOccurrences(of:
+                                "\\D", with: "", options: .regularExpression,
+                                       range: s!.startIndex..<s!.endIndex);
                         
-                        var s = String(contact.phone!);
-                        s = s!.replacingOccurrences(of:
-                            "\\D", with: "", options: .regularExpression,
-                                   range: s!.startIndex..<s!.endIndex);
-                        s = s!.substring(from:s!.index(s!.endIndex, offsetBy: -10));
-                        self.totalContacts.append(s!)
-                        contacts.append(contact)
+                             s = try s!.substring(from:s!.index(s!.endIndex, offsetBy: -10));
+                             self.totalContacts.append(s!)
+                             contacts.append(contact)
+                        }
+                        catch
+                        {
+                            print("error")
+                        }
                     }
                 }
             })
@@ -172,7 +180,7 @@ class Contacts_ViewController: UIViewController, UITableViewDelegate, UITableVie
                 counter = counter+1
             }
         }
-        print(valStrng);
+     //   print(valStrng);
         retrivecontactsfromNode(contactsList: valStrng)
         
     }
@@ -187,7 +195,7 @@ class Contacts_ViewController: UIViewController, UITableViewDelegate, UITableVie
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(filteredData.count)
+      //  print(filteredData.count)
         return filteredData.count
     }
     

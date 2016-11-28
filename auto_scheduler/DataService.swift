@@ -14,6 +14,8 @@ class DataService {
     static var deviceid = "";
     static let serviceURL = "http://192.168.0.27:3000/users/";
     
+    //static let serviceURL = "https://arcane-bayou-92592.herokuapp.com/users/";
+    
     static func insert_user(number: String)
     {
         do{
@@ -98,15 +100,13 @@ class DataService {
         do{
             var f = false
             var request = URLRequest(url: NSURL(string:  serviceURL + "initiatemeeting") as! URL)
-            request.httpMethod = "POST"
-            
+            request.httpMethod = "POST";
             
             let array = ["owner": loggedInUser, "participants":contacts, "location": location, "starttime" : startTime, "endtime": endTime, "duration":duration] as [String : Any]
-            request.httpBody = try JSONSerialization.data(withJSONObject: array, options: JSONSerialization.WritingOptions.prettyPrinted)
+            request.httpBody = try JSONSerialization.data(withJSONObject: array, options: JSONSerialization.WritingOptions.prettyPrinted);
             
-            
-            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-            request.addValue("application/json", forHTTPHeaderField: "Accept")
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type");
+            request.addValue("application/json", forHTTPHeaderField: "Accept");
             
             URLSession.shared.dataTask(with: request){ (data, response, error) in
                 if error != nil {
@@ -164,5 +164,38 @@ class DataService {
             print(error)
         }
         
+    }
+    
+    static func SetPriorities(nUserNumber: String, nMeetingId: String, arrStartDateFinal: [Date], arrEndDateFinal: [Date], arrRanks: [Int])
+    {
+        
+        
+        let sArrStartDateFinal = String(describing: arrStartDateFinal)
+        let sArrEndDateFinal = String(describing: arrEndDateFinal)
+        let sArrRanks = String(describing: arrRanks)
+        do{
+            var f = false
+            var request = URLRequest(url: NSURL(string: DataService.serviceURL + "setpriorities") as! URL)
+            request.httpMethod = "POST"
+            var params = ["username":nUserNumber, "meetingid": nMeetingId, "strtdates": sArrStartDateFinal, "enddates": sArrEndDateFinal, "ranks": sArrRanks ] as Dictionary<String, String>
+            
+            request.httpBody = try JSONSerialization.data(withJSONObject: params, options: JSONSerialization.WritingOptions.prettyPrinted)
+            
+            
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.addValue("application/json", forHTTPHeaderField: "Accept")
+            
+            URLSession.shared.dataTask(with: request){ (data, response, error) in
+                if error != nil {
+                    print(error)
+                } else {
+                    // do nothing
+                }
+                }.resume()
+            
+        }
+        catch let error as NSError {
+            print(error)
+        }
     }
 }

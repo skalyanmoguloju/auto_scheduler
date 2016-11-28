@@ -136,22 +136,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
             }
         }
-
+        
         switch (sType) {
         case "CheckUserExist":
             print("No action");
+            break
         case "NewMeetingReq":
             
             var nMeetingId: Int = Int();
             var dStartDate: Date = Date();
             var dEndDate: Date = Date();
             for (key, value) in userInfo {
+                print(dEndDate)
                 if(key as! String == "meetingId"){
-                   nMeetingId  = Int(value as! String)!;
+                    nMeetingId  = Int(value as! String)!;
                 }
                 if(key as! String == "dStartDate"){
                     let dDateFormatter2 = DateFormatter()
-                    dDateFormatter2.dateFormat = "YYYY-mm-dd HH:mm";
+                    dDateFormatter2.dateFormat = "YYYY-MM-dd HH:mm";
                     
                     print(value);
                     let dDate2: String = value as! String;
@@ -161,8 +163,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
                 if(key as! String == "dEndDate"){
                     let dDateFormatter = DateFormatter()
-                    dDateFormatter.dateFormat = "YYYY-mm-dd HH:mm";
-
+                    dDateFormatter.dateFormat = "YYYY-MM-dd HH:mm";
+                    
                     print("----------InDate------------")
                     print(value);
                     let dDate: String = value as! String;
@@ -173,10 +175,87 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             MapsViewController.getFreeTime(meetingId: nMeetingId, strtDate: dStartDate, endDate: dEndDate);
             print("ACTION HERE");
+            break
+        case "UpdatedSuggestedTimes":
+            //var arrSuggDates:[]
+            var nMeetingId: Int = Int();
+            var sArrSug: String = String();
+            for (key, value) in userInfo {
+                
+                if(key as! String == "meetingId"){
+                    nMeetingId  = Int(value as! String)!;
+                    let defaults = UserDefaults.standard;
+                    defaults.set(nMeetingId, forKey: "suggestedTimes1MeetingId");
+                }
+                if(key as! String == "arrSuggestedTimes"){
+                    sArrSug  = value as! String;
+                    
+                    let defaults = UserDefaults.standard;
+                    defaults.set(sArrSug, forKey: "suggestedTimes");
+                    
+                    let result = convertStringToDictionary(text: sArrSug);
+                    
+                    for (key, value) in result! {
+                        if let sStartTime = value as? String {
+                            print("--1-- \(sStartTime)");
+                            var dStartDate: Date = Date();
+                            dStartDate = convertStringToDate(sStringDate: sStartTime);
+                            print("--2- \(dStartDate)");
+                        }
+                    }
+                }
+            }
+            break
+            
+            case "FinalizedSuggestedTimes":
+                var nMeetingId: Int = Int();
+                var dStartDate: Date = Date();
+                var dEndDate: Date = Date();
+                for (key, value) in userInfo {
+                    if(key as! String == "meetingId"){
+                        nMeetingId  = Int(value as! String)!;
+                    }
+                    if(key as! String == "dStartTime"){
+                        var sDate  = value as! String;
+                        print("--1-- \(dStartDate)");
+                        dStartDate = convertStringToDate(sStringDate: sDate);
+                        print("--2- \(dStartDate)");
+                    }
+                    if(key as! String == "dEndTime"){
+                        var sDate  = value as! String;
+                        print("--1-- \(dStartDate)");
+                        dEndDate = convertStringToDate(sStringDate: sDate);
+                        print("--2- \(dEndDate)");
+                    }
+                }
+                break;
+            
         default:
             print("Untracked action")
+            break
         }
         
+    }
+    
+    func convertStringToDate(sStringDate: String) -> Date {
+        let dDateFormatter2 = DateFormatter()
+        dDateFormatter2.dateFormat = "YYYY-MM-dd HH:mm";
+        var dReturnStartDate: Date = Date();
+        print(sStringDate);
+        dReturnStartDate = dDateFormatter2.date(from: sStringDate)!
+        print(dReturnStartDate)
+        return dReturnStartDate;
+    }
+    
+    func convertStringToDictionary(text: String) -> [String:AnyObject]? {
+        if let data = text.data(using: String.Encoding.utf8) {
+            do {
+                return try JSONSerialization.jsonObject(with: data, options: []) as? [String:AnyObject]
+            } catch let error as NSError {
+                print(error)
+            }
+        }
+        return nil
     }
     
 }

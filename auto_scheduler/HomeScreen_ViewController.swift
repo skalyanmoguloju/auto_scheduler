@@ -284,11 +284,4 @@ class HomeScreen_ViewController: UIViewController, UICollectionViewDataSource, U
         
         
     }
-
-    
-    
-    
-    
-    
-    
 }

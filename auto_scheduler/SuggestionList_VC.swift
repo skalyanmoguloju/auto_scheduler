@@ -8,16 +8,114 @@
 
 import UIKit
 
-class SuggestionListController: UIViewController, SSRadioButtonControllerDelegate {
+class SuggestionListController: UIViewController,  UITableViewDataSource, UITableViewDelegate {
     
-    var arrButtons = [UIButton]()
+    var userString = ""
+    var Data = ["A","B","C","D","E"]
+    var Selected: [String] = []
+    var startDate = [Date]()
+    var endDate = [Date]()
+    var startDateFinal = [Date]()
+    var endDateFinal = [Date]()
+    var ranks = [Int]()
+
+    
+    @IBAction func submitPref(_ sender: Any) {
+        
+        //post request to node by sending startDateFinal endDateFinal meeting id and his unique id
+        
+        let defaults = UserDefaults.standard;
+        let meetingId = defaults.value(forKey: "suggestedTimes1MeetingId") as! String
+        //let meetingId = "41";
+        var loggedInUser = defaults.value(forKey: "loggedInUser") as! String;
+        
+        DataService.SetPriorities(nUserNumber: loggedInUser, nMeetingId: meetingId, arrStartDateFinal: startDateFinal, arrEndDateFinal: endDateFinal, arrRanks: ranks)
+        
+    }
+    @IBOutlet weak var tableView: UITableView!
+ //   var arrButtons = [UIButton]()
     
     @IBOutlet weak var bDone: UIButton!
-    var radioButtonController: SSRadioButtonsController?
+    @IBOutlet weak var third: UILabel!
+    @IBOutlet weak var second: UILabel!
+    @IBOutlet weak var first: UILabel!
+ //   var radioButtonController: SSRadioButtonsController?
     
     override func viewDidLoad() {
+        tableView.delegate = self
+        tableView.dataSource = self
+        self.tableView.allowsMultipleSelection = true;
         super.viewDidLoad();
+        let defaults = UserDefaults.standard;
+        userString = defaults.value(forKey: "suggestedTimes") as! String
+        userString = userString.substring(to: userString.index(before: userString.endIndex))
+        userString = userString.substring(to: userString.index(before: userString.endIndex))
+        let fullNameArr : [String] = userString.components(separatedBy: "},{")
+        let dDateFormatter2 = DateFormatter()
+        dDateFormatter2.dateFormat = "YYYY-MM-dd HH:mm";
+        for val in fullNameArr
+        {
+            let n : [String] = val.components(separatedBy: ",")
+            let s1 = n[0].components(separatedBy: "\":\"")
+            
+            startDate.append(dDateFormatter2.date(from: s1[1].replacingOccurrences(of: "T", with: " ", options: .literal, range: nil).replacingOccurrences(of: ":00.000Z\"", with: "", options: .literal, range: nil))!)
+            
+            let e1 = n[1].components(separatedBy: "\":\"")
+            
+            endDate.append(dDateFormatter2.date(from: e1[1].replacingOccurrences(of: "T", with: " ", options: .literal, range: nil).replacingOccurrences(of: ":00.000Z\"", with: "", options: .literal, range: nil))!)
+            
+            print("-------")
+        }
         InitUI();
+    }
+    func convertStringToDictionary(text: String) -> [String:AnyObject]? {
+        if let data = text.data(using: String.Encoding.utf8) {
+            do {
+                return try JSONSerialization.jsonObject(with: data, options: []) as? [String:AnyObject]
+            } catch let error as NSError {
+                print(error)
+            }
+        }
+        return nil
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return startDate.count
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        tableView.flashScrollIndicators()
+        
+        let cell = UITableViewCell(style: .default, reuseIdentifier: "CELL")
+        
+        cell.textLabel!.text = String(describing: startDate[indexPath.row])
+      //  print(indexPath)
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(indexPath[1])
+        
+        Selected.append(String(describing: startDate[indexPath[1]]))
+        startDateFinal.append(startDate[indexPath[1]])
+        endDateFinal.append(endDate[indexPath[1]])
+        
+        if(Selected.count == 1)
+        {
+            first.text=(String(describing: startDate[indexPath[1]]))
+            ranks.append(1)
+        }
+        else if(Selected.count==2)
+        {
+            ranks.append(2)
+            second.text=(String(describing: startDate[indexPath[1]]))
+        }
+        else if(Selected.count == 3)
+        {
+            ranks.append(3)
+            third.text=(String(describing: startDate[indexPath[1]]))
+        }
+    
+        print(Selected)
     }
     
     func InitUI(){
@@ -44,15 +142,15 @@ class SuggestionListController: UIViewController, SSRadioButtonControllerDelegat
          button.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
          
          */
-        AddButtons();
+    /*    AddButtons();
         radioButtonController = SSRadioButtonsController(buttons: arrButtons);
         radioButtonController!.delegate = self;
         radioButtonController!.shouldLetDeSelect = true;
-    }
+    }*/
     
     
     
-    func AddButtons(){
+  /*  func AddButtons(){
         let width: CGFloat = 200.0;
         let height: CGFloat = 25.0;
         let getMainViewX = view.center.x - width/2;
@@ -88,14 +186,14 @@ class SuggestionListController: UIViewController, SSRadioButtonControllerDelegat
     
     func didSelectButton(aButton: UIButton?) {
         print(aButton)
-    }
+    }*/
     
-    override func didReceiveMemoryWarning() {
+    func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    func InitLabel(oLabel: UIView, color: UIColor){
+  /*  func InitLabel(oLabel: UIView, color: UIColor){
         oLabel.layer.borderWidth = 2.0;
         oLabel.layer.cornerRadius = 8;
         oLabel.backgroundColor = color;
@@ -104,5 +202,6 @@ class SuggestionListController: UIViewController, SSRadioButtonControllerDelegat
     
     @IBAction func GoToSuggestion(_ sender: UIButton) {
         performSegue(withIdentifier: "meetingSelected", sender: self)
+    }*/
     }
 }

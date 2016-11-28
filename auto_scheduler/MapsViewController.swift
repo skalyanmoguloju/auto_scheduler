@@ -24,8 +24,9 @@ class MapsViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var durationTextField: UITextField!
     
-    @IBOutlet weak var locationLabel: UILabel!
     
+    @IBOutlet weak var locationLabel: UILabel!
+
     @IBAction func schedule(_ sender: Any) {
         
         if var contacts =  defaults.stringArray(forKey: "participants")
@@ -45,12 +46,28 @@ class MapsViewController: UIViewController, UITextFieldDelegate {
             }
             
             DataService.InitiateMeeting(mapsInstance: self, contacts: contacts, loggedInUser: loggedInUser, location: locationLabel.text!, startTime: dateTextField.text!, endTime: dateTextEndField.text!, duration: durationTextField.text!);
+            
+            /*
+            let alert = UIAlertController(title: "Enter your phone number", message: "10 digit phone number", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
+                 //let secondViewController:HomeScreen_ViewController = HomeScreen_ViewController()
+                 //self.present(secondViewController, animated: true, completion: nil)
+                
+                if let vc3 = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewController") as? HomeScreen_ViewController {
+                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                    appDelegate.window?.rootViewController!.present(vc3, animated: true, completion: nil)
+                }
+                
+                
+            }))
+            self.present(alert, animated: true, completion: nil)
+            */
+            
+            
+            
         }
         
     }
-    
-    
-    
     
     let datePicker = UIDatePicker()
     let datePickerEnd = UIDatePicker()
@@ -82,7 +99,6 @@ class MapsViewController: UIViewController, UITextFieldDelegate {
             textField.inputView = self.datePicker
             
             self.datePicker.addTarget(self, action: #selector(MapsViewController.datePickerValueChanged), for: UIControlEvents.valueChanged)
-            
         }
     }
     
@@ -137,7 +153,6 @@ class MapsViewController: UIViewController, UITextFieldDelegate {
         DataService.SendAvailabilities(strts: strts, ends: ends, meetingId: meetingId, loggedInUser: loggedInUser);
     }
     
-    
     func donePicker()
     {
         dateTextField.resignFirstResponder()
@@ -168,6 +183,7 @@ class MapsViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        durationTextField.keyboardType = UIKeyboardType.numberPad;
         dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMMM dd YYYY hh:mm a";
         resultsViewController = GMSAutocompleteResultsViewController()
@@ -187,33 +203,34 @@ class MapsViewController: UIViewController, UITextFieldDelegate {
         // this view controller, not one further up the chain.
         self.definesPresentationContext = true
     }
+    
 }
-
-// Handle the user's selection.
-extension MapsViewController: GMSAutocompleteResultsViewControllerDelegate {
-    func resultsController(_ resultsController: GMSAutocompleteResultsViewController,
-                           didAutocompleteWith place: GMSPlace) {
-        searchController?.isActive = false
-        // Do something with the selected place.
-        print("Place name: ", place.name)
-        print("Place address: ", place.formattedAddress)
-        print("Place attributions: ", place.attributions)
+    // Handle the user's selection.
+    extension MapsViewController: GMSAutocompleteResultsViewControllerDelegate {
+        func resultsController(_ resultsController: GMSAutocompleteResultsViewController,
+                               didAutocompleteWith place: GMSPlace) {
+            searchController?.isActive = false
+            // Do something with the selected place.
+            print("Place name: ", place.name)
+            print("Place address: ", place.formattedAddress)
+            print("Place attributions: ", place.attributions)
+            
+            locationLabel.text = place.formattedAddress
+        }
         
-        locationLabel.text = place.formattedAddress
+        func resultsController(_ resultsController: GMSAutocompleteResultsViewController,
+                               didFailAutocompleteWithError error: Error){
+            // TODO: handle the error.
+            print(error)
+        }
+        
+        // Turn the network activity indicator on and off again.
+        func didRequestAutocompletePredictionsForResultsController(resultsController: GMSAutocompleteResultsViewController) {
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        }
+        
+        func didUpdateAutocompletePredictionsForResultsController(resultsController: GMSAutocompleteResultsViewController) {
+            UIApplication.shared.isNetworkActivityIndicatorVisible = false
+        }
     }
-    
-    func resultsController(_ resultsController: GMSAutocompleteResultsViewController,
-                           didFailAutocompleteWithError error: Error){
-        // TODO: handle the error.
-        print(error)
-    }
-    
-    // Turn the network activity indicator on and off again.
-    func didRequestAutocompletePredictionsForResultsController(resultsController: GMSAutocompleteResultsViewController) {
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
-    }
-    
-    func didUpdateAutocompletePredictionsForResultsController(resultsController: GMSAutocompleteResultsViewController) {
-        UIApplication.shared.isNetworkActivityIndicatorVisible = false
-    }
-}
+
