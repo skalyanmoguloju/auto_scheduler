@@ -107,7 +107,7 @@
             startingLineNumber = "91"
             endingLineNumber = "91"
             landmarkName = "textFieldDidBeginEditing(_:)"
-            landmarkType = "9">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -123,7 +123,7 @@
             startingLineNumber = "93"
             endingLineNumber = "93"
             landmarkName = "textFieldDidBeginEditing(_:)"
-            landmarkType = "9">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -487,7 +487,7 @@
             startingLineNumber = "131"
             endingLineNumber = "131"
             landmarkName = "getFreeTime(meetingId:strtDate:endDate:)"
-            landmarkType = "9">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -503,7 +503,7 @@
             startingLineNumber = "157"
             endingLineNumber = "157"
             landmarkName = "donePicker()"
-            landmarkType = "9">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -519,7 +519,7 @@
             startingLineNumber = "173"
             endingLineNumber = "173"
             landmarkName = "datePickerValueChanged(sender:)"
-            landmarkType = "9">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -535,7 +535,7 @@
             startingLineNumber = "148"
             endingLineNumber = "148"
             landmarkName = "getFreeTime(meetingId:strtDate:endDate:)"
-            landmarkType = "9">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -551,7 +551,7 @@
             startingLineNumber = "158"
             endingLineNumber = "158"
             landmarkName = "donePicker()"
-            landmarkType = "9">
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -593,7 +593,7 @@
                   moduleName = "auto_scheduler"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/sai/Drive/UIowa/Fall%202016/IOS/autoScheduler_main/auto_scheduler/auto_scheduler/DataService.swift"
-                  timestampString = "502235296.740873"
+                  timestampString = "502236529.287369"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "17"
@@ -608,7 +608,7 @@
                   moduleName = "auto_scheduler"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/sai/Drive/UIowa/Fall%202016/IOS/autoScheduler_main/auto_scheduler/auto_scheduler/DataService.swift"
-                  timestampString = "502235296.74463"
+                  timestampString = "502236529.289862"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "17"
@@ -623,7 +623,7 @@
                   moduleName = "auto_scheduler"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/sai/Drive/UIowa/Fall%202016/IOS/autoScheduler_main/auto_scheduler/auto_scheduler/DataService.swift"
-                  timestampString = "502235296.748463"
+                  timestampString = "502236529.292337"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "17"
@@ -678,6 +678,100 @@
             startingLineNumber = "312"
             endingLineNumber = "312"
             landmarkName = "AddCallenderEvent(dStartTime:dEndTime:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "auto_scheduler/MapsViewController.swift"
+            timestampString = "502236481.020842"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "25"
+            endingLineNumber = "25"
+            landmarkName = "MapsViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "auto_scheduler.MapsViewController.durationTextField.getter : weak Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UITextField&gt;"
+                  moduleName = "auto_scheduler"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sai/Drive/UIowa/Fall%202016/IOS/autoScheduler_main/auto_scheduler/auto_scheduler/MapsViewController.swift"
+                  timestampString = "502236529.311253"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
+                  offsetFromSymbolStart = "40">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "auto_scheduler.MapsViewController.durationTextField.setter : weak Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UITextField&gt;"
+                  moduleName = "auto_scheduler"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sai/Drive/UIowa/Fall%202016/IOS/autoScheduler_main/auto_scheduler/auto_scheduler/MapsViewController.swift"
+                  timestampString = "502236529.313925"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
+                  offsetFromSymbolStart = "52">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "auto_scheduler.MapsViewController.init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; auto_scheduler.MapsViewController"
+                  moduleName = "auto_scheduler"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sai/Drive/UIowa/Fall%202016/IOS/autoScheduler_main/auto_scheduler/auto_scheduler/MapsViewController.swift"
+                  timestampString = "502236529.316496"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
+                  offsetFromSymbolStart = "576">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "auto_scheduler.MapsViewController.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;auto_scheduler.MapsViewController&gt;"
+                  moduleName = "auto_scheduler"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sai/Drive/UIowa/Fall%202016/IOS/autoScheduler_main/auto_scheduler/auto_scheduler/MapsViewController.swift"
+                  timestampString = "502236529.318979"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "25"
+                  endingLineNumber = "25"
+                  offsetFromSymbolStart = "520">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "auto_scheduler/MapsViewController.swift"
+            timestampString = "502236510.818178"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "schedule(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

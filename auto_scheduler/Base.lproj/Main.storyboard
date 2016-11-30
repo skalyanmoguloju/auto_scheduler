@@ -350,9 +350,18 @@
                                     <outlet property="delegate" destination="aLU-gn-33u" id="dWK-VK-PMn"/>
                                 </connections>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vmy-vw-fhp">
+                                <rect key="frame" x="118" y="603" width="158" height="47"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="schedule.png"/>
+                                <connections>
+                                    <action selector="schedule:" destination="aLU-gn-33u" eventType="touchUpInside" id="uWc-GM-hnC"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="Location" id="6Zc-CV-Vp5">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="yac-AH-H50">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="arw-DT-fbv">
@@ -364,17 +373,8 @@
                                 </connections>
                             </button>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="schedule.png" style="plain" id="dPH-iT-xxX">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="gPo-CZ-zhQ">
-                                <rect key="frame" x="304" y="2" width="90" height="40"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button" image="schedule.png"/>
-                            </button>
-                            <connections>
-                                <action selector="scheduleFinal:" destination="aLU-gn-33u" id="l4j-hT-fC5"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="dateTextEndField" destination="ODc-0X-b7F" id="mbH-aZ-8OC"/>
                         <outlet property="dateTextField" destination="KAe-XX-Oy0" id="ASN-Oa-s9A"/>
@@ -384,7 +384,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R2w-Aw-tjJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1210" y="-1824"/>
+            <point key="canvasLocation" x="1208.6956521739132" y="-1824.4565217391305"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gou-sW-WLp">
