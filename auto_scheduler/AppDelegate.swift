@@ -178,24 +178,50 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             break
         case "UpdatedSuggestedTimes":
             //var arrSuggDates:[]
-            var nMeetingId: Int = Int();
+            var nMeetingId: String = String();
             var sArrSug: String = String();
             for (key, value) in userInfo {
                 
                 if(key as! String == "meetingId"){
-                    nMeetingId  = Int(value as! String)!;
+                    nMeetingId  = value as! String;
                     let defaults = UserDefaults.standard;
                     defaults.set(nMeetingId, forKey: "suggestedTimes1MeetingId");
                 }
                 if(key as! String == "arrSuggestedTimes"){
-                    sArrSug  = value as! String;
-                    
+                    var sArrSug = value as! NSString;
+                    print(value)
+                    //print(abc);
                     let defaults = UserDefaults.standard;
                     defaults.set(sArrSug, forKey: "suggestedTimes");
+
+                    /*
+                    for obj in abc {
+                        print(type(of: obj));
+                        for (key, value) in obj {
+                            print(value)
+                            if let sStartTime = value as? String {
+                                print("--1-- \(sStartTime)");
+                                var dStartDate: Date = Date();
+                                dStartDate = convertStringToDate(sStringDate: sStartTime);
+                                print("--2- \(dStartDate)");
+                            }
+                        }
+                    }
+                    */
+                    /*
+                    var str  = String(describing: value as! NSDictionary);
                     
-                    let result = convertStringToDictionary(text: sArrSug);
+                    sArrSug = str.replacingOccurrences(of: "\n", with: "").replacingOccurrences(of: "  ", with: "").replacingOccurrences(of: "(", with: "").replacingOccurrences(of: ")", with: "");
                     
-                    for (key, value) in result! {
+                    print(sArrSug);
+                    
+                     */
+                    
+                    //let result = convertStringToDictionary(text: sArrSug);
+                    //print(result);
+                    /*
+                    for (key, value) in abc {
+                        print(value)
                         if let sStartTime = value as? String {
                             print("--1-- \(sStartTime)");
                             var dStartDate: Date = Date();
@@ -203,6 +229,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                             print("--2- \(dStartDate)");
                         }
                     }
+                    */
+                    /*
+                    let defaults = UserDefaults.standard;
+                    defaults.set(sArrSug, forKey: "suggestedTimes");
+                    */
+                    
                 }
             }
             break
@@ -211,6 +243,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 var nMeetingId: Int = Int();
                 var dStartDate: Date = Date();
                 var dEndDate: Date = Date();
+                print(userInfo);
+                print("Here we should add this to calendar");
+                /*
                 for (key, value) in userInfo {
                     if(key as! String == "meetingId"){
                         nMeetingId  = Int(value as! String)!;
@@ -228,6 +263,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         print("--2- \(dEndDate)");
                     }
                 }
+                */
                 break;
             
         default:

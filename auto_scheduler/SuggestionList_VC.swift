@@ -26,7 +26,6 @@ class SuggestionListController: UIViewController,  UITableViewDataSource, UITabl
         
         let defaults = UserDefaults.standard;
         let meetingId = defaults.value(forKey: "suggestedTimes1MeetingId") as! String
-        //let meetingId = "41";
         var loggedInUser = defaults.value(forKey: "loggedInUser") as! String;
         
         DataService.SetPriorities(nUserNumber: loggedInUser, nMeetingId: meetingId, arrStartDateFinal: startDateFinal, arrEndDateFinal: endDateFinal, arrRanks: ranks)

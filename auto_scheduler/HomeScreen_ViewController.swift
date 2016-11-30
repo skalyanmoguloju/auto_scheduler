@@ -84,8 +84,8 @@ class HomeScreen_ViewController: UIViewController, UICollectionViewDataSource, U
             }
             
             }.resume()
- */
-        
+ 
+        */
     }
     func checkCalendarAuthorizationStatus() {
         let status = EKEventStore.authorizationStatus(for: EKEntityType.event)
