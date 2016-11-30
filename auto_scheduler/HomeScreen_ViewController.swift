@@ -31,7 +31,7 @@ class HomeScreen_ViewController: UIViewController, UICollectionViewDataSource, U
         checkCalendarAuthorizationStatus()
         super.viewDidLoad()
         //var dStartDate: Date = Date();
-        //var dEndDate: Date = Date();
+        //var dEndDate: Date = Date().addingTimeInterval(3600);
         //HomeScreen_ViewController.AddCallenderEvent(dStartTime: dStartDate, dEndTime: dEndDate)
         mainView.layer.shadowOpacity = 1
         mainView.layer.shadowRadius = 10
@@ -291,45 +291,7 @@ class HomeScreen_ViewController: UIViewController, UICollectionViewDataSource, U
         
         
     }
-<<<<<<< HEAD
 
-    
-    
-    func createCallenderEvent()
-    {
-        let eventStore = EKEventStore();
-        
-        // Use Event Store to create a new calendar instance
-        if let calendarForEvent = eventStore.calendar(withIdentifier: (self.calendars?[0].calendarIdentifier)!)
-        {
-            let newEvent = EKEvent(eventStore: eventStore)
-            
-            newEvent.calendar = calendarForEvent
-            newEvent.title = "Testing Addition"
-            newEvent.startDate = Date()
-            newEvent.endDate = Date().addingTimeInterval(3600)
-            newEvent.location = "1100 Oakcrest St, Iowa City, IA, 52246"
-            // Save the event using the Event Store instance
-            do {
-                try eventStore.save(newEvent, span: .thisEvent, commit: true)
-                
-                self.dismiss(animated: true, completion: nil)
-            } catch {
-                let alert = UIAlertController(title: "Event could not save", message: (error as NSError).localizedDescription, preferredStyle: .alert)
-                let OKAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-                alert.addAction(OKAction)
-                
-                self.present(alert, animated: true, completion: nil)
-            }
-        }
-    }
-    
-    
-    
-    
-    
-=======
->>>>>>> master
     
     static func AddCallenderEvent(dStartTime :Date, dEndTime :Date)
     {
