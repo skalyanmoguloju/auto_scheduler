@@ -27,6 +27,9 @@ class HomeScreen_ViewController: UIViewController, UICollectionViewDataSource, U
     override func viewDidLoad() {
         checkCalendarAuthorizationStatus()
         super.viewDidLoad()
+        //var dStartDate: Date = Date();
+        //var dEndDate: Date = Date();
+        //HomeScreen_ViewController.AddCallenderEvent(dStartTime: dStartDate, dEndTime: dEndDate)
         mainView.layer.shadowOpacity = 1
         mainView.layer.shadowRadius = 10
         
@@ -283,5 +286,35 @@ class HomeScreen_ViewController: UIViewController, UICollectionViewDataSource, U
     //        meetingSelected = meeting2_detail
         
         
+    }
+    
+    static func AddCallenderEvent(dStartTime :Date, dEndTime :Date)
+    {
+        let eventStore = EKEventStore();
+        
+        // Use Event Store to create a new calendar instance
+        
+        var calendars: [EKCalendar]?
+        calendars = eventStore.calendars(for: EKEntityType.event)
+        if let calendarForEvent = eventStore.calendar(withIdentifier: (calendars?[0].calendarIdentifier)!)
+        {
+            let newEvent = EKEvent(eventStore: eventStore)
+            
+            newEvent.calendar = calendarForEvent
+            newEvent.title = "Testing Addition"
+            newEvent.startDate = dStartTime
+            newEvent.endDate = dEndTime
+            newEvent.location = "1100 Oakcrest St, Iowa City, IA, 52246"
+            // Save the event using the Event Store instance
+            do {
+                try eventStore.save(newEvent, span: .thisEvent, commit: true)
+                
+            } catch {
+                let alert = UIAlertController(title: "Event could not save", message: (error as NSError).localizedDescription, preferredStyle: .alert)
+                let OKAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alert.addAction(OKAction)
+                
+            }
+        }
     }
 }

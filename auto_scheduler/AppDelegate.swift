@@ -193,47 +193,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     //print(abc);
                     let defaults = UserDefaults.standard;
                     defaults.set(sArrSug, forKey: "suggestedTimes");
-
-                    /*
-                    for obj in abc {
-                        print(type(of: obj));
-                        for (key, value) in obj {
-                            print(value)
-                            if let sStartTime = value as? String {
-                                print("--1-- \(sStartTime)");
-                                var dStartDate: Date = Date();
-                                dStartDate = convertStringToDate(sStringDate: sStartTime);
-                                print("--2- \(dStartDate)");
-                            }
-                        }
-                    }
-                    */
-                    /*
-                    var str  = String(describing: value as! NSDictionary);
-                    
-                    sArrSug = str.replacingOccurrences(of: "\n", with: "").replacingOccurrences(of: "  ", with: "").replacingOccurrences(of: "(", with: "").replacingOccurrences(of: ")", with: "");
-                    
-                    print(sArrSug);
-                    
-                     */
-                    
-                    //let result = convertStringToDictionary(text: sArrSug);
-                    //print(result);
-                    /*
-                    for (key, value) in abc {
-                        print(value)
-                        if let sStartTime = value as? String {
-                            print("--1-- \(sStartTime)");
-                            var dStartDate: Date = Date();
-                            dStartDate = convertStringToDate(sStringDate: sStartTime);
-                            print("--2- \(dStartDate)");
-                        }
-                    }
-                    */
-                    /*
-                    let defaults = UserDefaults.standard;
-                    defaults.set(sArrSug, forKey: "suggestedTimes");
-                    */
                     
                 }
             }
@@ -245,7 +204,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 var dEndDate: Date = Date();
                 print(userInfo);
                 print("Here we should add this to calendar");
-                /*
                 for (key, value) in userInfo {
                     if(key as! String == "meetingId"){
                         nMeetingId  = Int(value as! String)!;
@@ -263,7 +221,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         print("--2- \(dEndDate)");
                     }
                 }
-                */
+                //HomeScreen_ViewController.AddCallenderEvent(dStartTime: dStartDate, dEndTime: dEndDate)
                 break;
             
         default:
