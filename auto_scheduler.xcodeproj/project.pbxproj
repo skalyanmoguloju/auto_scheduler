@@ -28,10 +28,10 @@
 		CC0E00751DD26AB60094336A /* MeetingInformationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0E00741DD26AB60094336A /* MeetingInformationVC.swift */; };
 		CC241D4B1DBF04B7007B9F6C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC241D4A1DBF04B7007B9F6C /* AppDelegate.swift */; };
 		CC241D4D1DBF04B7007B9F6C /* Contacts_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC241D4C1DBF04B7007B9F6C /* Contacts_ViewController.swift */; };
-		CC241D501DBF04B7007B9F6C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC241D4E1DBF04B7007B9F6C /* Main.storyboard */; };
 		CC241D521DBF04B7007B9F6C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC241D511DBF04B7007B9F6C /* Assets.xcassets */; };
 		CC241D551DBF04B7007B9F6C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC241D531DBF04B7007B9F6C /* LaunchScreen.storyboard */; };
 		CC798DB71DE68C25003490E3 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC798DB61DE68C25003490E3 /* DataService.swift */; };
+		CCE1801B1DEBF76B0008E904 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCE180191DEBF76B0008E904 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,12 +58,12 @@
 		CC241D471DBF04B7007B9F6C /* auto_scheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = auto_scheduler.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC241D4A1DBF04B7007B9F6C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CC241D4C1DBF04B7007B9F6C /* Contacts_ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contacts_ViewController.swift; sourceTree = "<group>"; };
-		CC241D4F1DBF04B7007B9F6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CC241D511DBF04B7007B9F6C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CC241D541DBF04B7007B9F6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CC241D561DBF04B7007B9F6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CC4A4E691DE3860500247E42 /* auto_scheduler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = auto_scheduler.entitlements; sourceTree = "<group>"; };
 		CC798DB61DE68C25003490E3 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		CCE1801A1DEBF76B0008E904 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D825E77895D71999A7D34585 /* Pods-auto_scheduler.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-auto_scheduler.release.xcconfig"; path = "Pods/Target Support Files/Pods-auto_scheduler/Pods-auto_scheduler.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -171,8 +171,8 @@
 				32B0BEA31DCAAF11006A2FD1 /* ViewControllers */,
 				324CCA6C1DC879690083D283 /* Supporting Files */,
 				CC241D4A1DBF04B7007B9F6C /* AppDelegate.swift */,
-				CC241D4E1DBF04B7007B9F6C /* Main.storyboard */,
 				CC241D511DBF04B7007B9F6C /* Assets.xcassets */,
+				CCE180191DEBF76B0008E904 /* Main.storyboard */,
 				CC241D531DBF04B7007B9F6C /* LaunchScreen.storyboard */,
 				CC241D561DBF04B7007B9F6C /* Info.plist */,
 			);
@@ -252,11 +252,11 @@
 				32B0BEA71DCAAFCE006A2FD1 /* menu.png in Resources */,
 				329104801DCA8E8F005C7F5B /* next.png in Resources */,
 				3291047F1DCA8E8F005C7F5B /* Back.png in Resources */,
+				CCE1801B1DEBF76B0008E904 /* Main.storyboard in Resources */,
 				CC241D551DBF04B7007B9F6C /* LaunchScreen.storyboard in Resources */,
 				329104821DCA91E8005C7F5B /* Bkgrnd.jpg in Resources */,
 				CC241D521DBF04B7007B9F6C /* Assets.xcassets in Resources */,
 				3291047C1DC9AC47005C7F5B /* ContactTableViewCell.xib in Resources */,
-				CC241D501DBF04B7007B9F6C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,20 +337,20 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		CC241D4E1DBF04B7007B9F6C /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CC241D4F1DBF04B7007B9F6C /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		CC241D531DBF04B7007B9F6C /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				CC241D541DBF04B7007B9F6C /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		CCE180191DEBF76B0008E904 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CCE1801A1DEBF76B0008E904 /* Base */,
+			);
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

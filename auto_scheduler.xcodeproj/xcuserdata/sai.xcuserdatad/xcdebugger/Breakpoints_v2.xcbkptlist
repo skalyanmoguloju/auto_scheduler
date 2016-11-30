@@ -758,8 +758,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "120"
             endingLineNumber = "120"
-            landmarkName = "enterPhoneNumber()"
-            landmarkType = "7">
+            landmarkName = "HomeScreen_ViewController"
+            landmarkType = "3">
             <Locations>
                <Location
                   shouldBeEnabled = "No"

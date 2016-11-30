@@ -694,8 +694,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "297"
             endingLineNumber = "297"
-            landmarkName = "createCallenderEvent()"
-            landmarkType = "7">
+            landmarkName = "HomeScreen_ViewController"
+            landmarkType = "3">
             <Locations>
                <Location
                   shouldBeEnabled = "Yes"
@@ -742,8 +742,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "299"
             endingLineNumber = "299"
-            landmarkName = "createCallenderEvent()"
-            landmarkType = "7">
+            landmarkName = "HomeScreen_ViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
