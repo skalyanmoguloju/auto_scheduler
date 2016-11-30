@@ -221,7 +221,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         print("--2- \(dEndDate)");
                     }
                 }
-                //HomeScreen_ViewController.AddCallenderEvent(dStartTime: dStartDate, dEndTime: dEndDate)
+                HomeScreen_ViewController.AddCallenderEvent(dStartTime: dStartDate, dEndTime: dEndDate)
                 break;
             
         default:

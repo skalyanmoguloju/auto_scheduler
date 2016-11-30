@@ -17,10 +17,13 @@ class HomeScreen_ViewController: UIViewController, UICollectionViewDataSource, U
     @IBOutlet weak var needPermissionView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
     
+    
+    
     var events_complete: [EKEvent] = []
     var calendars: [EKCalendar]?
     var Participant: [EKParticipant] = []
     let eventStore = EKEventStore();
+    var calendarnew: EKCalendar!
     
     let defaults = UserDefaults.standard;
     
@@ -28,10 +31,11 @@ class HomeScreen_ViewController: UIViewController, UICollectionViewDataSource, U
         checkCalendarAuthorizationStatus()
         super.viewDidLoad()
         //var dStartDate: Date = Date();
-        //var dEndDate: Date = Date();
+        //var dEndDate: Date = Date().addingTimeInterval(3600);
         //HomeScreen_ViewController.AddCallenderEvent(dStartTime: dStartDate, dEndTime: dEndDate)
         mainView.layer.shadowOpacity = 1
         mainView.layer.shadowRadius = 10
+        //createCallenderEvent()
         
         
 
@@ -287,6 +291,7 @@ class HomeScreen_ViewController: UIViewController, UICollectionViewDataSource, U
         
         
     }
+
     
     static func AddCallenderEvent(dStartTime :Date, dEndTime :Date)
     {
