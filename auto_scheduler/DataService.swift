@@ -96,7 +96,7 @@ class DataService {
         }
     }
     
-    static func InitiateMeeting(mapsInstance:  MapsViewController,  contacts: [String], loggedInUser: String, location: String, startTime: String, endTime: String, duration: String){
+    static func InitiateMeeting(mapsInstance:  MapsViewController,  contacts: [String], loggedInUser: String, location: String, startTime: String, endTime: String, duration: Double){
         do{
             var f = false
             var request = URLRequest(url: NSURL(string:  serviceURL + "initiatemeeting") as! URL)
@@ -119,7 +119,7 @@ class DataService {
                         print(parsedData);
                         //let meetingId = parsedData["insertedId"] as! NSArray;
                         
-                        MapsViewController.getFreeTime(meetingId: parsedData["insertedId"] as! Int, strtDate: mapsInstance.dateStart, endDate: mapsInstance.dateEnd);
+                        MapsViewController.getFreeTime(meetingId: parsedData["insertedId"] as! Int, strtDate: mapsInstance.dateStart, endDate: mapsInstance.dateEnd, duration: duration);
                     }
                     catch let error as NSError {
                         print(error)

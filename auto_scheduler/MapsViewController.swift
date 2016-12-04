@@ -2,7 +2,7 @@ import UIKit
 import GooglePlaces
 import EventKit
 
-class MapsViewController: UIViewController, UITextFieldDelegate {
+class MapsViewController: UIViewController, UITextFieldDelegate, UIPickerViewDataSource, UIPickerViewDelegate {
     
     var resultsViewController: GMSAutocompleteResultsViewController?
     var searchController: UISearchController?
@@ -26,6 +26,7 @@ class MapsViewController: UIViewController, UITextFieldDelegate {
     
     
     @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var textminutes: UITextField!
 
     @IBAction func schedule(_ sender: Any) {
         
@@ -45,30 +46,39 @@ class MapsViewController: UIViewController, UITextFieldDelegate {
                 contacts[i] = s;
             }
             
-            DataService.InitiateMeeting(mapsInstance: self, contacts: contacts, loggedInUser: loggedInUser, location: locationLabel.text!, startTime: dateTextField.text!, endTime: dateTextEndField.text!, duration: durationTextField.text!);
+            var duration = Double(durationTextField.text!)
             
-            /*
-            let alert = UIAlertController(title: "Enter your phone number", message: "10 digit phone number", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
-                 //let secondViewController:HomeScreen_ViewController = HomeScreen_ViewController()
-                 //self.present(secondViewController, animated: true, completion: nil)
-                
-                if let vc3 = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewController") as? HomeScreen_ViewController {
-                    let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                    appDelegate.window?.rootViewController!.present(vc3, animated: true, completion: nil)
-                }
-                
-                
-            }))
-            self.present(alert, animated: true, completion: nil)
-            */
+            if(textminutes.text == "00")
+            {
+                duration = duration! + 0
+            }
+            if(textminutes.text == "15")
+            {
+                duration = duration! + 0.25
+            }
+            if(textminutes.text == "30")
+            {
+                duration = duration! + 0.5
+            }
+            if(textminutes.text == "45")
+            {
+                duration = duration! + 0.75
+            }
             
+            DataService.InitiateMeeting(mapsInstance: self, contacts: contacts, loggedInUser: loggedInUser, location: locationLabel.text!, startTime: dateTextField.text!, endTime: dateTextEndField.text!, duration: duration!);
+            
+       
             
             
         }
         
     }
     
+    
+    let hoursPicker = UIPickerView()
+    var hData = ["0","1","2","3","4","5","6","7","8","9"]
+    let minPicker = UIPickerView()
+    var mData = ["00","15","30","45"]
     let datePicker = UIDatePicker()
     let datePickerEnd = UIDatePicker()
     func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -100,11 +110,58 @@ class MapsViewController: UIViewController, UITextFieldDelegate {
             
             self.datePicker.addTarget(self, action: #selector(MapsViewController.datePickerValueChanged), for: UIControlEvents.valueChanged)
         }
+        else if(textField.placeholder == "hh"){
+            
+            durationTextField.inputView = self.hoursPicker
+            
+        }
+        else if(textField.placeholder == "mm"){
+            
+            textminutes.inputView = self.minPicker
+            
+        }
     }
     
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
     
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        if(pickerView.tag == 1)
+        {
+            return hData.count
+        }
+        else
+        {
+            return mData.count
+        }
+    }
     
-    static func getFreeTime(meetingId: Int, strtDate: Date?, endDate: Date?)
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        if(pickerView.tag == 1)
+        {
+            durationTextField.text = hData[row]
+        }
+        else
+        {
+            textminutes.text = mData[row]
+        }
+    }
+    
+   
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        if(pickerView.tag == 1)
+        {
+            return hData[row]
+        }
+        else
+        {
+            return mData[row]
+        }
+        
+    }
+    
+    static func getFreeTime(meetingId: Int, strtDate: Date?, endDate: Date?, duration: Double)
     {
         let eventStore = EKEventStore();
         var oCalendars: [EKCalendar]?
@@ -119,7 +176,7 @@ class MapsViewController: UIViewController, UITextFieldDelegate {
         dDateFormatter.dateFormat = "HH";
         dDateFormatter1 = DateFormatter()
         dDateFormatter1.dateFormat = "MMMM dd YYYY hh:mm a";
-        let dates = 3600
+        let dates = duration*3600
         var f = true
         while(sDate!<endDate! )
         {
@@ -154,9 +211,11 @@ class MapsViewController: UIViewController, UITextFieldDelegate {
     }
     
     func donePicker()
-    {
+        {
         dateTextField.resignFirstResponder()
         dateTextEndField.resignFirstResponder()
+        durationTextField.resignFirstResponder()
+        textminutes.resignFirstResponder()
     }
     
     func datePickerValueChangedEnd(sender:UIDatePicker) {
@@ -183,7 +242,13 @@ class MapsViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        durationTextField.keyboardType = UIKeyboardType.numberPad;
+        hoursPicker.dataSource = self
+        hoursPicker.delegate = self
+        minPicker.dataSource = self
+        minPicker.delegate = self
+        hoursPicker.tag = 1
+        minPicker.tag = 2
+        //durationTextField.keyboardType = UIKeyboardType.numberPad;
         dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMMM dd YYYY hh:mm a";
         resultsViewController = GMSAutocompleteResultsViewController()
@@ -192,7 +257,7 @@ class MapsViewController: UIViewController, UITextFieldDelegate {
         searchController = UISearchController(searchResultsController: resultsViewController)
         searchController?.searchResultsUpdater = resultsViewController
         
-        let subView = UIView(frame: CGRect(x: 0, y: 63, width: 415, height: 300))
+        let subView = UIView(frame: CGRect(x: 100, y: 63, width: 315, height: 300))
         
         subView.addSubview((searchController?.searchBar)!)
         self.view.addSubview(subView)
