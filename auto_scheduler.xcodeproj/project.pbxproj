@@ -24,6 +24,7 @@
 		329104821DCA91E8005C7F5B /* Bkgrnd.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 329104811DCA91E8005C7F5B /* Bkgrnd.jpg */; };
 		32B0BEA51DCAAF30006A2FD1 /* HomeScreen_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32B0BEA41DCAAF30006A2FD1 /* HomeScreen_ViewController.swift */; };
 		32B0BEA71DCAAFCE006A2FD1 /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 32B0BEA61DCAAFCE006A2FD1 /* menu.png */; };
+		32B100551DEF81CB0051B63B /* schedule.png in Resources */ = {isa = PBXBuildFile; fileRef = 32B100541DEF81CB0051B63B /* schedule.png */; };
 		B47BF53DB67A6D965B24E0D8 /* libPods-auto_scheduler.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A5AF0AAF58F840143B8A9E48 /* libPods-auto_scheduler.a */; };
 		CC0E00751DD26AB60094336A /* MeetingInformationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0E00741DD26AB60094336A /* MeetingInformationVC.swift */; };
 		CC241D4B1DBF04B7007B9F6C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC241D4A1DBF04B7007B9F6C /* AppDelegate.swift */; };
@@ -53,6 +54,7 @@
 		329104811DCA91E8005C7F5B /* Bkgrnd.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Bkgrnd.jpg; path = Images/Bkgrnd.jpg; sourceTree = "<group>"; };
 		32B0BEA41DCAAF30006A2FD1 /* HomeScreen_ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeScreen_ViewController.swift; sourceTree = "<group>"; };
 		32B0BEA61DCAAFCE006A2FD1 /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = menu.png; path = Images/menu.png; sourceTree = "<group>"; };
+		32B100541DEF81CB0051B63B /* schedule.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = schedule.png; path = Images/schedule.png; sourceTree = "<group>"; };
 		A5AF0AAF58F840143B8A9E48 /* libPods-auto_scheduler.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-auto_scheduler.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC0E00741DD26AB60094336A /* MeetingInformationVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetingInformationVC.swift; sourceTree = "<group>"; };
 		CC241D471DBF04B7007B9F6C /* auto_scheduler.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = auto_scheduler.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -99,6 +101,7 @@
 		324CCA6C1DC879690083D283 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				32B100541DEF81CB0051B63B /* schedule.png */,
 				32B0BEA61DCAAFCE006A2FD1 /* menu.png */,
 				329104811DCA91E8005C7F5B /* Bkgrnd.jpg */,
 				3291047D1DCA8E8F005C7F5B /* Back.png */,
@@ -250,6 +253,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				32B0BEA71DCAAFCE006A2FD1 /* menu.png in Resources */,
+				32B100551DEF81CB0051B63B /* schedule.png in Resources */,
 				329104801DCA8E8F005C7F5B /* next.png in Resources */,
 				3291047F1DCA8E8F005C7F5B /* Back.png in Resources */,
 				CCE1801B1DEBF76B0008E904 /* Main.storyboard in Resources */,
