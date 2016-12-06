@@ -46,24 +46,27 @@ class SuggestionListController: UIViewController,  UITableViewDataSource, UITabl
         self.tableView.allowsMultipleSelection = true;
         super.viewDidLoad();
         let defaults = UserDefaults.standard;
-        userString = defaults.value(forKey: "suggestedTimes") as! String
-        userString = userString.substring(to: userString.index(before: userString.endIndex))
-        userString = userString.substring(to: userString.index(before: userString.endIndex))
-        let fullNameArr : [String] = userString.components(separatedBy: "},{")
-        let dDateFormatter2 = DateFormatter()
-        dDateFormatter2.dateFormat = "YYYY-MM-dd HH:mm";
-        for val in fullNameArr
+        if((defaults.object(forKey:  "suggestedTimes")) != nil)
         {
-            let n : [String] = val.components(separatedBy: ",")
-            let s1 = n[0].components(separatedBy: "\":\"")
+            userString = defaults.value(forKey: "suggestedTimes") as! String
+            userString = userString.substring(to: userString.index(before: userString.endIndex))
+            userString = userString.substring(to: userString.index(before: userString.endIndex))
+            let fullNameArr : [String] = userString.components(separatedBy: "},{")
+            let dDateFormatter2 = DateFormatter()
+            dDateFormatter2.dateFormat = "YYYY-MM-dd HH:mm";
+            for val in fullNameArr
+            {
+                let n : [String] = val.components(separatedBy: ",")
+                let s1 = n[0].components(separatedBy: "\":\"")
             
-            startDate.append(dDateFormatter2.date(from: s1[1].replacingOccurrences(of: "T", with: " ", options: .literal, range: nil).replacingOccurrences(of: ":00.000Z\"", with: "", options: .literal, range: nil))!)
+                startDate.append(dDateFormatter2.date(from: s1[1].replacingOccurrences(of: "T", with: " ", options: .literal, range: nil).replacingOccurrences(of: ":00.000Z\"", with: "", options: .literal, range: nil))!)
             
-            let e1 = n[1].components(separatedBy: "\":\"")
+                let e1 = n[1].components(separatedBy: "\":\"")
             
-            endDate.append(dDateFormatter2.date(from: e1[1].replacingOccurrences(of: "T", with: " ", options: .literal, range: nil).replacingOccurrences(of: ":00.000Z\"", with: "", options: .literal, range: nil))!)
+                endDate.append(dDateFormatter2.date(from: e1[1].replacingOccurrences(of: "T", with: " ", options: .literal, range: nil).replacingOccurrences(of: ":00.000Z\"", with: "", options: .literal, range: nil))!)
             
-            print("-------")
+                print("-------")
+            }
         }
         InitUI();
     }
