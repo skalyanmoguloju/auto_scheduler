@@ -184,22 +184,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             //var arrSuggDates:[]
             var nMeetingId: String = String();
             var sArrSug: String = String();
-            for (key, value) in userInfo {
-                
-                if(key as! String == "meetingId"){
-                    nMeetingId  = value as! String;
-                    let defaults = UserDefaults.standard;
-                    defaults.set(nMeetingId, forKey: "suggestedTimes1MeetingId");
-                }
-                if(key as! String == "arrSuggestedTimes"){
-                    var sArrSug = value as! NSString;
-                    print(value)
-                    //print(abc);
-                    let defaults = UserDefaults.standard;
-                    defaults.set(sArrSug, forKey: "suggestedTimes");
-                    
-                }
-            }
+//            for (key, value) in userInfo {
+//                
+//                if(key as! String == "meetingId"){
+//                    nMeetingId  = value as! String;
+//                    let defaults = UserDefaults.standard;
+//                    defaults.set(nMeetingId, forKey: "suggestedTimes1MeetingId");
+//                }
+//                if(key as! String == "arrSuggestedTimes"){
+//                    var sArrSug = value as! NSString;
+//                    print(value)
+//                    //print(abc);
+//                    let defaults = UserDefaults.standard;
+//                    defaults.set(sArrSug, forKey: "suggestedTimes");
+//                    
+//                }
+//            }
+            
             break
             
             case "FinalizedSuggestedTimes":

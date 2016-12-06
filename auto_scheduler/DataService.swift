@@ -14,7 +14,8 @@ class DataService {
     static var deviceid = "";
     //static let serviceURL = "http://172.17.36.224:3000/users/";
     
-    static let serviceURL = "https://arcane-bayou-92592.herokuapp.com/users/";
+    static let serviceURL = "http://192.168.0.103:3000/users/";
+    //static let serviceURL = "https://arcane-bayou-92592.herokuapp.com/users/";
     
     static func insert_user(number: String)
     {
@@ -53,6 +54,8 @@ class DataService {
     static func retrieveContacts(contacts: Contacts_ViewController, contactsList: String){
         do {
             var f = false
+            contacts.contacts_new.removeAll()
+            print(contactsList)
             var request = URLRequest(url: NSURL(string: serviceURL + "firstpost") as! URL)
             request.httpMethod = "POST"
             let array = ["username":contactsList]
@@ -198,4 +201,133 @@ class DataService {
             print(error)
         }
     }
+    
+    static func GetRequests(meetingRequests: meetingRequestVC, nUserNumber: String){
+        do {
+            var request = URLRequest(url: NSURL(string: serviceURL + "getRequests") as! URL)
+            request.httpMethod = "POST"
+            
+            var params = ["username":nUserNumber ] as Dictionary<String, String>
+            
+            request.httpBody = try JSONSerialization.data(withJSONObject: params, options: JSONSerialization.WritingOptions.prettyPrinted)
+            
+            
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.addValue("application/json", forHTTPHeaderField: "Accept")
+            
+            URLSession.shared.dataTask(with: request){ (data, response, error) in
+                if error != nil {
+                    print(error)
+                } else {
+                    do {
+                        let parsedData = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as! [String: AnyObject];
+                        print(parsedData)
+                        for object in parsedData["rows"] as! NSArray as! [Dictionary<String, AnyObject>] {
+                            print(object["meetingowner"]!)
+                            print(object["location"]!)
+                            meetingRequests.meetingInfoLst.append((object["meetingowner"]! as! String)+"||"+(object["location"]! as! String)+"||"+String(describing: object["meeting_Id"]!))
+                            
+                            meetingRequests.tableView.reloadData()
+
+                        }
+                        
+                        
+                        //contacts.currentConditions = parsedData["users"] as! NSArray
+                    }
+                    catch let error as NSError {
+                        print(error)
+                    }
+                }
+                }.resume()
+        }
+        catch let error as NSError {
+            print(error)
+        }
+    }
+    
+    
+    static func GetSuggestions(suggestionRequests: SuggestionListController, meetingId: String){
+        do {
+            var request = URLRequest(url: NSURL(string: serviceURL + "getSuggestions") as! URL)
+            request.httpMethod = "POST"
+            
+            var params = ["meetingid":meetingId ] as Dictionary<String, String>
+            
+            request.httpBody = try JSONSerialization.data(withJSONObject: params, options: JSONSerialization.WritingOptions.prettyPrinted)
+            
+            
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.addValue("application/json", forHTTPHeaderField: "Accept")
+            var duration = 0.0
+            URLSession.shared.dataTask(with: request){ (data, response, error) in
+                if error != nil {
+                    print(error)
+                } else {
+                    do {
+                        let parsedData = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as! [String: AnyObject];
+                        print(parsedData)
+                        let dDateFormatter2 = DateFormatter()
+                        for object in parsedData["rows"] as! NSArray as! [Dictionary<String, AnyObject>] {
+                            
+                            var dDate2: String = object["starttime"]! as! String;
+                            dDateFormatter2.dateFormat = "YYYY-MM-dd HH:mm";
+                            let strtTIme = dDate2.replacingOccurrences(of: "T", with: " ", options: .literal, range: nil).replacingOccurrences(of: ":00.000Z", with: "", options: .literal, range: nil)
+                            suggestionRequests.startDate.append(dDateFormatter2.date(from: strtTIme)!)
+                            dDate2 = object["endtime"]! as! String;
+                            
+                            dDateFormatter2.dateFormat = "YYYY-MM-dd HH:mm";
+                            var endTime = dDate2.replacingOccurrences(of: "T", with: " ", options: .literal, range: nil).replacingOccurrences(of: ":00.000Z", with: "", options: .literal, range: nil)
+                            
+                            duration = dDateFormatter2.date(from: endTime)!.timeIntervalSince(dDateFormatter2.date(from: strtTIme)!)
+                        }
+                        
+                        suggestionRequests.durationLabel.text = String(duration/3600) + " hrs"
+                        suggestionRequests.tableView.reloadData()
+                    }
+                    catch let error as NSError {
+                        print(error)
+                    }
+                }
+                }.resume()
+        }
+        catch let error as NSError {
+            print(error)
+        }
+    }
+    
+    static func RejectMeeting(nUserNumber: String,meetingId: String){
+        do {
+            var request = URLRequest(url: NSURL(string: serviceURL + "rejectMeeting") as! URL)
+            request.httpMethod = "POST"
+            
+            var params = ["meetingid":meetingId,"userid": nUserNumber ] as Dictionary<String, String>
+            
+            request.httpBody = try JSONSerialization.data(withJSONObject: params, options: JSONSerialization.WritingOptions.prettyPrinted)
+            
+            
+            request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+            request.addValue("application/json", forHTTPHeaderField: "Accept")
+            var duration = 0.0
+            URLSession.shared.dataTask(with: request){ (data, response, error) in
+                if error != nil {
+                    print(error)
+                } else {
+                    do {
+                        let parsedData = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as! [String: AnyObject];
+                        print(parsedData)
+                        
+                    }
+                    catch let error as NSError {
+                        print(error)
+                    }
+                }
+                }.resume()
+        }
+        catch let error as NSError {
+            print(error)
+        }
+    }
+    
+    
+
 }

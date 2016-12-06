@@ -31,7 +31,10 @@
 		CC241D4D1DBF04B7007B9F6C /* Contacts_ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC241D4C1DBF04B7007B9F6C /* Contacts_ViewController.swift */; };
 		CC241D521DBF04B7007B9F6C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC241D511DBF04B7007B9F6C /* Assets.xcassets */; };
 		CC241D551DBF04B7007B9F6C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC241D531DBF04B7007B9F6C /* LaunchScreen.storyboard */; };
+		CC797E7E1DF6A26100CDE212 /* MeetingViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC797E7D1DF6A26100CDE212 /* MeetingViewCell.swift */; };
+		CC797E801DF6ADE300CDE212 /* SuggestionsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC797E7F1DF6ADE300CDE212 /* SuggestionsViewCell.swift */; };
 		CC798DB71DE68C25003490E3 /* DataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC798DB61DE68C25003490E3 /* DataService.swift */; };
+		CCA237361DF6731A008C2A7B /* meetingRequestVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA237351DF6731A008C2A7B /* meetingRequestVC.swift */; };
 		CCE1801B1DEBF76B0008E904 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCE180191DEBF76B0008E904 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -64,7 +67,10 @@
 		CC241D541DBF04B7007B9F6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CC241D561DBF04B7007B9F6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CC4A4E691DE3860500247E42 /* auto_scheduler.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = auto_scheduler.entitlements; sourceTree = "<group>"; };
+		CC797E7D1DF6A26100CDE212 /* MeetingViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeetingViewCell.swift; sourceTree = "<group>"; };
+		CC797E7F1DF6ADE300CDE212 /* SuggestionsViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestionsViewCell.swift; sourceTree = "<group>"; };
 		CC798DB61DE68C25003490E3 /* DataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataService.swift; sourceTree = "<group>"; };
+		CCA237351DF6731A008C2A7B /* meetingRequestVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = meetingRequestVC.swift; sourceTree = "<group>"; };
 		CCE1801A1DEBF76B0008E904 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D825E77895D71999A7D34585 /* Pods-auto_scheduler.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-auto_scheduler.release.xcconfig"; path = "Pods/Target Support Files/Pods-auto_scheduler/Pods-auto_scheduler.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -127,6 +133,8 @@
 				3291047B1DC9AC47005C7F5B /* ContactTableViewCell.xib */,
 				329104771DC9883C005C7F5B /* ContactEntry.swift */,
 				3269BCEB1DCD9EC600E2BF7C /* UIViewExtensions.swift */,
+				CC797E7D1DF6A26100CDE212 /* MeetingViewCell.swift */,
+				CC797E7F1DF6ADE300CDE212 /* SuggestionsViewCell.swift */,
 			);
 			name = SupportingSwift;
 			sourceTree = "<group>";
@@ -140,6 +148,7 @@
 				32B0BEA41DCAAF30006A2FD1 /* HomeScreen_ViewController.swift */,
 				3269BCF01DCE41D900E2BF7C /* MapsViewController.swift */,
 				CC798DB61DE68C25003490E3 /* DataService.swift */,
+				CCA237351DF6731A008C2A7B /* meetingRequestVC.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -322,8 +331,11 @@
 				324209811DD19265008F78A3 /* CollectionViewCell.swift in Sources */,
 				32456C471DDAEEC6008E2085 /* RadioButtons_Manager.swift in Sources */,
 				3269BCF11DCE41D900E2BF7C /* MapsViewController.swift in Sources */,
+				CC797E801DF6ADE300CDE212 /* SuggestionsViewCell.swift in Sources */,
 				32B0BEA51DCAAF30006A2FD1 /* HomeScreen_ViewController.swift in Sources */,
 				CC241D4D1DBF04B7007B9F6C /* Contacts_ViewController.swift in Sources */,
+				CCA237361DF6731A008C2A7B /* meetingRequestVC.swift in Sources */,
+				CC797E7E1DF6A26100CDE212 /* MeetingViewCell.swift in Sources */,
 				32456C451DDAEEC6008E2085 /* MeetingRequest_VC.swift in Sources */,
 				3291047A1DC9892F005C7F5B /* ContactTableViewCell.swift in Sources */,
 				CC798DB71DE68C25003490E3 /* DataService.swift in Sources */,
