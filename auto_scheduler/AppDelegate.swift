@@ -146,6 +146,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             var nMeetingId: Int = Int();
             var dStartDate: Date = Date();
             var dEndDate: Date = Date();
+            var dDuration: Double = 0;
             for (key, value) in userInfo {
                 print(dEndDate)
                 if(key as! String == "meetingId"){
@@ -172,8 +173,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     dEndDate = dDateFormatter.date(from: dDate)!
                     print(dEndDate)
                 }
+                if(key as! String == "dDuration"){
+                    dDuration = value as! Double
+                }
             }
-            MapsViewController.getFreeTime(meetingId: nMeetingId, strtDate: dStartDate, endDate: dEndDate);
+            MapsViewController.getFreeTime(meetingId: nMeetingId, strtDate: dStartDate, endDate: dEndDate, duration: dDuration);
             print("ACTION HERE");
             break
         case "UpdatedSuggestedTimes":
