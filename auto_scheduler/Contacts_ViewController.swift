@@ -55,7 +55,7 @@ class Contacts_ViewController: UIViewController, UITableViewDelegate, UITableVie
         tableView.isHidden = true
         //noContactsLabel.isHidden = false
         //noContactsLabel.text = "Retrieving contacts..."
-        addDummyData()
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -114,10 +114,12 @@ class Contacts_ViewController: UIViewController, UITableViewDelegate, UITableVie
                             s = try s!.replacingOccurrences(of:
                                 "\\D", with: "", options: .regularExpression,
                                        range: s!.startIndex..<s!.endIndex);
-                        
-                             s = try s!.substring(from:s!.index(s!.endIndex, offsetBy: -10));
-                             self.totalContacts.append(s!)
-                             contacts.append(contact)
+                             if((s?.characters.count)!>=10)
+                             {
+                                s = try s!.substring(from:s!.index(s!.endIndex, offsetBy: -10));
+                                self.totalContacts.append(s!)
+                                contacts.append(contact)
+                            }
                         }
                         catch
                         {
