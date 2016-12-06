@@ -99,6 +99,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var token: String = ""
         for i in 0..<deviceToken.count {
             token += String(format: "%02.2hhx", deviceToken[i] as CVarArg)
+        
         }
         
         print(deviceToken)
