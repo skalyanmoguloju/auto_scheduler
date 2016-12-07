@@ -314,6 +314,8 @@ class HomeScreen_ViewController: UIViewController, UICollectionViewDataSource, U
             do {
                 try eventStore.save(newEvent, span: .thisEvent, commit: true)
                 check = false
+                var c = HomeScreen_ViewController();
+                c.checkCalendarAuthorizationStatus();
                 break
                 
             } catch {

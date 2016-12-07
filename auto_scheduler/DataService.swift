@@ -14,8 +14,8 @@ class DataService {
     static var deviceid = "";
     //static let serviceURL = "http://172.17.36.224:3000/users/";
     
-    static let serviceURL = "http://192.168.0.27:3000/users/";
-    //static let serviceURL = "https://arcane-bayou-92592.herokuapp.com/users/";
+    //static let serviceURL = "http://192.168.0.27:3000/users/";
+    static let serviceURL = "https://arcane-bayou-92592.herokuapp.com/users/";
     
     static func insert_user(number: String)
     {
@@ -123,6 +123,7 @@ class DataService {
                         //let meetingId = parsedData["insertedId"] as! NSArray;
                         
                         MapsViewController.getFreeTime(meetingId: parsedData["insertedId"] as! Int, strtDate: mapsInstance.dateStart, endDate: mapsInstance.dateEnd, duration: duration);
+                        mapsInstance.onIntiatiateMeetingComplete()
                     }
                     catch let error as NSError {
                         print(error)
@@ -169,7 +170,7 @@ class DataService {
         
     }
     
-    static func SetPriorities(nUserNumber: String, nMeetingId: String, arrStartDateFinal: [Date], arrEndDateFinal: [Date], arrRanks: [Int])
+    static func SetPriorities(Slvc: SuggestionListController, nUserNumber: String, nMeetingId: String, arrStartDateFinal: [Date], arrEndDateFinal: [Date], arrRanks: [Int])
     {
         
         
@@ -193,6 +194,8 @@ class DataService {
                     print(error)
                 } else {
                     // do nothing
+                    Slvc.onSetPrioritiesComplete()
+                    
                 }
                 }.resume()
             
@@ -303,7 +306,7 @@ class DataService {
         }
     }
     
-    static func RejectMeeting(nUserNumber: String,meetingId: String){
+    static func RejectMeeting(Slvc: SuggestionListController ,nUserNumber: String,meetingId: String){
         do {
             var request = URLRequest(url: NSURL(string: serviceURL + "rejectMeeting") as! URL)
             request.httpMethod = "POST"
@@ -323,6 +326,7 @@ class DataService {
                     do {
                         let parsedData = try JSONSerialization.jsonObject(with: data!, options: .mutableContainers) as! [String: AnyObject];
                         print(parsedData)
+                        Slvc.onMeetingRejectedComplete()
                         
                     }
                     catch let error as NSError {

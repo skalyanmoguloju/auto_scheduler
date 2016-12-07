@@ -20,7 +20,6 @@ class SuggestionListController: UIViewController,  UITableViewDataSource, UITabl
     var ranks = [Int]()
 
     @IBAction func dismiss(_ sender: Any) {
-        
         dismiss(animated: false, completion: nil)
     }
     @IBAction func rejectMeeting(_ sender: UIButton) {
@@ -28,7 +27,7 @@ class SuggestionListController: UIViewController,  UITableViewDataSource, UITabl
         let meetingId = defaults.value(forKey: "suggestedMeetingId") as! String
         var loggedInUser = defaults.value(forKey: "loggedInUser") as! String;
         
-        DataService.RejectMeeting(nUserNumber: loggedInUser,meetingId: meetingId);
+        DataService.RejectMeeting(Slvc: self, nUserNumber: loggedInUser,meetingId: meetingId);
     }
     @IBOutlet weak var durationLabel: UILabel!
     @IBAction func submitPref(_ sender: Any) {
@@ -39,9 +38,26 @@ class SuggestionListController: UIViewController,  UITableViewDataSource, UITabl
         let meetingId = defaults.value(forKey: "suggestedMeetingId") as! String
         var loggedInUser = defaults.value(forKey: "loggedInUser") as! String;
         
-        DataService.SetPriorities(nUserNumber: loggedInUser, nMeetingId: meetingId, arrStartDateFinal: startDateFinal, arrEndDateFinal: endDateFinal, arrRanks: ranks)
+        DataService.SetPriorities(Slvc: self, nUserNumber: loggedInUser, nMeetingId: meetingId, arrStartDateFinal: startDateFinal, arrEndDateFinal: endDateFinal, arrRanks: ranks)
         
     }
+    
+    func onSetPrioritiesComplete(){
+        let alert = UIAlertController(title: "Alert", message: "Your priorities added succesfully.", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
+            self.performSegue(withIdentifier: "prioritiesBack2Home", sender: self)
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func onMeetingRejectedComplete(){
+        let alert = UIAlertController(title: "Alert", message: "Meeting rejected succesfully.", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
+            self.performSegue(withIdentifier: "prioritiesBack2Home", sender: self)
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+
     @IBOutlet weak var tableView: UITableView!
  //   var arrButtons = [UIButton]()
     
