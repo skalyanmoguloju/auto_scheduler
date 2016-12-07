@@ -295,17 +295,17 @@ class HomeScreen_ViewController: UIViewController, UICollectionViewDataSource, U
     
     static func AddCallenderEvent(dStartTime :Date, dEndTime :Date)
     {
+        var check = true
         let eventStore = EKEventStore();
         
         // Use Event Store to create a new calendar instance
         
         var calendars: [EKCalendar]?
         calendars = eventStore.calendars(for: EKEntityType.event)
-        if let calendarForEvent = eventStore.calendar(withIdentifier: (calendars?[0].calendarIdentifier)!)
-        {
+        for calendar in calendars!{
             let newEvent = EKEvent(eventStore: eventStore)
             
-            newEvent.calendar = calendarForEvent
+            newEvent.calendar = calendar
             newEvent.title = "Testing Addition"
             newEvent.startDate = dStartTime
             newEvent.endDate = dEndTime
@@ -313,13 +313,18 @@ class HomeScreen_ViewController: UIViewController, UICollectionViewDataSource, U
             // Save the event using the Event Store instance
             do {
                 try eventStore.save(newEvent, span: .thisEvent, commit: true)
+                check = false
+                break
                 
             } catch {
-                let alert = UIAlertController(title: "Event could not save", message: (error as NSError).localizedDescription, preferredStyle: .alert)
-                let OKAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-                alert.addAction(OKAction)
+                
+                
+            }
+            if(check){
                 
             }
         }
     }
+    
 }
+

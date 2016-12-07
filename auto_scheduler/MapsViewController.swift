@@ -175,35 +175,38 @@ class MapsViewController: UIViewController, UITextFieldDelegate, UIPickerViewDat
         dDateFormatter = DateFormatter()
         dDateFormatter.dateFormat = "HH";
         dDateFormatter1 = DateFormatter()
-        dDateFormatter1.dateFormat = "MMMM dd YYYY hh:mm a";
+        dDateFormatter1.dateFormat = "YYYY-MM-dd HH:mm";
         let dates = duration*3600
         var f = true
-        while(sDate!<endDate! )
+        while(sDate!<endDate!.addingTimeInterval(-dates) )
         {
-            
+            print(sDate)
+            print(Int(dDateFormatter.string(from: sDate!)))
+            print(Int(dDateFormatter.string(from: sDate!+TimeInterval(dates))))
             for calendar in oCalendars!
             {
                 let predicate = eventStore.predicateForEvents(withStart: sDate! as Date, end: (sDate! as Date)+TimeInterval(dates), calendars: [calendar])
                 
                 let events = eventStore.events(matching: predicate)
                 
-                if(events.count == 0 && Int(dDateFormatter.string(from: sDate!))! >= 7 && Int(dDateFormatter.string(from: sDate!+TimeInterval(dates)))! <= 21)
+                if(events.count == 0 && Int(dDateFormatter.string(from: sDate!))! >= 7 && Int(dDateFormatter.string(from: sDate!+TimeInterval(dates)))! <= 21 && Int(dDateFormatter.string(from: sDate!))! < Int(dDateFormatter.string(from: sDate!+TimeInterval(dates)))!)
                 {
                     
                 }
                 else{
                     f = false
-                    break
+                    break;
                 }
                 
             }
             if(f)
             {
+                print("added")
                 strts.append(dDateFormatter1.string(from: sDate!))
                 ends.append(dDateFormatter1.string(from: sDate!+TimeInterval(dates)))
             }
             f = true;
-            sDate = sDate?.addingTimeInterval(TimeInterval(dates));
+            sDate = sDate?.addingTimeInterval(TimeInterval(3600));
         }
         let userDefaults = UserDefaults.standard;
         var loggedInUser = userDefaults.value(forKey: "loggedInUser") as! String;
