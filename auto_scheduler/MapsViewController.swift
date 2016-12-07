@@ -28,7 +28,7 @@ class MapsViewController: UIViewController, UITextFieldDelegate, UIPickerViewDat
     
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var textminutes: UITextField!
-
+    
     @IBAction func schedule(_ sender: Any) {
         
         if var contacts =  defaults.stringArray(forKey: "participants")
@@ -68,12 +68,20 @@ class MapsViewController: UIViewController, UITextFieldDelegate, UIPickerViewDat
             
             DataService.InitiateMeeting(mapsInstance: self, contacts: contacts, loggedInUser: loggedInUser, location: locationLabel.text!, startTime: dateTextField.text!, endTime: dateTextEndField.text!, duration: duration!, title: titleEditor.text!);
             
-       
-            
             
         }
         
     }
+    
+    func onIntiatiateMeetingComplete(){
+        let alert = UIAlertController(title: "Alert", message: "Meeting has been scheduled succesfully", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
+            self.performSegue(withIdentifier: "back2Home", sender: self)
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    
     
     let hoursPicker = UIPickerView()
     var hData = ["0","1","2","3","4","5","6","7","8","9"]
@@ -148,7 +156,7 @@ class MapsViewController: UIViewController, UITextFieldDelegate, UIPickerViewDat
         }
     }
     
-   
+    
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         if(pickerView.tag == 1)
         {
@@ -214,7 +222,7 @@ class MapsViewController: UIViewController, UITextFieldDelegate, UIPickerViewDat
     }
     
     func donePicker()
-        {
+    {
         dateTextField.resignFirstResponder()
         dateTextEndField.resignFirstResponder()
         durationTextField.resignFirstResponder()
@@ -274,32 +282,32 @@ class MapsViewController: UIViewController, UITextFieldDelegate, UIPickerViewDat
     }
     
 }
-    // Handle the user's selection.
-    extension MapsViewController: GMSAutocompleteResultsViewControllerDelegate {
-        func resultsController(_ resultsController: GMSAutocompleteResultsViewController,
-                               didAutocompleteWith place: GMSPlace) {
-            searchController?.isActive = false
-            // Do something with the selected place.
-            print("Place name: ", place.name)
-            print("Place address: ", place.formattedAddress)
-            print("Place attributions: ", place.attributions)
-            
-            locationLabel.text = place.formattedAddress
-        }
+// Handle the user's selection.
+extension MapsViewController: GMSAutocompleteResultsViewControllerDelegate {
+    func resultsController(_ resultsController: GMSAutocompleteResultsViewController,
+                           didAutocompleteWith place: GMSPlace) {
+        searchController?.isActive = false
+        // Do something with the selected place.
+        print("Place name: ", place.name)
+        print("Place address: ", place.formattedAddress)
+        print("Place attributions: ", place.attributions)
         
-        func resultsController(_ resultsController: GMSAutocompleteResultsViewController,
-                               didFailAutocompleteWithError error: Error){
-            // TODO: handle the error.
-            print(error)
-        }
-        
-        // Turn the network activity indicator on and off again.
-        func didRequestAutocompletePredictionsForResultsController(resultsController: GMSAutocompleteResultsViewController) {
-            UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        }
-        
-        func didUpdateAutocompletePredictionsForResultsController(resultsController: GMSAutocompleteResultsViewController) {
-            UIApplication.shared.isNetworkActivityIndicatorVisible = false
-        }
+        locationLabel.text = place.formattedAddress
     }
+    
+    func resultsController(_ resultsController: GMSAutocompleteResultsViewController,
+                           didFailAutocompleteWithError error: Error){
+        // TODO: handle the error.
+        print(error)
+    }
+    
+    // Turn the network activity indicator on and off again.
+    func didRequestAutocompletePredictionsForResultsController(resultsController: GMSAutocompleteResultsViewController) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+    }
+    
+    func didUpdateAutocompletePredictionsForResultsController(resultsController: GMSAutocompleteResultsViewController) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+    }
+}
 

@@ -406,6 +406,7 @@
                         <outlet property="locationLabel" destination="6g2-uI-FxR" id="WQP-dy-mVh"/>
                         <outlet property="textminutes" destination="qJk-J5-l1K" id="vFQ-97-kZp"/>
                         <outlet property="titleEditor" destination="1cS-ev-Ew2" id="5rM-6w-NJZ"/>
+                        <segue destination="osB-lt-04J" kind="show" identifier="back2Home" id="Ys6-jn-Yhr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="R2w-Aw-tjJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -473,6 +474,7 @@
                                 <state key="normal" title="Button" image="Back.png"/>
                                 <connections>
                                     <action selector="backButton:" destination="aLU-gn-33u" eventType="touchUpInside" id="hFU-ZA-JnT"/>
+                                    <action selector="dismiss:" destination="4XE-px-fb8" eventType="touchUpInside" id="ISr-vK-bPv"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="P72-gM-HJl">
@@ -692,6 +694,7 @@
                     <nil name="viewControllers"/>
                     <connections>
                         <segue destination="4XE-px-fb8" kind="relationship" relationship="rootViewController" id="iik-4b-jRf"/>
+                        <segue destination="osB-lt-04J" kind="show" identifier="prioritiesBack2Home" id="YUq-gM-jW9"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5xS-fl-2dh" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -818,6 +821,7 @@
         <image name="schedule.png" width="640" height="169"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="lW4-m6-1Vh"/>
+        <segue reference="k3w-8m-HVF"/>
+        <segue reference="YUq-gM-jW9"/>
     </inferredMetricsTieBreakers>
 </document>

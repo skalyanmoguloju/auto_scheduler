@@ -107,6 +107,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //print("Token: ", token)
     }
     
+    func setPrioritiesUpdated(){
+        let alert = UIAlertController(title: "Alert", message: "Meeting has been scheduled succesfully", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+    }
+    
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
         print("Failed to register:", error)
     }
@@ -188,6 +193,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             print("ACTION HERE");
             break
         case "UpdatedSuggestedTimes":
+            setPrioritiesUpdated();
+            
             //var arrSuggDates:[]
             var nMeetingId: String = String();
             var sArrSug: String = String();
@@ -207,6 +214,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //                    
 //                }
 //            }
+            
             
             break
             
