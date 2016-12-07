@@ -270,15 +270,23 @@ class DataService {
                         for object in parsedData["rows"] as! NSArray as! [Dictionary<String, AnyObject>] {
                             
                             var dDate2: String = object["starttime"]! as! String;
-                            dDateFormatter2.dateFormat = "YYYY-MM-dd HH:mm";
-                            let strtTIme = dDate2.replacingOccurrences(of: "T", with: " ", options: .literal, range: nil).replacingOccurrences(of: ":00.000Z", with: "", options: .literal, range: nil)
+                            dDateFormatter2.dateFormat = "YYYY-MM-dd HH:mm:ss";
+                            
+                            dDateFormatter2.timeZone = NSTimeZone(name: "UTC") as TimeZone!
+                            let strtTIme = dDate2.replacingOccurrences(of: "", with: "", options: .literal, range: nil).replacingOccurrences(of: ".000Z", with: "", options: .literal, range: nil)
                             suggestionRequests.startDate.append(dDateFormatter2.date(from: strtTIme)!)
                             dDate2 = object["endtime"]! as! String;
                             
-                            dDateFormatter2.dateFormat = "YYYY-MM-dd HH:mm";
-                            var endTime = dDate2.replacingOccurrences(of: "T", with: " ", options: .literal, range: nil).replacingOccurrences(of: ":00.000Z", with: "", options: .literal, range: nil)
+                            dDateFormatter2.dateFormat = "YYYY-MM-dd HH:mm:ss";
+                            
+                            dDateFormatter2.timeZone = NSTimeZone(name: "UTC") as TimeZone!
+
+                            
+                            var endTime = dDate2.replacingOccurrences(of: "T", with: " ", options: .literal, range: nil).replacingOccurrences(of: ".000Z", with: "", options: .literal, range: nil)
                             
                             duration = dDateFormatter2.date(from: endTime)!.timeIntervalSince(dDateFormatter2.date(from: strtTIme)!)
+                            
+                            suggestionRequests.endDate.append(dDateFormatter2.date(from: endTime)!)
                         }
                         
                         suggestionRequests.durationLabel.text = String(duration/3600) + " hrs"

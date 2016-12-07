@@ -99,7 +99,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var token: String = ""
         for i in 0..<deviceToken.count {
             token += String(format: "%02.2hhx", deviceToken[i] as CVarArg)
-        
         }
         
         print(deviceToken)
@@ -160,7 +159,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     print(value);
                     let dDate2: String = value as! String;
                     print(dDate2);
-                    dStartDate = dDateFormatter2.date(from: dDate2)!
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "YYYY-MM-dd HH:mm"
+                    dateFormatter.timeZone = NSTimeZone(name: "UTC") as TimeZone!
+                    dStartDate = dateFormatter.date(from: dDate2)!
                     print(dStartDate)
                 }
                 if(key as! String == "dEndDate"){
@@ -171,9 +173,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     print(value);
                     let dDate: String = value as! String;
                     print(dDate);
-                    dEndDate = dDateFormatter.date(from: dDate)!
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "YYYY-MM-dd HH:mm"
+                    dateFormatter.timeZone = NSTimeZone(name: "UTC") as TimeZone!
+                    dEndDate = dateFormatter.date(from: dDate)!
                     print(dEndDate)
-                }
+                                    }
                 if(key as! String == "dDuration"){
                     dDuration = value as! Double
                 }
@@ -217,13 +222,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     if(key as! String == "dStartTime"){
                         var sDate  = value as! String;
                         print("--1-- \(dStartDate)");
-                        dStartDate = convertStringToDate(sStringDate: sDate);
+                        let dDateFormatter2 = DateFormatter()
+                        dDateFormatter2.dateFormat = "YYYY-MM-dd HH:mm:ss";
+                        
+                        dDateFormatter2.timeZone = NSTimeZone(name: "UTC") as TimeZone!
+                        
+                        
+                        var sDate1 = sDate.replacingOccurrences(of: "T", with: " ", options: .literal, range: nil).replacingOccurrences(of: " +0000", with: "", options: .literal, range: nil)
+                        dStartDate = dDateFormatter2.date(from: sDate1)!
                         print("--2- \(dStartDate)");
                     }
                     if(key as! String == "dEndTime"){
                         var sDate  = value as! String;
-                        print("--1-- \(dStartDate)");
-                        dEndDate = convertStringToDate(sStringDate: sDate);
+                        let dDateFormatter2 = DateFormatter()
+                        dDateFormatter2.dateFormat = "YYYY-MM-dd HH:mm:ss";
+                        
+                        dDateFormatter2.timeZone = NSTimeZone(name: "UTC") as TimeZone!
+                        
+                        
+                        var sDate1 = sDate.replacingOccurrences(of: "T", with: " ", options: .literal, range: nil).replacingOccurrences(of: " +0000", with: "", options: .literal, range: nil)
+                        dEndDate = dDateFormatter2.date(from: sDate1)!
                         print("--2- \(dEndDate)");
                     }
                 }

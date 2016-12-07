@@ -87,6 +87,7 @@ class SuggestionListController: UIViewController,  UITableViewDataSource, UITabl
         
         Selected.append(String(describing: startDate[indexPath[1]]))
         startDateFinal.append(startDate[(indexPath as NSIndexPath).row])
+        endDateFinal.append(endDate[(indexPath as NSIndexPath).row])
         
         if(Selected.count == 1)
         {
