@@ -99,13 +99,13 @@ class DataService {
         }
     }
     
-    static func InitiateMeeting(mapsInstance:  MapsViewController,  contacts: [String], loggedInUser: String, location: String, startTime: String, endTime: String, duration: Double){
+    static func InitiateMeeting(mapsInstance:  MapsViewController,  contacts: [String], loggedInUser: String, location: String, startTime: String, endTime: String, duration: Double, title: String){
         do{
             var f = false
             var request = URLRequest(url: NSURL(string:  serviceURL + "initiatemeeting") as! URL)
             request.httpMethod = "POST";
             
-            let array = ["owner": loggedInUser, "participants":contacts, "location": location, "starttime" : startTime, "endtime": endTime, "duration":duration] as [String : Any]
+            let array = ["owner": loggedInUser, "participants":contacts, "location": location, "starttime" : startTime, "endtime": endTime, "duration":duration,"title": title] as [String : Any]
             request.httpBody = try JSONSerialization.data(withJSONObject: array, options: JSONSerialization.WritingOptions.prettyPrinted);
             
             request.addValue("application/json", forHTTPHeaderField: "Content-Type");
@@ -225,7 +225,7 @@ class DataService {
                         for object in parsedData["rows"] as! NSArray as! [Dictionary<String, AnyObject>] {
                             print(object["meetingowner"]!)
                             print(object["location"]!)
-                            meetingRequests.meetingInfoLst.append((object["meetingowner"]! as! String)+"||"+(object["location"]! as! String)+"||"+String(describing: object["meeting_Id"]!))
+                            meetingRequests.meetingInfoLst.append((object["meetingowner"]! as! String)+"||"+(object["location"]! as! String)+"||"+String(describing: object["meeting_Id"]!)+"||"+String(describing: object["title"]!))
                             
                             meetingRequests.tableView.reloadData()
 

@@ -16,6 +16,7 @@ class MapsViewController: UIViewController, UITextFieldDelegate, UIPickerViewDat
         dismiss(animated: false, completion: nil)
     }
     
+    @IBOutlet weak var titleEditor: UITextField!
     @IBOutlet weak var dateTextField: UITextField!
     @IBOutlet weak var dateTextEndField: UITextField!
     
@@ -65,7 +66,7 @@ class MapsViewController: UIViewController, UITextFieldDelegate, UIPickerViewDat
                 duration = duration! + 0.75
             }
             
-            DataService.InitiateMeeting(mapsInstance: self, contacts: contacts, loggedInUser: loggedInUser, location: locationLabel.text!, startTime: dateTextField.text!, endTime: dateTextEndField.text!, duration: duration!);
+            DataService.InitiateMeeting(mapsInstance: self, contacts: contacts, loggedInUser: loggedInUser, location: locationLabel.text!, startTime: dateTextField.text!, endTime: dateTextEndField.text!, duration: duration!, title: titleEditor.text!);
             
        
             
@@ -73,7 +74,6 @@ class MapsViewController: UIViewController, UITextFieldDelegate, UIPickerViewDat
         }
         
     }
-    
     
     let hoursPicker = UIPickerView()
     var hData = ["0","1","2","3","4","5","6","7","8","9"]
@@ -219,6 +219,7 @@ class MapsViewController: UIViewController, UITextFieldDelegate, UIPickerViewDat
         dateTextEndField.resignFirstResponder()
         durationTextField.resignFirstResponder()
         textminutes.resignFirstResponder()
+        titleEditor.resignFirstResponder()
     }
     
     func datePickerValueChangedEnd(sender:UIDatePicker) {
@@ -260,7 +261,7 @@ class MapsViewController: UIViewController, UITextFieldDelegate, UIPickerViewDat
         searchController = UISearchController(searchResultsController: resultsViewController)
         searchController?.searchResultsUpdater = resultsViewController
         
-        let subView = UIView(frame: CGRect(x: 100, y: 63, width: 315, height: 300))
+        let subView = UIView(frame: CGRect(x: 100, y: 110, width: 315, height: 300))
         
         subView.addSubview((searchController?.searchBar)!)
         self.view.addSubview(subView)

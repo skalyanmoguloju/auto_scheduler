@@ -214,6 +214,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 var nMeetingId: Int = Int();
                 var dStartDate: Date = Date();
                 var dEndDate: Date = Date();
+                var title = ""
+                var location = ""
                 print(userInfo);
                 print("Here we should add this to calendar");
                 for (key, value) in userInfo {
@@ -245,8 +247,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         dEndDate = dDateFormatter2.date(from: sDate1)!
                         print("--2- \(dEndDate)");
                     }
+                    if(key as! String == "ldocation"){
+                        location  = value as! String;
+                        print(location);
+                    }
+                    if(key as! String == "ttile"){
+                        title  = value as! String;
+                        print(title);
+                    }
                 }
-                HomeScreen_ViewController.AddCallenderEvent(dStartTime: dStartDate, dEndTime: dEndDate)
+                HomeScreen_ViewController.AddCallenderEvent(dStartTime: dStartDate, dEndTime: dEndDate, title: title, location: location)
                 break;
             
         default:
