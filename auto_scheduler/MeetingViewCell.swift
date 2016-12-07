@@ -11,6 +11,7 @@ import UIKit
 
 class MeetingViewCell: UITableViewCell {
     
+    @IBOutlet weak var titleName: UILabel!
     @IBOutlet weak var ownerName: UILabel!
     
     @IBOutlet weak var Location: UILabel!

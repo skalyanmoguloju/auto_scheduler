@@ -26,7 +26,7 @@ class meetingRequestVC: UIViewController,  UITableViewDataSource, UITableViewDel
         cell.ownerName.text = meetingInfoLst[(indexPath as NSIndexPath).row].components(separatedBy: "||")[0]
         cell.Location.text = meetingInfoLst[(indexPath as NSIndexPath).row].components(separatedBy: "||")[1]
         cell.meetingId = meetingInfoLst[(indexPath as NSIndexPath).row].components(separatedBy: "||")[2]
-
+        cell.titleName.text = meetingInfoLst[(indexPath as NSIndexPath).row].components(separatedBy: "||")[3]
         return cell
     }
     

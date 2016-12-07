@@ -293,7 +293,7 @@ class HomeScreen_ViewController: UIViewController, UICollectionViewDataSource, U
     }
 
     
-    static func AddCallenderEvent(dStartTime :Date, dEndTime :Date)
+    static func AddCallenderEvent(dStartTime :Date, dEndTime :Date, title: String, location: String)
     {
         var check = true
         let eventStore = EKEventStore();
@@ -306,10 +306,10 @@ class HomeScreen_ViewController: UIViewController, UICollectionViewDataSource, U
             let newEvent = EKEvent(eventStore: eventStore)
             
             newEvent.calendar = calendar
-            newEvent.title = "Testing Addition"
+            newEvent.title = title
             newEvent.startDate = dStartTime
             newEvent.endDate = dEndTime
-            newEvent.location = "1100 Oakcrest St, Iowa City, IA, 52246"
+            newEvent.location = location
             // Save the event using the Event Store instance
             do {
                 try eventStore.save(newEvent, span: .thisEvent, commit: true)
