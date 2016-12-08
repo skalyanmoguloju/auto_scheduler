@@ -255,7 +255,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                         dEndDate = dDateFormatter2.date(from: sDate1)!
                         print("--2- \(dEndDate)");
                     }
-                    if(key as! String == "ldocation"){
+                    if(key as! String == "location"){
                         location  = value as! String;
                         print(location);
                     }

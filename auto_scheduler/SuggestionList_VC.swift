@@ -45,7 +45,6 @@ class SuggestionListController: UIViewController,  UITableViewDataSource, UITabl
     func onSetPrioritiesComplete(){
         let alert = UIAlertController(title: "Alert", message: "Your priorities added succesfully.", preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
-            self.performSegue(withIdentifier: "prioritiesBack2Home", sender: self)
         }))
         self.present(alert, animated: true, completion: nil)
     }

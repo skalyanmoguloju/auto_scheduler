@@ -14,6 +14,10 @@ class meetingRequestVC: UIViewController,  UITableViewDataSource, UITableViewDel
 {
     @IBOutlet var tableView: UITableView!
     
+    @IBAction func dismiss(_ sender: Any) {
+        dismiss(animated: false, completion: nil)
+        
+    }
     var meetingInfoLst = [String]()
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
