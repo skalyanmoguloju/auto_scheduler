@@ -316,6 +316,7 @@ class HomeScreen_ViewController: UIViewController, UICollectionViewDataSource, U
                 check = false
                 var c = HomeScreen_ViewController();
                 c.checkCalendarAuthorizationStatus();
+                
                 break
                 
             } catch {
@@ -325,6 +326,15 @@ class HomeScreen_ViewController: UIViewController, UICollectionViewDataSource, U
             if(check){
                 
             }
+        }
+        if(check == false)
+        {
+            let alert = UIAlertController(title: "Alert", message: "Meeting rejected succesfully.", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
+                
+            }))
+            let hsc = HomeScreen_ViewController();
+            hsc.present(alert, animated: true, completion: nil);
         }
     }
     

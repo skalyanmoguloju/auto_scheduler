@@ -19,6 +19,9 @@ class SuggestionListController: UIViewController,  UITableViewDataSource, UITabl
     var endDateFinal = [Date]()
     var ranks = [Int]()
 
+    @IBAction func toback(_ sender: Any) {
+        dismiss(animated: false, completion: nil)
+    }
     @IBAction func dismiss(_ sender: Any) {
         dismiss(animated: false, completion: nil)
     }

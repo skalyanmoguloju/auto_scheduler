@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11760" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="osB-lt-04J">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11761" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="osB-lt-04J">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment version="4128" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11755"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -474,7 +474,6 @@
                                 <state key="normal" title="Button" image="Back.png"/>
                                 <connections>
                                     <action selector="backButton:" destination="aLU-gn-33u" eventType="touchUpInside" id="hFU-ZA-JnT"/>
-                                    <action selector="dismiss:" destination="4XE-px-fb8" eventType="touchUpInside" id="ISr-vK-bPv"/>
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="P72-gM-HJl">
@@ -587,10 +586,10 @@
                                 <rect key="frame" x="20" y="7" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" backgroundImage="Back.png"/>
+                                <connections>
+                                    <action selector="toback:" destination="4XE-px-fb8" eventType="touchUpInside" id="dhm-3P-FaN"/>
+                                </connections>
                             </button>
-                            <connections>
-                                <action selector="dismiss:" destination="4XE-px-fb8" id="IRB-yJ-i0k"/>
-                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
@@ -781,15 +780,18 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <rect key="contentStretch" x="0.25" y="0.0" width="1" height="1"/>
                                 <state key="normal" image="Back.png"/>
+                                <connections>
+                                    <action selector="tohome:" destination="dXO-rO-NDa" eventType="touchUpInside" id="I5g-yF-gA1"/>
+                                </connections>
                             </button>
                             <connections>
-                                <action selector="dismiss:" destination="dXO-rO-NDa" id="2T4-rf-JA7"/>
                                 <segue destination="6Yf-xq-gi7" kind="show" id="lW4-m6-1Vh"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="Ogb-xi-ZGl" id="fQX-H8-r9e"/>
+                        <segue destination="Thi-h9-Y3h" kind="show" identifier="showsuggestions" id="4BA-Ar-9HA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fIL-nu-ip8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -823,6 +825,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="k3w-8m-HVF"/>
-        <segue reference="YUq-gM-jW9"/>
+        <segue reference="Ys6-jn-Yhr"/>
     </inferredMetricsTieBreakers>
 </document>
