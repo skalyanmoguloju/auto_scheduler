@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11761" systemVersion="15G1108" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="osB-lt-04J">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11760" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="osB-lt-04J">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment version="4128" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11755"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -116,7 +116,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Idc-Q7-lIN" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2Ho-RL-xHm">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="2Ho-RL-xHm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -418,7 +418,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="osB-lt-04J" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="JaI-Fx-g2I">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="JaI-Fx-g2I">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -436,7 +436,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="SGB-t3-1BY" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Q8V-Rm-4NJ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="Q8V-Rm-4NJ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -575,6 +575,7 @@
                                 </state>
                                 <connections>
                                     <action selector="rejectMeeting:" destination="4XE-px-fb8" eventType="touchUpInside" id="pH8-3W-Ewb"/>
+                                    <segue destination="6Yf-xq-gi7" kind="show" id="8Ph-1d-boz"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -687,7 +688,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Thi-h9-Y3h" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="S0k-cg-gGs">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="S0k-cg-gGs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -800,7 +801,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uWt-VK-VjR" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="hKT-pR-i8D">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="hKT-pR-i8D">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -821,7 +822,7 @@
         <image name="schedule.png" width="640" height="169"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="lW4-m6-1Vh"/>
+        <segue reference="k3w-8m-HVF"/>
         <segue reference="YUq-gM-jW9"/>
     </inferredMetricsTieBreakers>
 </document>

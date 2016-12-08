@@ -44,14 +44,14 @@ class SuggestionListController: UIViewController,  UITableViewDataSource, UITabl
     
     func onSetPrioritiesComplete(){
         let alert = UIAlertController(title: "Alert", message: "Your priorities added succesfully.", preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
-            self.performSegue(withIdentifier: "prioritiesBack2Home", sender: self)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in //not exists
         }))
+        
         self.present(alert, animated: true, completion: nil)
     }
     
     func onMeetingRejectedComplete(){
-        let alert = UIAlertController(title: "Alert", message: "Meeting rejected succesfully.", preferredStyle: UIAlertControllerStyle.alert)
+       let alert = UIAlertController(title: "Alert", message: "Meeting rejected succesfully.", preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
             self.performSegue(withIdentifier: "prioritiesBack2Home", sender: self)
         }))
