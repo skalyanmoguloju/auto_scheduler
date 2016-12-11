@@ -6,48 +6,286 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "auto_scheduler/AppDelegate.swift"
+            timestampString = "503025670.709948"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "222"
+            endingLineNumber = "222"
+            landmarkName = "application(_:didReceiveRemoteNotification:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "auto_scheduler/SuggestionList_VC.swift"
-            timestampString = "502870412.756044"
+            filePath = "auto_scheduler/AppDelegate.swift"
+            timestampString = "503025797.726639"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
-            landmarkName = "tableView(_:numberOfRowsInSection:)"
+            startingLineNumber = "267"
+            endingLineNumber = "267"
+            landmarkName = "application(_:didReceiveRemoteNotification:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "auto_scheduler/meetingRequestVC.swift"
-            timestampString = "502869746.383065"
+            filePath = "auto_scheduler/HomeScreen_ViewController.swift"
+            timestampString = "503027024.351325"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
-            landmarkName = "tableView(_:cellForRowAt:)"
+            startingLineNumber = "175"
+            endingLineNumber = "175"
+            landmarkName = "loadCalendars()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "auto_scheduler/meetingRequestVC.swift"
-            timestampString = "502869750.178376"
+            filePath = "auto_scheduler/HomeScreen_ViewController.swift"
+            timestampString = "503027024.351325"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
-            landmarkName = "tableView(_:didSelectRowAt:)"
+            startingLineNumber = "187"
+            endingLineNumber = "187"
+            landmarkName = "loadCalendars()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "auto_scheduler.HomeScreen_ViewController.loadCalendars () -&gt; ()"
+                  moduleName = "auto_scheduler"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/macbook_user/Documents/Projects/iOS/AutoSchedulerNew/auto_scheduler/auto_scheduler/HomeScreen_ViewController.swift"
+                  timestampString = "503025876.019022"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "181"
+                  endingLineNumber = "181"
+                  offsetFromSymbolStart = "1532">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "auto_scheduler.HomeScreen_ViewController.(loadCalendars () -&gt; ()).(closure #1)"
+                  moduleName = "auto_scheduler"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/macbook_user/Documents/Projects/iOS/AutoSchedulerNew/auto_scheduler/auto_scheduler/HomeScreen_ViewController.swift"
+                  timestampString = "503025876.020743"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "181"
+                  endingLineNumber = "181"
+                  offsetFromSymbolStart = "20">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "auto_scheduler/HomeScreen_ViewController.swift"
+            timestampString = "503027024.351325"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "188"
+            endingLineNumber = "188"
+            landmarkName = "loadCalendars()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "auto_scheduler/HomeScreen_ViewController.swift"
+            timestampString = "503027024.351325"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "338"
+            endingLineNumber = "338"
+            landmarkName = "AddCallenderEvent(dStartTime:dEndTime:title:location:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "auto_scheduler/HomeScreen_ViewController.swift"
+            timestampString = "503027024.351325"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "auto_scheduler/HomeScreen_ViewController.swift"
+            timestampString = "503027024.351325"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "auto_scheduler/HomeScreen_ViewController.swift"
+            timestampString = "503027024.351325"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "auto_scheduler/HomeScreen_ViewController.swift"
+            timestampString = "503027024.351325"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "189"
+            endingLineNumber = "189"
+            landmarkName = "HomeScreen_ViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "auto_scheduler.HomeScreen_ViewController.meetingSelected.getter : Swift.Array&lt;__ObjC.EKEvent&gt;"
+                  moduleName = "auto_scheduler"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/macbook_user/Documents/Projects/iOS/AutoSchedulerNew/auto_scheduler/auto_scheduler/HomeScreen_ViewController.swift"
+                  timestampString = "503026566.830629"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "234"
+                  endingLineNumber = "234"
+                  offsetFromSymbolStart = "48">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "auto_scheduler.HomeScreen_ViewController.meetingSelected.setter : Swift.Array&lt;__ObjC.EKEvent&gt;"
+                  moduleName = "auto_scheduler"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/macbook_user/Documents/Projects/iOS/AutoSchedulerNew/auto_scheduler/auto_scheduler/HomeScreen_ViewController.swift"
+                  timestampString = "503026566.83207"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "234"
+                  endingLineNumber = "234"
+                  offsetFromSymbolStart = "76">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "auto_scheduler.HomeScreen_ViewController.init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.Bundle&gt;) -&gt; auto_scheduler.HomeScreen_ViewController"
+                  moduleName = "auto_scheduler"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/macbook_user/Documents/Projects/iOS/AutoSchedulerNew/auto_scheduler/auto_scheduler/HomeScreen_ViewController.swift"
+                  timestampString = "503026566.833562"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "234"
+                  endingLineNumber = "234"
+                  offsetFromSymbolStart = "900">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "auto_scheduler.HomeScreen_ViewController.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;auto_scheduler.HomeScreen_ViewController&gt;"
+                  moduleName = "auto_scheduler"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/macbook_user/Documents/Projects/iOS/AutoSchedulerNew/auto_scheduler/auto_scheduler/HomeScreen_ViewController.swift"
+                  timestampString = "503026566.835226"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "234"
+                  endingLineNumber = "234"
+                  offsetFromSymbolStart = "840">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "auto_scheduler/HomeScreen_ViewController.swift"
+            timestampString = "503027024.351325"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "viewWillAppear(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "auto_scheduler/HomeScreen_ViewController.swift"
+            timestampString = "503027009.883469"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

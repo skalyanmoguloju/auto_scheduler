@@ -27,14 +27,19 @@ class HomeScreen_ViewController: UIViewController, UICollectionViewDataSource, U
     
     let defaults = UserDefaults.standard;
     
+//    override func viewWillAppear(_ animated: Bool) {
+//        checkCalendarAuthorizationStatus()
+//    }
+//    
     override func viewDidLoad() {
-        checkCalendarAuthorizationStatus()
+        
         super.viewDidLoad()
+        //checkCalendarAuthorizationStatus()
         //var dStartDate: Date = Date();
         //var dEndDate: Date = Date().addingTimeInterval(3600);
         //HomeScreen_ViewController.AddCallenderEvent(dStartTime: dStartDate, dEndTime: dEndDate)
-        mainView.layer.shadowOpacity = 1
-        mainView.layer.shadowRadius = 10
+        //mainView.layer.shadowOpacity = 1
+        //mainView.layer.shadowRadius = 10
         //createCallenderEvent()
         
         
@@ -69,6 +74,7 @@ class HomeScreen_ViewController: UIViewController, UICollectionViewDataSource, U
     
     //Callender
     override func viewWillAppear(_ animated: Bool) {
+        checkCalendarAuthorizationStatus()
     //    checkCalendarAuthorizationStatus()
         /*
         let urlString = "http://192.168.0.27:3000/users/test";
