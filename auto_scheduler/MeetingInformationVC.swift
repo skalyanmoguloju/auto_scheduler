@@ -11,7 +11,7 @@ import EventKit
 import MapKit
 import CoreLocation
 
-class MeetingInformationVC: UIViewController, UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate {
+class MeetingInformationVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -42,7 +42,7 @@ class MeetingInformationVC: UIViewController, UITableViewDataSource, UITableView
         
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+ /*   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return contactsAttending.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -53,7 +53,7 @@ class MeetingInformationVC: UIViewController, UITableViewDataSource, UITableView
         cell.textLabel!.text = String(describing: contactsAttending[indexPath.row])
         return cell
     }
-    
+    */
     
     override func viewDidAppear(_ animated: Bool) {
         //    InitUI()
@@ -113,8 +113,8 @@ class MeetingInformationVC: UIViewController, UITableViewDataSource, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.delegate = self
-        tableView.dataSource = self
+   //     tableView.delegate = self
+   //     tableView.dataSource = self
         //        contactsAttending.append(meetingName[1])
         //       contactsAttending.append(meetingName[2])
         /*       contactsAttending.append("A")

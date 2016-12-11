@@ -14,7 +14,7 @@ class DataService {
     static var deviceid = "";
     //static let serviceURL = "http://172.17.36.224:3000/users/";
     
-    //static let serviceURL = "http://192.168.0.27:3000/users/";
+//    static let serviceURL = "http://192.168.0.27:3000/users/";
     static let serviceURL = "https://arcane-bayou-92592.herokuapp.com/users/";
     
     static func insert_user(number: String)
